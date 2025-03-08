@@ -23,3 +23,11 @@ model User {
   email String  @unique
   name  String?
 }
+
+model Project {
+  id String @id @default(cuid())
+
+  // Locales
+  name Json?
+  desc Json?
+}
