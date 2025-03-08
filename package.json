@@ -11,6 +11,7 @@
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "^5.2.2",
     "eslint-config-xeno": "^2.0.3-rc.3",
+    "esno": "^4.8.0",
     "prettier": "^3.5.3",
     "turbo": "^2.4.4",
     "typescript": "5.8.2"
