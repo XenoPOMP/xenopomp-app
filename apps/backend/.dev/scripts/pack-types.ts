@@ -5,7 +5,7 @@ import { cwd } from 'node:process';
 import { PackageJson } from 'type-fest';
 
 // Constants
-const LIB_NAME = '@repo/backend-types';
+const LIB_NAME = '@repo/prisma-model';
 const PATH_TO_OUTPUT = '../../packages/prisma-model';
 
 (async () => {

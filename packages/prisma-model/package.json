@@ -1,5 +1,5 @@
 {
-  "name": "@repo/backend-types",
+  "name": "@repo/prisma-model",
   "main": "index.js",
   "types": "index.d.ts",
   "browser": "index-browser.js",
