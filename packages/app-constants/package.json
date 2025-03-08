@@ -1,9 +1,5 @@
 {
   "name": "@repo/constants",
   "version": "0.0.0",
-  "private": true,
-  "scripts": {
-    "dev": "tsc --watch",
-    "build": "tsc"
-  }
+  "private": true
 }

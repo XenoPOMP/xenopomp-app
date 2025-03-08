@@ -1,5 +1,5 @@
 import { NestFactory } from '@nestjs/core';
-import { PORTS } from '@repo/app-constants';
+import { PORTS } from '@repo/constants';
 
 import { AppModule } from './app.module';
 
