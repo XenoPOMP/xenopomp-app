@@ -1,1 +1,2 @@
 prisma-model/**/*.node
+prisma-model/**/*.js
