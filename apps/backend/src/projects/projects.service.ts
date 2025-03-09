@@ -1,8 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import type { Project, StackTech } from '@prisma/client';
-import { pipe } from 'xenopomp-essentials';
 
-import type { Localized, LocalizedProject } from '@repo/backend-types';
+import type { LocalizedProject } from '@repo/backend-types';
 
 // eslint-disable-next-line ts/consistent-type-imports
 import { LocalizationService } from '../localization.service';
@@ -59,16 +58,7 @@ export class ProjectsService {
     return prepared;
   }
 
-  /**
-   * Localizes project and fetches stack techs ids.
-   * @param project
-   * @private
-   */
   private async prepareProject(project: Project): Promise<LocalizedProject> {
-    const localized = this.loc.parseObj(project, ['name', 'desc']);
-
-    const { id, ...v } = localized;
-    const stack = (await this.getStackById(id)).map(v => v.id);
-    return { id, stackIds: stack, ...v };
+    return this.loc.parseObj(project, ['name', 'desc']);
   }
 }
