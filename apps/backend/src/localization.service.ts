@@ -2,12 +2,12 @@ import { Injectable } from '@nestjs/common';
 import { JsonValue } from '@prisma/client/runtime/client';
 import { z } from 'zod';
 
+import { Locale } from '@repo/backend-types';
+
 const schema = z.object({
   ru: z.string().optional(),
   en: z.string().optional(),
 });
-
-export type Locale = ReturnType<(typeof schema)['parse']>;
 
 @Injectable()
 export class LocalizationService {
