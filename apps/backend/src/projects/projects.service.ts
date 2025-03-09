@@ -1,11 +1,11 @@
 import { Injectable } from '@nestjs/common';
-import { Project } from '@prisma/client';
+import type { Project } from '@prisma/client';
 import { pipe } from 'xenopomp-essentials';
 
-import { LocalizedProject } from '@repo/backend-types';
+import type { LocalizedProject } from '@repo/backend-types';
 
-import { LocalizationService } from '../localization.service';
-import { PrismaService } from '../prisma.service';
+import type { LocalizationService } from '../localization.service';
+import type { PrismaService } from '../prisma.service';
 
 @Injectable()
 export class ProjectsService {

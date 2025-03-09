@@ -1,8 +1,8 @@
 import { Controller, Get } from '@nestjs/common';
 
-import { LocalizedProject, SuccessfulResponse } from '@repo/backend-types';
+import type { LocalizedProject, SuccessfulResponse } from '@repo/backend-types';
 
-import { ProjectsService } from './projects.service';
+import type { ProjectsService } from './projects.service';
 
 @Controller('projects')
 export class ProjectsController {

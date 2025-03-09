@@ -1,8 +1,8 @@
 import { Controller, Get } from '@nestjs/common';
 
-import { SuccessfulResponse } from '@repo/backend-types';
+import type { SuccessfulResponse } from '@repo/backend-types';
 
-import { AppService } from './app.service';
+import type { AppService } from './app.service';
 
 @Controller()
 export class AppController {

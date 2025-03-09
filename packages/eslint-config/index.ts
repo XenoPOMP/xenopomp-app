@@ -4,7 +4,12 @@ type Params = Parameters<typeof xenopomp>;
 type RiridOptions = Params[0];
 type Options = Params[1];
 
-const RIRID_CONFIG: RiridOptions = {};
+const RIRID_CONFIG: RiridOptions = {
+  rules: {
+    'style/brace-style': 'off',
+    'perfectionist/sort-imports': 'off',
+  },
+};
 
 /**
  * Default customizable config. Uses ririd under the hood.
