@@ -33,8 +33,11 @@ export class ProjectsService {
     return manyToMany.map(v => v.stackTech);
   }
 
-  async get(): Promise<LocalizedProject[]> {
-    const projects = await this.prisma.project.findMany();
+  async get(
+    method: keyof Pick<typeof this.prisma.project, 'findMany'> = 'findMany',
+    ...params: Parameters<typeof this.prisma.project.findMany>
+  ): Promise<LocalizedProject[]> {
+    const projects = await this.prisma.project[method](...params);
 
     const func = pipe((v: Project[]) =>
       v.map(({ name, desc, ...v }) => ({
