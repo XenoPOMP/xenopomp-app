@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import type { Project, StackTech } from '@prisma/client';
 import { pipe } from 'xenopomp-essentials';
 
-import type { LocalizedProject } from '@repo/backend-types';
+import type { Localized, LocalizedProject } from '@repo/backend-types';
 
 // eslint-disable-next-line ts/consistent-type-imports
 import { LocalizationService } from '../localization.service';
@@ -33,20 +33,40 @@ export class ProjectsService {
     return manyToMany.map(v => v.stackTech);
   }
 
+  async getById(projectId: string): Promise<LocalizedProject | null> {
+    const query = await this.prisma.project.findFirst({
+      where: {
+        id: projectId,
+      },
+    });
+
+    if (query === null) {
+      return null;
+    }
+
+    const func = pipe(this.localizeProject).pipe(this.fetchStack);
+    return func(query);
+  }
+
   async getAll(): Promise<LocalizedProject[]> {
     const query = await this.prisma.project.findMany();
 
-    const func = pipe((v: Project[]) =>
-      v.map(proj => this.loc.parseObj(proj, ['name', 'desc'])),
-    ).pipe(async _v =>
-      Promise.all(
-        _v.map(async ({ id, ...v }) => {
-          const stack = (await this.getStackById(id)).map(v => v.id);
-          return { id, stackIds: stack, ...v };
-        }),
-      ),
+    const func = pipe((v: Project[]) => v.map(this.localizeProject)).pipe(
+      async _v => Promise.all(_v.map(this.fetchStack)),
     );
 
     return func(query);
+  }
+
+  private localizeProject(project: Project) {
+    return this.loc.parseObj(project, ['name', 'desc']);
+  }
+
+  private async fetchStack(
+    project: Localized<Project, 'name' | 'desc'>,
+  ): Promise<LocalizedProject> {
+    const { id, ...v } = project;
+    const stack = (await this.getStackById(id)).map(v => v.id);
+    return { id, stackIds: stack, ...v };
   }
 }

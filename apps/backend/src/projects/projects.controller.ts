@@ -21,9 +21,12 @@ export class ProjectsController {
   }
 
   @Get('/single/:projectId/get')
-  async getById(@Param('projectId') projectId: string) {
+  async getById(
+    @Param('projectId') projectId: string,
+  ): Promise<SuccessfulResponse<LocalizedProject | null>> {
+    const query = await this.projectsService.getById(projectId);
     return {
-      data: 'sus',
+      data: query,
     };
   }
 
