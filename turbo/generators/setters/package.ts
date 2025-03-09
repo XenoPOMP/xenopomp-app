@@ -12,13 +12,16 @@ export const packageGenerator = (plop: PlopTypes.NodePlopAPI) => {
         message: 'What is the name of the new package to create?',
         validate: (input: string) => {
           if (input.includes('.')) {
-            return 'file name cannot include an extension';
+            return 'package name cannot include an extension';
           }
           if (input.includes(' ')) {
-            return 'file name cannot include spaces';
+            return 'package name cannot include spaces';
           }
           if (!input) {
-            return 'file name is required';
+            return 'package name is required';
+          }
+          if (!input.startsWith('@repo')) {
+            return 'package name should start with @repo';
           }
           return true;
         },
