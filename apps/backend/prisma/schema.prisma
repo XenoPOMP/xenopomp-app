@@ -30,6 +30,19 @@ model Project {
   // Locales
   name Json?
   desc Json?
+
+  // Relations
+  StackOfProject StackOfProject[]
+}
+
+model StackOfProject {
+  id String @id @default(cuid())
+
+  // Many-to-many relations
+  project     Project   @relation(fields: [projectId], references: [id])
+  projectId   String    @map("project_id")
+  stackTech   StackTech @relation(fields: [stackTechId], references: [id])
+  stackTechId String    @map("stack_tech_id")
 }
 
 enum StackType {
@@ -42,4 +55,7 @@ model StackTech {
   type     StackType
   iconName String?   @map("icon_name")
   name     String
+
+  // Relations
+  StackOfProject StackOfProject[]
 }

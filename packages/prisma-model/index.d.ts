@@ -24,6 +24,11 @@ export type User = $Result.DefaultSelection<Prisma.$UserPayload>
  */
 export type Project = $Result.DefaultSelection<Prisma.$ProjectPayload>
 /**
+ * Model StackOfProject
+ * 
+ */
+export type StackOfProject = $Result.DefaultSelection<Prisma.$StackOfProjectPayload>
+/**
  * Model StackTech
  * 
  */
@@ -190,6 +195,16 @@ export class PrismaClient<
     * ```
     */
   get project(): Prisma.ProjectDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.stackOfProject`: Exposes CRUD operations for the **StackOfProject** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more StackOfProjects
+    * const stackOfProjects = await prisma.stackOfProject.findMany()
+    * ```
+    */
+  get stackOfProject(): Prisma.StackOfProjectDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.stackTech`: Exposes CRUD operations for the **StackTech** model.
@@ -642,6 +657,7 @@ export namespace Prisma {
   export const ModelName: {
     User: 'User',
     Project: 'Project',
+    StackOfProject: 'StackOfProject',
     StackTech: 'StackTech'
   };
 
@@ -658,7 +674,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> = {
     meta: {
-      modelProps: "user" | "project" | "stackTech"
+      modelProps: "user" | "project" | "stackOfProject" | "stackTech"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -807,6 +823,80 @@ export namespace Prisma {
           count: {
             args: Prisma.ProjectCountArgs<ExtArgs>
             result: $Utils.Optional<ProjectCountAggregateOutputType> | number
+          }
+        }
+      }
+      StackOfProject: {
+        payload: Prisma.$StackOfProjectPayload<ExtArgs>
+        fields: Prisma.StackOfProjectFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.StackOfProjectFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StackOfProjectPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.StackOfProjectFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StackOfProjectPayload>
+          }
+          findFirst: {
+            args: Prisma.StackOfProjectFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StackOfProjectPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.StackOfProjectFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StackOfProjectPayload>
+          }
+          findMany: {
+            args: Prisma.StackOfProjectFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StackOfProjectPayload>[]
+          }
+          create: {
+            args: Prisma.StackOfProjectCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StackOfProjectPayload>
+          }
+          createMany: {
+            args: Prisma.StackOfProjectCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.StackOfProjectCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StackOfProjectPayload>[]
+          }
+          delete: {
+            args: Prisma.StackOfProjectDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StackOfProjectPayload>
+          }
+          update: {
+            args: Prisma.StackOfProjectUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StackOfProjectPayload>
+          }
+          deleteMany: {
+            args: Prisma.StackOfProjectDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.StackOfProjectUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.StackOfProjectUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StackOfProjectPayload>[]
+          }
+          upsert: {
+            args: Prisma.StackOfProjectUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StackOfProjectPayload>
+          }
+          aggregate: {
+            args: Prisma.StackOfProjectAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateStackOfProject>
+          }
+          groupBy: {
+            args: Prisma.StackOfProjectGroupByArgs<ExtArgs>
+            result: $Utils.Optional<StackOfProjectGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.StackOfProjectCountArgs<ExtArgs>
+            result: $Utils.Optional<StackOfProjectCountAggregateOutputType> | number
           }
         }
       }
@@ -970,6 +1060,7 @@ export namespace Prisma {
   export type GlobalOmitConfig = {
     user?: UserOmit
     project?: ProjectOmit
+    stackOfProject?: StackOfProjectOmit
     stackTech?: StackTechOmit
   }
 
@@ -1059,6 +1150,67 @@ export namespace Prisma {
    * Count Types
    */
 
+
+  /**
+   * Count Type ProjectCountOutputType
+   */
+
+  export type ProjectCountOutputType = {
+    StackOfProject: number
+  }
+
+  export type ProjectCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    StackOfProject?: boolean | ProjectCountOutputTypeCountStackOfProjectArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * ProjectCountOutputType without action
+   */
+  export type ProjectCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProjectCountOutputType
+     */
+    select?: ProjectCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * ProjectCountOutputType without action
+   */
+  export type ProjectCountOutputTypeCountStackOfProjectArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: StackOfProjectWhereInput
+  }
+
+
+  /**
+   * Count Type StackTechCountOutputType
+   */
+
+  export type StackTechCountOutputType = {
+    StackOfProject: number
+  }
+
+  export type StackTechCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    StackOfProject?: boolean | StackTechCountOutputTypeCountStackOfProjectArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * StackTechCountOutputType without action
+   */
+  export type StackTechCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StackTechCountOutputType
+     */
+    select?: StackTechCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * StackTechCountOutputType without action
+   */
+  export type StackTechCountOutputTypeCountStackOfProjectArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: StackOfProjectWhereInput
+  }
 
 
   /**
@@ -2174,6 +2326,8 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     desc?: boolean
+    StackOfProject?: boolean | Project$StackOfProjectArgs<ExtArgs>
+    _count?: boolean | ProjectCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["project"]>
 
   export type ProjectSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -2195,10 +2349,18 @@ export namespace Prisma {
   }
 
   export type ProjectOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "desc", ExtArgs["result"]["project"]>
+  export type ProjectInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    StackOfProject?: boolean | Project$StackOfProjectArgs<ExtArgs>
+    _count?: boolean | ProjectCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type ProjectIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type ProjectIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
 
   export type $ProjectPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Project"
-    objects: {}
+    objects: {
+      StackOfProject: Prisma.$StackOfProjectPayload<ExtArgs>[]
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       name: Prisma.JsonValue | null
@@ -2597,6 +2759,7 @@ export namespace Prisma {
    */
   export interface Prisma__ProjectClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    StackOfProject<T extends Project$StackOfProjectArgs<ExtArgs> = {}>(args?: Subset<T, Project$StackOfProjectArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StackOfProjectPayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2646,6 +2809,10 @@ export namespace Prisma {
      */
     omit?: ProjectOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProjectInclude<ExtArgs> | null
+    /**
      * Filter, which Project to fetch.
      */
     where: ProjectWhereUniqueInput
@@ -2664,6 +2831,10 @@ export namespace Prisma {
      */
     omit?: ProjectOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProjectInclude<ExtArgs> | null
+    /**
      * Filter, which Project to fetch.
      */
     where: ProjectWhereUniqueInput
@@ -2681,6 +2852,10 @@ export namespace Prisma {
      * Omit specific fields from the Project
      */
     omit?: ProjectOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProjectInclude<ExtArgs> | null
     /**
      * Filter, which Project to fetch.
      */
@@ -2730,6 +2905,10 @@ export namespace Prisma {
      */
     omit?: ProjectOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProjectInclude<ExtArgs> | null
+    /**
      * Filter, which Project to fetch.
      */
     where?: ProjectWhereInput
@@ -2778,6 +2957,10 @@ export namespace Prisma {
      */
     omit?: ProjectOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProjectInclude<ExtArgs> | null
+    /**
      * Filter, which Projects to fetch.
      */
     where?: ProjectWhereInput
@@ -2820,6 +3003,10 @@ export namespace Prisma {
      * Omit specific fields from the Project
      */
     omit?: ProjectOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProjectInclude<ExtArgs> | null
     /**
      * The data needed to create a Project.
      */
@@ -2868,6 +3055,10 @@ export namespace Prisma {
      * Omit specific fields from the Project
      */
     omit?: ProjectOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProjectInclude<ExtArgs> | null
     /**
      * The data needed to update a Project.
      */
@@ -2935,6 +3126,10 @@ export namespace Prisma {
      */
     omit?: ProjectOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProjectInclude<ExtArgs> | null
+    /**
      * The filter to search for the Project to update in case it exists.
      */
     where: ProjectWhereUniqueInput
@@ -2961,6 +3156,10 @@ export namespace Prisma {
      */
     omit?: ProjectOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProjectInclude<ExtArgs> | null
+    /**
      * Filter which Project to delete.
      */
     where: ProjectWhereUniqueInput
@@ -2981,6 +3180,30 @@ export namespace Prisma {
   }
 
   /**
+   * Project.StackOfProject
+   */
+  export type Project$StackOfProjectArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StackOfProject
+     */
+    select?: StackOfProjectSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the StackOfProject
+     */
+    omit?: StackOfProjectOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StackOfProjectInclude<ExtArgs> | null
+    where?: StackOfProjectWhereInput
+    orderBy?: StackOfProjectOrderByWithRelationInput | StackOfProjectOrderByWithRelationInput[]
+    cursor?: StackOfProjectWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: StackOfProjectScalarFieldEnum | StackOfProjectScalarFieldEnum[]
+  }
+
+  /**
    * Project without action
    */
   export type ProjectDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2992,6 +3215,1050 @@ export namespace Prisma {
      * Omit specific fields from the Project
      */
     omit?: ProjectOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProjectInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model StackOfProject
+   */
+
+  export type AggregateStackOfProject = {
+    _count: StackOfProjectCountAggregateOutputType | null
+    _min: StackOfProjectMinAggregateOutputType | null
+    _max: StackOfProjectMaxAggregateOutputType | null
+  }
+
+  export type StackOfProjectMinAggregateOutputType = {
+    id: string | null
+    projectId: string | null
+    stackTechId: string | null
+  }
+
+  export type StackOfProjectMaxAggregateOutputType = {
+    id: string | null
+    projectId: string | null
+    stackTechId: string | null
+  }
+
+  export type StackOfProjectCountAggregateOutputType = {
+    id: number
+    projectId: number
+    stackTechId: number
+    _all: number
+  }
+
+
+  export type StackOfProjectMinAggregateInputType = {
+    id?: true
+    projectId?: true
+    stackTechId?: true
+  }
+
+  export type StackOfProjectMaxAggregateInputType = {
+    id?: true
+    projectId?: true
+    stackTechId?: true
+  }
+
+  export type StackOfProjectCountAggregateInputType = {
+    id?: true
+    projectId?: true
+    stackTechId?: true
+    _all?: true
+  }
+
+  export type StackOfProjectAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which StackOfProject to aggregate.
+     */
+    where?: StackOfProjectWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of StackOfProjects to fetch.
+     */
+    orderBy?: StackOfProjectOrderByWithRelationInput | StackOfProjectOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: StackOfProjectWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` StackOfProjects from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` StackOfProjects.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned StackOfProjects
+    **/
+    _count?: true | StackOfProjectCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: StackOfProjectMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: StackOfProjectMaxAggregateInputType
+  }
+
+  export type GetStackOfProjectAggregateType<T extends StackOfProjectAggregateArgs> = {
+        [P in keyof T & keyof AggregateStackOfProject]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateStackOfProject[P]>
+      : GetScalarType<T[P], AggregateStackOfProject[P]>
+  }
+
+
+
+
+  export type StackOfProjectGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: StackOfProjectWhereInput
+    orderBy?: StackOfProjectOrderByWithAggregationInput | StackOfProjectOrderByWithAggregationInput[]
+    by: StackOfProjectScalarFieldEnum[] | StackOfProjectScalarFieldEnum
+    having?: StackOfProjectScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: StackOfProjectCountAggregateInputType | true
+    _min?: StackOfProjectMinAggregateInputType
+    _max?: StackOfProjectMaxAggregateInputType
+  }
+
+  export type StackOfProjectGroupByOutputType = {
+    id: string
+    projectId: string
+    stackTechId: string
+    _count: StackOfProjectCountAggregateOutputType | null
+    _min: StackOfProjectMinAggregateOutputType | null
+    _max: StackOfProjectMaxAggregateOutputType | null
+  }
+
+  type GetStackOfProjectGroupByPayload<T extends StackOfProjectGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<StackOfProjectGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof StackOfProjectGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], StackOfProjectGroupByOutputType[P]>
+            : GetScalarType<T[P], StackOfProjectGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type StackOfProjectSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    projectId?: boolean
+    stackTechId?: boolean
+    project?: boolean | ProjectDefaultArgs<ExtArgs>
+    stackTech?: boolean | StackTechDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["stackOfProject"]>
+
+  export type StackOfProjectSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    projectId?: boolean
+    stackTechId?: boolean
+    project?: boolean | ProjectDefaultArgs<ExtArgs>
+    stackTech?: boolean | StackTechDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["stackOfProject"]>
+
+  export type StackOfProjectSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    projectId?: boolean
+    stackTechId?: boolean
+    project?: boolean | ProjectDefaultArgs<ExtArgs>
+    stackTech?: boolean | StackTechDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["stackOfProject"]>
+
+  export type StackOfProjectSelectScalar = {
+    id?: boolean
+    projectId?: boolean
+    stackTechId?: boolean
+  }
+
+  export type StackOfProjectOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "projectId" | "stackTechId", ExtArgs["result"]["stackOfProject"]>
+  export type StackOfProjectInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    project?: boolean | ProjectDefaultArgs<ExtArgs>
+    stackTech?: boolean | StackTechDefaultArgs<ExtArgs>
+  }
+  export type StackOfProjectIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    project?: boolean | ProjectDefaultArgs<ExtArgs>
+    stackTech?: boolean | StackTechDefaultArgs<ExtArgs>
+  }
+  export type StackOfProjectIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    project?: boolean | ProjectDefaultArgs<ExtArgs>
+    stackTech?: boolean | StackTechDefaultArgs<ExtArgs>
+  }
+
+  export type $StackOfProjectPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "StackOfProject"
+    objects: {
+      project: Prisma.$ProjectPayload<ExtArgs>
+      stackTech: Prisma.$StackTechPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      projectId: string
+      stackTechId: string
+    }, ExtArgs["result"]["stackOfProject"]>
+    composites: {}
+  }
+
+  type StackOfProjectGetPayload<S extends boolean | null | undefined | StackOfProjectDefaultArgs> = $Result.GetResult<Prisma.$StackOfProjectPayload, S>
+
+  type StackOfProjectCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<StackOfProjectFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: StackOfProjectCountAggregateInputType | true
+    }
+
+  export interface StackOfProjectDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['StackOfProject'], meta: { name: 'StackOfProject' } }
+    /**
+     * Find zero or one StackOfProject that matches the filter.
+     * @param {StackOfProjectFindUniqueArgs} args - Arguments to find a StackOfProject
+     * @example
+     * // Get one StackOfProject
+     * const stackOfProject = await prisma.stackOfProject.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends StackOfProjectFindUniqueArgs>(args: SelectSubset<T, StackOfProjectFindUniqueArgs<ExtArgs>>): Prisma__StackOfProjectClient<$Result.GetResult<Prisma.$StackOfProjectPayload<ExtArgs>, T, "findUnique", ClientOptions> | null, null, ExtArgs, ClientOptions>
+
+    /**
+     * Find one StackOfProject that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {StackOfProjectFindUniqueOrThrowArgs} args - Arguments to find a StackOfProject
+     * @example
+     * // Get one StackOfProject
+     * const stackOfProject = await prisma.stackOfProject.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends StackOfProjectFindUniqueOrThrowArgs>(args: SelectSubset<T, StackOfProjectFindUniqueOrThrowArgs<ExtArgs>>): Prisma__StackOfProjectClient<$Result.GetResult<Prisma.$StackOfProjectPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Find the first StackOfProject that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StackOfProjectFindFirstArgs} args - Arguments to find a StackOfProject
+     * @example
+     * // Get one StackOfProject
+     * const stackOfProject = await prisma.stackOfProject.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends StackOfProjectFindFirstArgs>(args?: SelectSubset<T, StackOfProjectFindFirstArgs<ExtArgs>>): Prisma__StackOfProjectClient<$Result.GetResult<Prisma.$StackOfProjectPayload<ExtArgs>, T, "findFirst", ClientOptions> | null, null, ExtArgs, ClientOptions>
+
+    /**
+     * Find the first StackOfProject that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StackOfProjectFindFirstOrThrowArgs} args - Arguments to find a StackOfProject
+     * @example
+     * // Get one StackOfProject
+     * const stackOfProject = await prisma.stackOfProject.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends StackOfProjectFindFirstOrThrowArgs>(args?: SelectSubset<T, StackOfProjectFindFirstOrThrowArgs<ExtArgs>>): Prisma__StackOfProjectClient<$Result.GetResult<Prisma.$StackOfProjectPayload<ExtArgs>, T, "findFirstOrThrow", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Find zero or more StackOfProjects that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StackOfProjectFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all StackOfProjects
+     * const stackOfProjects = await prisma.stackOfProject.findMany()
+     * 
+     * // Get first 10 StackOfProjects
+     * const stackOfProjects = await prisma.stackOfProject.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const stackOfProjectWithIdOnly = await prisma.stackOfProject.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends StackOfProjectFindManyArgs>(args?: SelectSubset<T, StackOfProjectFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StackOfProjectPayload<ExtArgs>, T, "findMany", ClientOptions>>
+
+    /**
+     * Create a StackOfProject.
+     * @param {StackOfProjectCreateArgs} args - Arguments to create a StackOfProject.
+     * @example
+     * // Create one StackOfProject
+     * const StackOfProject = await prisma.stackOfProject.create({
+     *   data: {
+     *     // ... data to create a StackOfProject
+     *   }
+     * })
+     * 
+     */
+    create<T extends StackOfProjectCreateArgs>(args: SelectSubset<T, StackOfProjectCreateArgs<ExtArgs>>): Prisma__StackOfProjectClient<$Result.GetResult<Prisma.$StackOfProjectPayload<ExtArgs>, T, "create", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Create many StackOfProjects.
+     * @param {StackOfProjectCreateManyArgs} args - Arguments to create many StackOfProjects.
+     * @example
+     * // Create many StackOfProjects
+     * const stackOfProject = await prisma.stackOfProject.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends StackOfProjectCreateManyArgs>(args?: SelectSubset<T, StackOfProjectCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many StackOfProjects and returns the data saved in the database.
+     * @param {StackOfProjectCreateManyAndReturnArgs} args - Arguments to create many StackOfProjects.
+     * @example
+     * // Create many StackOfProjects
+     * const stackOfProject = await prisma.stackOfProject.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many StackOfProjects and only return the `id`
+     * const stackOfProjectWithIdOnly = await prisma.stackOfProject.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends StackOfProjectCreateManyAndReturnArgs>(args?: SelectSubset<T, StackOfProjectCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StackOfProjectPayload<ExtArgs>, T, "createManyAndReturn", ClientOptions>>
+
+    /**
+     * Delete a StackOfProject.
+     * @param {StackOfProjectDeleteArgs} args - Arguments to delete one StackOfProject.
+     * @example
+     * // Delete one StackOfProject
+     * const StackOfProject = await prisma.stackOfProject.delete({
+     *   where: {
+     *     // ... filter to delete one StackOfProject
+     *   }
+     * })
+     * 
+     */
+    delete<T extends StackOfProjectDeleteArgs>(args: SelectSubset<T, StackOfProjectDeleteArgs<ExtArgs>>): Prisma__StackOfProjectClient<$Result.GetResult<Prisma.$StackOfProjectPayload<ExtArgs>, T, "delete", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Update one StackOfProject.
+     * @param {StackOfProjectUpdateArgs} args - Arguments to update one StackOfProject.
+     * @example
+     * // Update one StackOfProject
+     * const stackOfProject = await prisma.stackOfProject.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends StackOfProjectUpdateArgs>(args: SelectSubset<T, StackOfProjectUpdateArgs<ExtArgs>>): Prisma__StackOfProjectClient<$Result.GetResult<Prisma.$StackOfProjectPayload<ExtArgs>, T, "update", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Delete zero or more StackOfProjects.
+     * @param {StackOfProjectDeleteManyArgs} args - Arguments to filter StackOfProjects to delete.
+     * @example
+     * // Delete a few StackOfProjects
+     * const { count } = await prisma.stackOfProject.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends StackOfProjectDeleteManyArgs>(args?: SelectSubset<T, StackOfProjectDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more StackOfProjects.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StackOfProjectUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many StackOfProjects
+     * const stackOfProject = await prisma.stackOfProject.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends StackOfProjectUpdateManyArgs>(args: SelectSubset<T, StackOfProjectUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more StackOfProjects and returns the data updated in the database.
+     * @param {StackOfProjectUpdateManyAndReturnArgs} args - Arguments to update many StackOfProjects.
+     * @example
+     * // Update many StackOfProjects
+     * const stackOfProject = await prisma.stackOfProject.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more StackOfProjects and only return the `id`
+     * const stackOfProjectWithIdOnly = await prisma.stackOfProject.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends StackOfProjectUpdateManyAndReturnArgs>(args: SelectSubset<T, StackOfProjectUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StackOfProjectPayload<ExtArgs>, T, "updateManyAndReturn", ClientOptions>>
+
+    /**
+     * Create or update one StackOfProject.
+     * @param {StackOfProjectUpsertArgs} args - Arguments to update or create a StackOfProject.
+     * @example
+     * // Update or create a StackOfProject
+     * const stackOfProject = await prisma.stackOfProject.upsert({
+     *   create: {
+     *     // ... data to create a StackOfProject
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the StackOfProject we want to update
+     *   }
+     * })
+     */
+    upsert<T extends StackOfProjectUpsertArgs>(args: SelectSubset<T, StackOfProjectUpsertArgs<ExtArgs>>): Prisma__StackOfProjectClient<$Result.GetResult<Prisma.$StackOfProjectPayload<ExtArgs>, T, "upsert", ClientOptions>, never, ExtArgs, ClientOptions>
+
+
+    /**
+     * Count the number of StackOfProjects.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StackOfProjectCountArgs} args - Arguments to filter StackOfProjects to count.
+     * @example
+     * // Count the number of StackOfProjects
+     * const count = await prisma.stackOfProject.count({
+     *   where: {
+     *     // ... the filter for the StackOfProjects we want to count
+     *   }
+     * })
+    **/
+    count<T extends StackOfProjectCountArgs>(
+      args?: Subset<T, StackOfProjectCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], StackOfProjectCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a StackOfProject.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StackOfProjectAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends StackOfProjectAggregateArgs>(args: Subset<T, StackOfProjectAggregateArgs>): Prisma.PrismaPromise<GetStackOfProjectAggregateType<T>>
+
+    /**
+     * Group by StackOfProject.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StackOfProjectGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends StackOfProjectGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: StackOfProjectGroupByArgs['orderBy'] }
+        : { orderBy?: StackOfProjectGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, StackOfProjectGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetStackOfProjectGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the StackOfProject model
+   */
+  readonly fields: StackOfProjectFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for StackOfProject.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__StackOfProjectClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    project<T extends ProjectDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ProjectDefaultArgs<ExtArgs>>): Prisma__ProjectClient<$Result.GetResult<Prisma.$ProjectPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions> | Null, Null, ExtArgs, ClientOptions>
+    stackTech<T extends StackTechDefaultArgs<ExtArgs> = {}>(args?: Subset<T, StackTechDefaultArgs<ExtArgs>>): Prisma__StackTechClient<$Result.GetResult<Prisma.$StackTechPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions> | Null, Null, ExtArgs, ClientOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the StackOfProject model
+   */ 
+  interface StackOfProjectFieldRefs {
+    readonly id: FieldRef<"StackOfProject", 'String'>
+    readonly projectId: FieldRef<"StackOfProject", 'String'>
+    readonly stackTechId: FieldRef<"StackOfProject", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * StackOfProject findUnique
+   */
+  export type StackOfProjectFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StackOfProject
+     */
+    select?: StackOfProjectSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the StackOfProject
+     */
+    omit?: StackOfProjectOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StackOfProjectInclude<ExtArgs> | null
+    /**
+     * Filter, which StackOfProject to fetch.
+     */
+    where: StackOfProjectWhereUniqueInput
+  }
+
+  /**
+   * StackOfProject findUniqueOrThrow
+   */
+  export type StackOfProjectFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StackOfProject
+     */
+    select?: StackOfProjectSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the StackOfProject
+     */
+    omit?: StackOfProjectOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StackOfProjectInclude<ExtArgs> | null
+    /**
+     * Filter, which StackOfProject to fetch.
+     */
+    where: StackOfProjectWhereUniqueInput
+  }
+
+  /**
+   * StackOfProject findFirst
+   */
+  export type StackOfProjectFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StackOfProject
+     */
+    select?: StackOfProjectSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the StackOfProject
+     */
+    omit?: StackOfProjectOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StackOfProjectInclude<ExtArgs> | null
+    /**
+     * Filter, which StackOfProject to fetch.
+     */
+    where?: StackOfProjectWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of StackOfProjects to fetch.
+     */
+    orderBy?: StackOfProjectOrderByWithRelationInput | StackOfProjectOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for StackOfProjects.
+     */
+    cursor?: StackOfProjectWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` StackOfProjects from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` StackOfProjects.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of StackOfProjects.
+     */
+    distinct?: StackOfProjectScalarFieldEnum | StackOfProjectScalarFieldEnum[]
+  }
+
+  /**
+   * StackOfProject findFirstOrThrow
+   */
+  export type StackOfProjectFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StackOfProject
+     */
+    select?: StackOfProjectSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the StackOfProject
+     */
+    omit?: StackOfProjectOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StackOfProjectInclude<ExtArgs> | null
+    /**
+     * Filter, which StackOfProject to fetch.
+     */
+    where?: StackOfProjectWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of StackOfProjects to fetch.
+     */
+    orderBy?: StackOfProjectOrderByWithRelationInput | StackOfProjectOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for StackOfProjects.
+     */
+    cursor?: StackOfProjectWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` StackOfProjects from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` StackOfProjects.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of StackOfProjects.
+     */
+    distinct?: StackOfProjectScalarFieldEnum | StackOfProjectScalarFieldEnum[]
+  }
+
+  /**
+   * StackOfProject findMany
+   */
+  export type StackOfProjectFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StackOfProject
+     */
+    select?: StackOfProjectSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the StackOfProject
+     */
+    omit?: StackOfProjectOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StackOfProjectInclude<ExtArgs> | null
+    /**
+     * Filter, which StackOfProjects to fetch.
+     */
+    where?: StackOfProjectWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of StackOfProjects to fetch.
+     */
+    orderBy?: StackOfProjectOrderByWithRelationInput | StackOfProjectOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing StackOfProjects.
+     */
+    cursor?: StackOfProjectWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` StackOfProjects from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` StackOfProjects.
+     */
+    skip?: number
+    distinct?: StackOfProjectScalarFieldEnum | StackOfProjectScalarFieldEnum[]
+  }
+
+  /**
+   * StackOfProject create
+   */
+  export type StackOfProjectCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StackOfProject
+     */
+    select?: StackOfProjectSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the StackOfProject
+     */
+    omit?: StackOfProjectOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StackOfProjectInclude<ExtArgs> | null
+    /**
+     * The data needed to create a StackOfProject.
+     */
+    data: XOR<StackOfProjectCreateInput, StackOfProjectUncheckedCreateInput>
+  }
+
+  /**
+   * StackOfProject createMany
+   */
+  export type StackOfProjectCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many StackOfProjects.
+     */
+    data: StackOfProjectCreateManyInput | StackOfProjectCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * StackOfProject createManyAndReturn
+   */
+  export type StackOfProjectCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StackOfProject
+     */
+    select?: StackOfProjectSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the StackOfProject
+     */
+    omit?: StackOfProjectOmit<ExtArgs> | null
+    /**
+     * The data used to create many StackOfProjects.
+     */
+    data: StackOfProjectCreateManyInput | StackOfProjectCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StackOfProjectIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * StackOfProject update
+   */
+  export type StackOfProjectUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StackOfProject
+     */
+    select?: StackOfProjectSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the StackOfProject
+     */
+    omit?: StackOfProjectOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StackOfProjectInclude<ExtArgs> | null
+    /**
+     * The data needed to update a StackOfProject.
+     */
+    data: XOR<StackOfProjectUpdateInput, StackOfProjectUncheckedUpdateInput>
+    /**
+     * Choose, which StackOfProject to update.
+     */
+    where: StackOfProjectWhereUniqueInput
+  }
+
+  /**
+   * StackOfProject updateMany
+   */
+  export type StackOfProjectUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update StackOfProjects.
+     */
+    data: XOR<StackOfProjectUpdateManyMutationInput, StackOfProjectUncheckedUpdateManyInput>
+    /**
+     * Filter which StackOfProjects to update
+     */
+    where?: StackOfProjectWhereInput
+    /**
+     * Limit how many StackOfProjects to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * StackOfProject updateManyAndReturn
+   */
+  export type StackOfProjectUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StackOfProject
+     */
+    select?: StackOfProjectSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the StackOfProject
+     */
+    omit?: StackOfProjectOmit<ExtArgs> | null
+    /**
+     * The data used to update StackOfProjects.
+     */
+    data: XOR<StackOfProjectUpdateManyMutationInput, StackOfProjectUncheckedUpdateManyInput>
+    /**
+     * Filter which StackOfProjects to update
+     */
+    where?: StackOfProjectWhereInput
+    /**
+     * Limit how many StackOfProjects to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StackOfProjectIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * StackOfProject upsert
+   */
+  export type StackOfProjectUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StackOfProject
+     */
+    select?: StackOfProjectSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the StackOfProject
+     */
+    omit?: StackOfProjectOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StackOfProjectInclude<ExtArgs> | null
+    /**
+     * The filter to search for the StackOfProject to update in case it exists.
+     */
+    where: StackOfProjectWhereUniqueInput
+    /**
+     * In case the StackOfProject found by the `where` argument doesn't exist, create a new StackOfProject with this data.
+     */
+    create: XOR<StackOfProjectCreateInput, StackOfProjectUncheckedCreateInput>
+    /**
+     * In case the StackOfProject was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<StackOfProjectUpdateInput, StackOfProjectUncheckedUpdateInput>
+  }
+
+  /**
+   * StackOfProject delete
+   */
+  export type StackOfProjectDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StackOfProject
+     */
+    select?: StackOfProjectSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the StackOfProject
+     */
+    omit?: StackOfProjectOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StackOfProjectInclude<ExtArgs> | null
+    /**
+     * Filter which StackOfProject to delete.
+     */
+    where: StackOfProjectWhereUniqueInput
+  }
+
+  /**
+   * StackOfProject deleteMany
+   */
+  export type StackOfProjectDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which StackOfProjects to delete
+     */
+    where?: StackOfProjectWhereInput
+    /**
+     * Limit how many StackOfProjects to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * StackOfProject without action
+   */
+  export type StackOfProjectDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StackOfProject
+     */
+    select?: StackOfProjectSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the StackOfProject
+     */
+    omit?: StackOfProjectOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StackOfProjectInclude<ExtArgs> | null
   }
 
 
@@ -3151,6 +4418,8 @@ export namespace Prisma {
     type?: boolean
     iconName?: boolean
     name?: boolean
+    StackOfProject?: boolean | StackTech$StackOfProjectArgs<ExtArgs>
+    _count?: boolean | StackTechCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["stackTech"]>
 
   export type StackTechSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -3175,10 +4444,18 @@ export namespace Prisma {
   }
 
   export type StackTechOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "type" | "iconName" | "name", ExtArgs["result"]["stackTech"]>
+  export type StackTechInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    StackOfProject?: boolean | StackTech$StackOfProjectArgs<ExtArgs>
+    _count?: boolean | StackTechCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type StackTechIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type StackTechIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
 
   export type $StackTechPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "StackTech"
-    objects: {}
+    objects: {
+      StackOfProject: Prisma.$StackOfProjectPayload<ExtArgs>[]
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       type: $Enums.StackType
@@ -3578,6 +4855,7 @@ export namespace Prisma {
    */
   export interface Prisma__StackTechClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    StackOfProject<T extends StackTech$StackOfProjectArgs<ExtArgs> = {}>(args?: Subset<T, StackTech$StackOfProjectArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StackOfProjectPayload<ExtArgs>, T, "findMany", ClientOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3628,6 +4906,10 @@ export namespace Prisma {
      */
     omit?: StackTechOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StackTechInclude<ExtArgs> | null
+    /**
      * Filter, which StackTech to fetch.
      */
     where: StackTechWhereUniqueInput
@@ -3646,6 +4928,10 @@ export namespace Prisma {
      */
     omit?: StackTechOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StackTechInclude<ExtArgs> | null
+    /**
      * Filter, which StackTech to fetch.
      */
     where: StackTechWhereUniqueInput
@@ -3663,6 +4949,10 @@ export namespace Prisma {
      * Omit specific fields from the StackTech
      */
     omit?: StackTechOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StackTechInclude<ExtArgs> | null
     /**
      * Filter, which StackTech to fetch.
      */
@@ -3712,6 +5002,10 @@ export namespace Prisma {
      */
     omit?: StackTechOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StackTechInclude<ExtArgs> | null
+    /**
      * Filter, which StackTech to fetch.
      */
     where?: StackTechWhereInput
@@ -3760,6 +5054,10 @@ export namespace Prisma {
      */
     omit?: StackTechOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StackTechInclude<ExtArgs> | null
+    /**
      * Filter, which StackTeches to fetch.
      */
     where?: StackTechWhereInput
@@ -3802,6 +5100,10 @@ export namespace Prisma {
      * Omit specific fields from the StackTech
      */
     omit?: StackTechOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StackTechInclude<ExtArgs> | null
     /**
      * The data needed to create a StackTech.
      */
@@ -3850,6 +5152,10 @@ export namespace Prisma {
      * Omit specific fields from the StackTech
      */
     omit?: StackTechOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StackTechInclude<ExtArgs> | null
     /**
      * The data needed to update a StackTech.
      */
@@ -3917,6 +5223,10 @@ export namespace Prisma {
      */
     omit?: StackTechOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StackTechInclude<ExtArgs> | null
+    /**
      * The filter to search for the StackTech to update in case it exists.
      */
     where: StackTechWhereUniqueInput
@@ -3943,6 +5253,10 @@ export namespace Prisma {
      */
     omit?: StackTechOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StackTechInclude<ExtArgs> | null
+    /**
      * Filter which StackTech to delete.
      */
     where: StackTechWhereUniqueInput
@@ -3963,6 +5277,30 @@ export namespace Prisma {
   }
 
   /**
+   * StackTech.StackOfProject
+   */
+  export type StackTech$StackOfProjectArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StackOfProject
+     */
+    select?: StackOfProjectSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the StackOfProject
+     */
+    omit?: StackOfProjectOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StackOfProjectInclude<ExtArgs> | null
+    where?: StackOfProjectWhereInput
+    orderBy?: StackOfProjectOrderByWithRelationInput | StackOfProjectOrderByWithRelationInput[]
+    cursor?: StackOfProjectWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: StackOfProjectScalarFieldEnum | StackOfProjectScalarFieldEnum[]
+  }
+
+  /**
    * StackTech without action
    */
   export type StackTechDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3974,6 +5312,10 @@ export namespace Prisma {
      * Omit specific fields from the StackTech
      */
     omit?: StackTechOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StackTechInclude<ExtArgs> | null
   }
 
 
@@ -4007,6 +5349,15 @@ export namespace Prisma {
   };
 
   export type ProjectScalarFieldEnum = (typeof ProjectScalarFieldEnum)[keyof typeof ProjectScalarFieldEnum]
+
+
+  export const StackOfProjectScalarFieldEnum: {
+    id: 'id',
+    projectId: 'projectId',
+    stackTechId: 'stackTechId'
+  };
+
+  export type StackOfProjectScalarFieldEnum = (typeof StackOfProjectScalarFieldEnum)[keyof typeof StackOfProjectScalarFieldEnum]
 
 
   export const StackTechScalarFieldEnum: {
@@ -4173,12 +5524,14 @@ export namespace Prisma {
     id?: StringFilter<"Project"> | string
     name?: JsonNullableFilter<"Project">
     desc?: JsonNullableFilter<"Project">
+    StackOfProject?: StackOfProjectListRelationFilter
   }
 
   export type ProjectOrderByWithRelationInput = {
     id?: SortOrder
     name?: SortOrderInput | SortOrder
     desc?: SortOrderInput | SortOrder
+    StackOfProject?: StackOfProjectOrderByRelationAggregateInput
   }
 
   export type ProjectWhereUniqueInput = Prisma.AtLeast<{
@@ -4188,6 +5541,7 @@ export namespace Prisma {
     NOT?: ProjectWhereInput | ProjectWhereInput[]
     name?: JsonNullableFilter<"Project">
     desc?: JsonNullableFilter<"Project">
+    StackOfProject?: StackOfProjectListRelationFilter
   }, "id">
 
   export type ProjectOrderByWithAggregationInput = {
@@ -4208,6 +5562,54 @@ export namespace Prisma {
     desc?: JsonNullableWithAggregatesFilter<"Project">
   }
 
+  export type StackOfProjectWhereInput = {
+    AND?: StackOfProjectWhereInput | StackOfProjectWhereInput[]
+    OR?: StackOfProjectWhereInput[]
+    NOT?: StackOfProjectWhereInput | StackOfProjectWhereInput[]
+    id?: StringFilter<"StackOfProject"> | string
+    projectId?: StringFilter<"StackOfProject"> | string
+    stackTechId?: StringFilter<"StackOfProject"> | string
+    project?: XOR<ProjectScalarRelationFilter, ProjectWhereInput>
+    stackTech?: XOR<StackTechScalarRelationFilter, StackTechWhereInput>
+  }
+
+  export type StackOfProjectOrderByWithRelationInput = {
+    id?: SortOrder
+    projectId?: SortOrder
+    stackTechId?: SortOrder
+    project?: ProjectOrderByWithRelationInput
+    stackTech?: StackTechOrderByWithRelationInput
+  }
+
+  export type StackOfProjectWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: StackOfProjectWhereInput | StackOfProjectWhereInput[]
+    OR?: StackOfProjectWhereInput[]
+    NOT?: StackOfProjectWhereInput | StackOfProjectWhereInput[]
+    projectId?: StringFilter<"StackOfProject"> | string
+    stackTechId?: StringFilter<"StackOfProject"> | string
+    project?: XOR<ProjectScalarRelationFilter, ProjectWhereInput>
+    stackTech?: XOR<StackTechScalarRelationFilter, StackTechWhereInput>
+  }, "id">
+
+  export type StackOfProjectOrderByWithAggregationInput = {
+    id?: SortOrder
+    projectId?: SortOrder
+    stackTechId?: SortOrder
+    _count?: StackOfProjectCountOrderByAggregateInput
+    _max?: StackOfProjectMaxOrderByAggregateInput
+    _min?: StackOfProjectMinOrderByAggregateInput
+  }
+
+  export type StackOfProjectScalarWhereWithAggregatesInput = {
+    AND?: StackOfProjectScalarWhereWithAggregatesInput | StackOfProjectScalarWhereWithAggregatesInput[]
+    OR?: StackOfProjectScalarWhereWithAggregatesInput[]
+    NOT?: StackOfProjectScalarWhereWithAggregatesInput | StackOfProjectScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"StackOfProject"> | string
+    projectId?: StringWithAggregatesFilter<"StackOfProject"> | string
+    stackTechId?: StringWithAggregatesFilter<"StackOfProject"> | string
+  }
+
   export type StackTechWhereInput = {
     AND?: StackTechWhereInput | StackTechWhereInput[]
     OR?: StackTechWhereInput[]
@@ -4216,6 +5618,7 @@ export namespace Prisma {
     type?: EnumStackTypeFilter<"StackTech"> | $Enums.StackType
     iconName?: StringNullableFilter<"StackTech"> | string | null
     name?: StringFilter<"StackTech"> | string
+    StackOfProject?: StackOfProjectListRelationFilter
   }
 
   export type StackTechOrderByWithRelationInput = {
@@ -4223,6 +5626,7 @@ export namespace Prisma {
     type?: SortOrder
     iconName?: SortOrderInput | SortOrder
     name?: SortOrder
+    StackOfProject?: StackOfProjectOrderByRelationAggregateInput
   }
 
   export type StackTechWhereUniqueInput = Prisma.AtLeast<{
@@ -4233,6 +5637,7 @@ export namespace Prisma {
     type?: EnumStackTypeFilter<"StackTech"> | $Enums.StackType
     iconName?: StringNullableFilter<"StackTech"> | string | null
     name?: StringFilter<"StackTech"> | string
+    StackOfProject?: StackOfProjectListRelationFilter
   }, "id">
 
   export type StackTechOrderByWithAggregationInput = {
@@ -4301,24 +5706,28 @@ export namespace Prisma {
     id?: string
     name?: NullableJsonNullValueInput | InputJsonValue
     desc?: NullableJsonNullValueInput | InputJsonValue
+    StackOfProject?: StackOfProjectCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectUncheckedCreateInput = {
     id?: string
     name?: NullableJsonNullValueInput | InputJsonValue
     desc?: NullableJsonNullValueInput | InputJsonValue
+    StackOfProject?: StackOfProjectUncheckedCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableJsonNullValueInput | InputJsonValue
     desc?: NullableJsonNullValueInput | InputJsonValue
+    StackOfProject?: StackOfProjectUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableJsonNullValueInput | InputJsonValue
     desc?: NullableJsonNullValueInput | InputJsonValue
+    StackOfProject?: StackOfProjectUncheckedUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectCreateManyInput = {
@@ -4339,11 +5748,52 @@ export namespace Prisma {
     desc?: NullableJsonNullValueInput | InputJsonValue
   }
 
+  export type StackOfProjectCreateInput = {
+    id?: string
+    project: ProjectCreateNestedOneWithoutStackOfProjectInput
+    stackTech: StackTechCreateNestedOneWithoutStackOfProjectInput
+  }
+
+  export type StackOfProjectUncheckedCreateInput = {
+    id?: string
+    projectId: string
+    stackTechId: string
+  }
+
+  export type StackOfProjectUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    project?: ProjectUpdateOneRequiredWithoutStackOfProjectNestedInput
+    stackTech?: StackTechUpdateOneRequiredWithoutStackOfProjectNestedInput
+  }
+
+  export type StackOfProjectUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    projectId?: StringFieldUpdateOperationsInput | string
+    stackTechId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type StackOfProjectCreateManyInput = {
+    id?: string
+    projectId: string
+    stackTechId: string
+  }
+
+  export type StackOfProjectUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type StackOfProjectUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    projectId?: StringFieldUpdateOperationsInput | string
+    stackTechId?: StringFieldUpdateOperationsInput | string
+  }
+
   export type StackTechCreateInput = {
     id?: string
     type: $Enums.StackType
     iconName?: string | null
     name: string
+    StackOfProject?: StackOfProjectCreateNestedManyWithoutStackTechInput
   }
 
   export type StackTechUncheckedCreateInput = {
@@ -4351,6 +5801,7 @@ export namespace Prisma {
     type: $Enums.StackType
     iconName?: string | null
     name: string
+    StackOfProject?: StackOfProjectUncheckedCreateNestedManyWithoutStackTechInput
   }
 
   export type StackTechUpdateInput = {
@@ -4358,6 +5809,7 @@ export namespace Prisma {
     type?: EnumStackTypeFieldUpdateOperationsInput | $Enums.StackType
     iconName?: NullableStringFieldUpdateOperationsInput | string | null
     name?: StringFieldUpdateOperationsInput | string
+    StackOfProject?: StackOfProjectUpdateManyWithoutStackTechNestedInput
   }
 
   export type StackTechUncheckedUpdateInput = {
@@ -4365,6 +5817,7 @@ export namespace Prisma {
     type?: EnumStackTypeFieldUpdateOperationsInput | $Enums.StackType
     iconName?: NullableStringFieldUpdateOperationsInput | string | null
     name?: StringFieldUpdateOperationsInput | string
+    StackOfProject?: StackOfProjectUncheckedUpdateManyWithoutStackTechNestedInput
   }
 
   export type StackTechCreateManyInput = {
@@ -4500,6 +5953,16 @@ export namespace Prisma {
     not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
   }
 
+  export type StackOfProjectListRelationFilter = {
+    every?: StackOfProjectWhereInput
+    some?: StackOfProjectWhereInput
+    none?: StackOfProjectWhereInput
+  }
+
+  export type StackOfProjectOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
   export type ProjectCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
@@ -4538,6 +6001,34 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedJsonNullableFilter<$PrismaModel>
     _max?: NestedJsonNullableFilter<$PrismaModel>
+  }
+
+  export type ProjectScalarRelationFilter = {
+    is?: ProjectWhereInput
+    isNot?: ProjectWhereInput
+  }
+
+  export type StackTechScalarRelationFilter = {
+    is?: StackTechWhereInput
+    isNot?: StackTechWhereInput
+  }
+
+  export type StackOfProjectCountOrderByAggregateInput = {
+    id?: SortOrder
+    projectId?: SortOrder
+    stackTechId?: SortOrder
+  }
+
+  export type StackOfProjectMaxOrderByAggregateInput = {
+    id?: SortOrder
+    projectId?: SortOrder
+    stackTechId?: SortOrder
+  }
+
+  export type StackOfProjectMinOrderByAggregateInput = {
+    id?: SortOrder
+    projectId?: SortOrder
+    stackTechId?: SortOrder
   }
 
   export type EnumStackTypeFilter<$PrismaModel = never> = {
@@ -4586,8 +6077,120 @@ export namespace Prisma {
     set?: string | null
   }
 
+  export type StackOfProjectCreateNestedManyWithoutProjectInput = {
+    create?: XOR<StackOfProjectCreateWithoutProjectInput, StackOfProjectUncheckedCreateWithoutProjectInput> | StackOfProjectCreateWithoutProjectInput[] | StackOfProjectUncheckedCreateWithoutProjectInput[]
+    connectOrCreate?: StackOfProjectCreateOrConnectWithoutProjectInput | StackOfProjectCreateOrConnectWithoutProjectInput[]
+    createMany?: StackOfProjectCreateManyProjectInputEnvelope
+    connect?: StackOfProjectWhereUniqueInput | StackOfProjectWhereUniqueInput[]
+  }
+
+  export type StackOfProjectUncheckedCreateNestedManyWithoutProjectInput = {
+    create?: XOR<StackOfProjectCreateWithoutProjectInput, StackOfProjectUncheckedCreateWithoutProjectInput> | StackOfProjectCreateWithoutProjectInput[] | StackOfProjectUncheckedCreateWithoutProjectInput[]
+    connectOrCreate?: StackOfProjectCreateOrConnectWithoutProjectInput | StackOfProjectCreateOrConnectWithoutProjectInput[]
+    createMany?: StackOfProjectCreateManyProjectInputEnvelope
+    connect?: StackOfProjectWhereUniqueInput | StackOfProjectWhereUniqueInput[]
+  }
+
+  export type StackOfProjectUpdateManyWithoutProjectNestedInput = {
+    create?: XOR<StackOfProjectCreateWithoutProjectInput, StackOfProjectUncheckedCreateWithoutProjectInput> | StackOfProjectCreateWithoutProjectInput[] | StackOfProjectUncheckedCreateWithoutProjectInput[]
+    connectOrCreate?: StackOfProjectCreateOrConnectWithoutProjectInput | StackOfProjectCreateOrConnectWithoutProjectInput[]
+    upsert?: StackOfProjectUpsertWithWhereUniqueWithoutProjectInput | StackOfProjectUpsertWithWhereUniqueWithoutProjectInput[]
+    createMany?: StackOfProjectCreateManyProjectInputEnvelope
+    set?: StackOfProjectWhereUniqueInput | StackOfProjectWhereUniqueInput[]
+    disconnect?: StackOfProjectWhereUniqueInput | StackOfProjectWhereUniqueInput[]
+    delete?: StackOfProjectWhereUniqueInput | StackOfProjectWhereUniqueInput[]
+    connect?: StackOfProjectWhereUniqueInput | StackOfProjectWhereUniqueInput[]
+    update?: StackOfProjectUpdateWithWhereUniqueWithoutProjectInput | StackOfProjectUpdateWithWhereUniqueWithoutProjectInput[]
+    updateMany?: StackOfProjectUpdateManyWithWhereWithoutProjectInput | StackOfProjectUpdateManyWithWhereWithoutProjectInput[]
+    deleteMany?: StackOfProjectScalarWhereInput | StackOfProjectScalarWhereInput[]
+  }
+
+  export type StackOfProjectUncheckedUpdateManyWithoutProjectNestedInput = {
+    create?: XOR<StackOfProjectCreateWithoutProjectInput, StackOfProjectUncheckedCreateWithoutProjectInput> | StackOfProjectCreateWithoutProjectInput[] | StackOfProjectUncheckedCreateWithoutProjectInput[]
+    connectOrCreate?: StackOfProjectCreateOrConnectWithoutProjectInput | StackOfProjectCreateOrConnectWithoutProjectInput[]
+    upsert?: StackOfProjectUpsertWithWhereUniqueWithoutProjectInput | StackOfProjectUpsertWithWhereUniqueWithoutProjectInput[]
+    createMany?: StackOfProjectCreateManyProjectInputEnvelope
+    set?: StackOfProjectWhereUniqueInput | StackOfProjectWhereUniqueInput[]
+    disconnect?: StackOfProjectWhereUniqueInput | StackOfProjectWhereUniqueInput[]
+    delete?: StackOfProjectWhereUniqueInput | StackOfProjectWhereUniqueInput[]
+    connect?: StackOfProjectWhereUniqueInput | StackOfProjectWhereUniqueInput[]
+    update?: StackOfProjectUpdateWithWhereUniqueWithoutProjectInput | StackOfProjectUpdateWithWhereUniqueWithoutProjectInput[]
+    updateMany?: StackOfProjectUpdateManyWithWhereWithoutProjectInput | StackOfProjectUpdateManyWithWhereWithoutProjectInput[]
+    deleteMany?: StackOfProjectScalarWhereInput | StackOfProjectScalarWhereInput[]
+  }
+
+  export type ProjectCreateNestedOneWithoutStackOfProjectInput = {
+    create?: XOR<ProjectCreateWithoutStackOfProjectInput, ProjectUncheckedCreateWithoutStackOfProjectInput>
+    connectOrCreate?: ProjectCreateOrConnectWithoutStackOfProjectInput
+    connect?: ProjectWhereUniqueInput
+  }
+
+  export type StackTechCreateNestedOneWithoutStackOfProjectInput = {
+    create?: XOR<StackTechCreateWithoutStackOfProjectInput, StackTechUncheckedCreateWithoutStackOfProjectInput>
+    connectOrCreate?: StackTechCreateOrConnectWithoutStackOfProjectInput
+    connect?: StackTechWhereUniqueInput
+  }
+
+  export type ProjectUpdateOneRequiredWithoutStackOfProjectNestedInput = {
+    create?: XOR<ProjectCreateWithoutStackOfProjectInput, ProjectUncheckedCreateWithoutStackOfProjectInput>
+    connectOrCreate?: ProjectCreateOrConnectWithoutStackOfProjectInput
+    upsert?: ProjectUpsertWithoutStackOfProjectInput
+    connect?: ProjectWhereUniqueInput
+    update?: XOR<XOR<ProjectUpdateToOneWithWhereWithoutStackOfProjectInput, ProjectUpdateWithoutStackOfProjectInput>, ProjectUncheckedUpdateWithoutStackOfProjectInput>
+  }
+
+  export type StackTechUpdateOneRequiredWithoutStackOfProjectNestedInput = {
+    create?: XOR<StackTechCreateWithoutStackOfProjectInput, StackTechUncheckedCreateWithoutStackOfProjectInput>
+    connectOrCreate?: StackTechCreateOrConnectWithoutStackOfProjectInput
+    upsert?: StackTechUpsertWithoutStackOfProjectInput
+    connect?: StackTechWhereUniqueInput
+    update?: XOR<XOR<StackTechUpdateToOneWithWhereWithoutStackOfProjectInput, StackTechUpdateWithoutStackOfProjectInput>, StackTechUncheckedUpdateWithoutStackOfProjectInput>
+  }
+
+  export type StackOfProjectCreateNestedManyWithoutStackTechInput = {
+    create?: XOR<StackOfProjectCreateWithoutStackTechInput, StackOfProjectUncheckedCreateWithoutStackTechInput> | StackOfProjectCreateWithoutStackTechInput[] | StackOfProjectUncheckedCreateWithoutStackTechInput[]
+    connectOrCreate?: StackOfProjectCreateOrConnectWithoutStackTechInput | StackOfProjectCreateOrConnectWithoutStackTechInput[]
+    createMany?: StackOfProjectCreateManyStackTechInputEnvelope
+    connect?: StackOfProjectWhereUniqueInput | StackOfProjectWhereUniqueInput[]
+  }
+
+  export type StackOfProjectUncheckedCreateNestedManyWithoutStackTechInput = {
+    create?: XOR<StackOfProjectCreateWithoutStackTechInput, StackOfProjectUncheckedCreateWithoutStackTechInput> | StackOfProjectCreateWithoutStackTechInput[] | StackOfProjectUncheckedCreateWithoutStackTechInput[]
+    connectOrCreate?: StackOfProjectCreateOrConnectWithoutStackTechInput | StackOfProjectCreateOrConnectWithoutStackTechInput[]
+    createMany?: StackOfProjectCreateManyStackTechInputEnvelope
+    connect?: StackOfProjectWhereUniqueInput | StackOfProjectWhereUniqueInput[]
+  }
+
   export type EnumStackTypeFieldUpdateOperationsInput = {
     set?: $Enums.StackType
+  }
+
+  export type StackOfProjectUpdateManyWithoutStackTechNestedInput = {
+    create?: XOR<StackOfProjectCreateWithoutStackTechInput, StackOfProjectUncheckedCreateWithoutStackTechInput> | StackOfProjectCreateWithoutStackTechInput[] | StackOfProjectUncheckedCreateWithoutStackTechInput[]
+    connectOrCreate?: StackOfProjectCreateOrConnectWithoutStackTechInput | StackOfProjectCreateOrConnectWithoutStackTechInput[]
+    upsert?: StackOfProjectUpsertWithWhereUniqueWithoutStackTechInput | StackOfProjectUpsertWithWhereUniqueWithoutStackTechInput[]
+    createMany?: StackOfProjectCreateManyStackTechInputEnvelope
+    set?: StackOfProjectWhereUniqueInput | StackOfProjectWhereUniqueInput[]
+    disconnect?: StackOfProjectWhereUniqueInput | StackOfProjectWhereUniqueInput[]
+    delete?: StackOfProjectWhereUniqueInput | StackOfProjectWhereUniqueInput[]
+    connect?: StackOfProjectWhereUniqueInput | StackOfProjectWhereUniqueInput[]
+    update?: StackOfProjectUpdateWithWhereUniqueWithoutStackTechInput | StackOfProjectUpdateWithWhereUniqueWithoutStackTechInput[]
+    updateMany?: StackOfProjectUpdateManyWithWhereWithoutStackTechInput | StackOfProjectUpdateManyWithWhereWithoutStackTechInput[]
+    deleteMany?: StackOfProjectScalarWhereInput | StackOfProjectScalarWhereInput[]
+  }
+
+  export type StackOfProjectUncheckedUpdateManyWithoutStackTechNestedInput = {
+    create?: XOR<StackOfProjectCreateWithoutStackTechInput, StackOfProjectUncheckedCreateWithoutStackTechInput> | StackOfProjectCreateWithoutStackTechInput[] | StackOfProjectUncheckedCreateWithoutStackTechInput[]
+    connectOrCreate?: StackOfProjectCreateOrConnectWithoutStackTechInput | StackOfProjectCreateOrConnectWithoutStackTechInput[]
+    upsert?: StackOfProjectUpsertWithWhereUniqueWithoutStackTechInput | StackOfProjectUpsertWithWhereUniqueWithoutStackTechInput[]
+    createMany?: StackOfProjectCreateManyStackTechInputEnvelope
+    set?: StackOfProjectWhereUniqueInput | StackOfProjectWhereUniqueInput[]
+    disconnect?: StackOfProjectWhereUniqueInput | StackOfProjectWhereUniqueInput[]
+    delete?: StackOfProjectWhereUniqueInput | StackOfProjectWhereUniqueInput[]
+    connect?: StackOfProjectWhereUniqueInput | StackOfProjectWhereUniqueInput[]
+    update?: StackOfProjectUpdateWithWhereUniqueWithoutStackTechInput | StackOfProjectUpdateWithWhereUniqueWithoutStackTechInput[]
+    updateMany?: StackOfProjectUpdateManyWithWhereWithoutStackTechInput | StackOfProjectUpdateManyWithWhereWithoutStackTechInput[]
+    deleteMany?: StackOfProjectScalarWhereInput | StackOfProjectScalarWhereInput[]
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -4712,6 +6315,211 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumStackTypeFilter<$PrismaModel>
     _max?: NestedEnumStackTypeFilter<$PrismaModel>
+  }
+
+  export type StackOfProjectCreateWithoutProjectInput = {
+    id?: string
+    stackTech: StackTechCreateNestedOneWithoutStackOfProjectInput
+  }
+
+  export type StackOfProjectUncheckedCreateWithoutProjectInput = {
+    id?: string
+    stackTechId: string
+  }
+
+  export type StackOfProjectCreateOrConnectWithoutProjectInput = {
+    where: StackOfProjectWhereUniqueInput
+    create: XOR<StackOfProjectCreateWithoutProjectInput, StackOfProjectUncheckedCreateWithoutProjectInput>
+  }
+
+  export type StackOfProjectCreateManyProjectInputEnvelope = {
+    data: StackOfProjectCreateManyProjectInput | StackOfProjectCreateManyProjectInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type StackOfProjectUpsertWithWhereUniqueWithoutProjectInput = {
+    where: StackOfProjectWhereUniqueInput
+    update: XOR<StackOfProjectUpdateWithoutProjectInput, StackOfProjectUncheckedUpdateWithoutProjectInput>
+    create: XOR<StackOfProjectCreateWithoutProjectInput, StackOfProjectUncheckedCreateWithoutProjectInput>
+  }
+
+  export type StackOfProjectUpdateWithWhereUniqueWithoutProjectInput = {
+    where: StackOfProjectWhereUniqueInput
+    data: XOR<StackOfProjectUpdateWithoutProjectInput, StackOfProjectUncheckedUpdateWithoutProjectInput>
+  }
+
+  export type StackOfProjectUpdateManyWithWhereWithoutProjectInput = {
+    where: StackOfProjectScalarWhereInput
+    data: XOR<StackOfProjectUpdateManyMutationInput, StackOfProjectUncheckedUpdateManyWithoutProjectInput>
+  }
+
+  export type StackOfProjectScalarWhereInput = {
+    AND?: StackOfProjectScalarWhereInput | StackOfProjectScalarWhereInput[]
+    OR?: StackOfProjectScalarWhereInput[]
+    NOT?: StackOfProjectScalarWhereInput | StackOfProjectScalarWhereInput[]
+    id?: StringFilter<"StackOfProject"> | string
+    projectId?: StringFilter<"StackOfProject"> | string
+    stackTechId?: StringFilter<"StackOfProject"> | string
+  }
+
+  export type ProjectCreateWithoutStackOfProjectInput = {
+    id?: string
+    name?: NullableJsonNullValueInput | InputJsonValue
+    desc?: NullableJsonNullValueInput | InputJsonValue
+  }
+
+  export type ProjectUncheckedCreateWithoutStackOfProjectInput = {
+    id?: string
+    name?: NullableJsonNullValueInput | InputJsonValue
+    desc?: NullableJsonNullValueInput | InputJsonValue
+  }
+
+  export type ProjectCreateOrConnectWithoutStackOfProjectInput = {
+    where: ProjectWhereUniqueInput
+    create: XOR<ProjectCreateWithoutStackOfProjectInput, ProjectUncheckedCreateWithoutStackOfProjectInput>
+  }
+
+  export type StackTechCreateWithoutStackOfProjectInput = {
+    id?: string
+    type: $Enums.StackType
+    iconName?: string | null
+    name: string
+  }
+
+  export type StackTechUncheckedCreateWithoutStackOfProjectInput = {
+    id?: string
+    type: $Enums.StackType
+    iconName?: string | null
+    name: string
+  }
+
+  export type StackTechCreateOrConnectWithoutStackOfProjectInput = {
+    where: StackTechWhereUniqueInput
+    create: XOR<StackTechCreateWithoutStackOfProjectInput, StackTechUncheckedCreateWithoutStackOfProjectInput>
+  }
+
+  export type ProjectUpsertWithoutStackOfProjectInput = {
+    update: XOR<ProjectUpdateWithoutStackOfProjectInput, ProjectUncheckedUpdateWithoutStackOfProjectInput>
+    create: XOR<ProjectCreateWithoutStackOfProjectInput, ProjectUncheckedCreateWithoutStackOfProjectInput>
+    where?: ProjectWhereInput
+  }
+
+  export type ProjectUpdateToOneWithWhereWithoutStackOfProjectInput = {
+    where?: ProjectWhereInput
+    data: XOR<ProjectUpdateWithoutStackOfProjectInput, ProjectUncheckedUpdateWithoutStackOfProjectInput>
+  }
+
+  export type ProjectUpdateWithoutStackOfProjectInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: NullableJsonNullValueInput | InputJsonValue
+    desc?: NullableJsonNullValueInput | InputJsonValue
+  }
+
+  export type ProjectUncheckedUpdateWithoutStackOfProjectInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: NullableJsonNullValueInput | InputJsonValue
+    desc?: NullableJsonNullValueInput | InputJsonValue
+  }
+
+  export type StackTechUpsertWithoutStackOfProjectInput = {
+    update: XOR<StackTechUpdateWithoutStackOfProjectInput, StackTechUncheckedUpdateWithoutStackOfProjectInput>
+    create: XOR<StackTechCreateWithoutStackOfProjectInput, StackTechUncheckedCreateWithoutStackOfProjectInput>
+    where?: StackTechWhereInput
+  }
+
+  export type StackTechUpdateToOneWithWhereWithoutStackOfProjectInput = {
+    where?: StackTechWhereInput
+    data: XOR<StackTechUpdateWithoutStackOfProjectInput, StackTechUncheckedUpdateWithoutStackOfProjectInput>
+  }
+
+  export type StackTechUpdateWithoutStackOfProjectInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    type?: EnumStackTypeFieldUpdateOperationsInput | $Enums.StackType
+    iconName?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type StackTechUncheckedUpdateWithoutStackOfProjectInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    type?: EnumStackTypeFieldUpdateOperationsInput | $Enums.StackType
+    iconName?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type StackOfProjectCreateWithoutStackTechInput = {
+    id?: string
+    project: ProjectCreateNestedOneWithoutStackOfProjectInput
+  }
+
+  export type StackOfProjectUncheckedCreateWithoutStackTechInput = {
+    id?: string
+    projectId: string
+  }
+
+  export type StackOfProjectCreateOrConnectWithoutStackTechInput = {
+    where: StackOfProjectWhereUniqueInput
+    create: XOR<StackOfProjectCreateWithoutStackTechInput, StackOfProjectUncheckedCreateWithoutStackTechInput>
+  }
+
+  export type StackOfProjectCreateManyStackTechInputEnvelope = {
+    data: StackOfProjectCreateManyStackTechInput | StackOfProjectCreateManyStackTechInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type StackOfProjectUpsertWithWhereUniqueWithoutStackTechInput = {
+    where: StackOfProjectWhereUniqueInput
+    update: XOR<StackOfProjectUpdateWithoutStackTechInput, StackOfProjectUncheckedUpdateWithoutStackTechInput>
+    create: XOR<StackOfProjectCreateWithoutStackTechInput, StackOfProjectUncheckedCreateWithoutStackTechInput>
+  }
+
+  export type StackOfProjectUpdateWithWhereUniqueWithoutStackTechInput = {
+    where: StackOfProjectWhereUniqueInput
+    data: XOR<StackOfProjectUpdateWithoutStackTechInput, StackOfProjectUncheckedUpdateWithoutStackTechInput>
+  }
+
+  export type StackOfProjectUpdateManyWithWhereWithoutStackTechInput = {
+    where: StackOfProjectScalarWhereInput
+    data: XOR<StackOfProjectUpdateManyMutationInput, StackOfProjectUncheckedUpdateManyWithoutStackTechInput>
+  }
+
+  export type StackOfProjectCreateManyProjectInput = {
+    id?: string
+    stackTechId: string
+  }
+
+  export type StackOfProjectUpdateWithoutProjectInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    stackTech?: StackTechUpdateOneRequiredWithoutStackOfProjectNestedInput
+  }
+
+  export type StackOfProjectUncheckedUpdateWithoutProjectInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    stackTechId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type StackOfProjectUncheckedUpdateManyWithoutProjectInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    stackTechId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type StackOfProjectCreateManyStackTechInput = {
+    id?: string
+    projectId: string
+  }
+
+  export type StackOfProjectUpdateWithoutStackTechInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    project?: ProjectUpdateOneRequiredWithoutStackOfProjectNestedInput
+  }
+
+  export type StackOfProjectUncheckedUpdateWithoutStackTechInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    projectId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type StackOfProjectUncheckedUpdateManyWithoutStackTechInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    projectId?: StringFieldUpdateOperationsInput | string
   }
 
 
