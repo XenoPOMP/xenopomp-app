@@ -31,3 +31,15 @@ model Project {
   name Json?
   desc Json?
 }
+
+enum StackType {
+  frontend
+  backendh
+}
+
+model StackTech {
+  id       String    @id @default(cuid())
+  type     StackType
+  iconName String?   @map("icon_name")
+  name     String
+}

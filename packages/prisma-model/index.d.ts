@@ -23,6 +23,28 @@ export type User = $Result.DefaultSelection<Prisma.$UserPayload>
  * 
  */
 export type Project = $Result.DefaultSelection<Prisma.$ProjectPayload>
+/**
+ * Model StackTech
+ * 
+ */
+export type StackTech = $Result.DefaultSelection<Prisma.$StackTechPayload>
+
+/**
+ * Enums
+ */
+export namespace $Enums {
+  export const StackType: {
+  frontend: 'frontend',
+  backendh: 'backendh'
+};
+
+export type StackType = (typeof StackType)[keyof typeof StackType]
+
+}
+
+export type StackType = $Enums.StackType
+
+export const StackType: typeof $Enums.StackType
 
 /**
  * ##  Prisma Client ʲˢ
@@ -168,6 +190,16 @@ export class PrismaClient<
     * ```
     */
   get project(): Prisma.ProjectDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.stackTech`: Exposes CRUD operations for the **StackTech** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more StackTeches
+    * const stackTeches = await prisma.stackTech.findMany()
+    * ```
+    */
+  get stackTech(): Prisma.StackTechDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -609,7 +641,8 @@ export namespace Prisma {
 
   export const ModelName: {
     User: 'User',
-    Project: 'Project'
+    Project: 'Project',
+    StackTech: 'StackTech'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -625,7 +658,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> = {
     meta: {
-      modelProps: "user" | "project"
+      modelProps: "user" | "project" | "stackTech"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -777,6 +810,80 @@ export namespace Prisma {
           }
         }
       }
+      StackTech: {
+        payload: Prisma.$StackTechPayload<ExtArgs>
+        fields: Prisma.StackTechFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.StackTechFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StackTechPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.StackTechFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StackTechPayload>
+          }
+          findFirst: {
+            args: Prisma.StackTechFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StackTechPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.StackTechFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StackTechPayload>
+          }
+          findMany: {
+            args: Prisma.StackTechFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StackTechPayload>[]
+          }
+          create: {
+            args: Prisma.StackTechCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StackTechPayload>
+          }
+          createMany: {
+            args: Prisma.StackTechCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.StackTechCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StackTechPayload>[]
+          }
+          delete: {
+            args: Prisma.StackTechDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StackTechPayload>
+          }
+          update: {
+            args: Prisma.StackTechUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StackTechPayload>
+          }
+          deleteMany: {
+            args: Prisma.StackTechDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.StackTechUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.StackTechUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StackTechPayload>[]
+          }
+          upsert: {
+            args: Prisma.StackTechUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$StackTechPayload>
+          }
+          aggregate: {
+            args: Prisma.StackTechAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateStackTech>
+          }
+          groupBy: {
+            args: Prisma.StackTechGroupByArgs<ExtArgs>
+            result: $Utils.Optional<StackTechGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.StackTechCountArgs<ExtArgs>
+            result: $Utils.Optional<StackTechCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -863,6 +970,7 @@ export namespace Prisma {
   export type GlobalOmitConfig = {
     user?: UserOmit
     project?: ProjectOmit
+    stackTech?: StackTechOmit
   }
 
   /* Types for Logging */
@@ -2888,6 +2996,988 @@ export namespace Prisma {
 
 
   /**
+   * Model StackTech
+   */
+
+  export type AggregateStackTech = {
+    _count: StackTechCountAggregateOutputType | null
+    _min: StackTechMinAggregateOutputType | null
+    _max: StackTechMaxAggregateOutputType | null
+  }
+
+  export type StackTechMinAggregateOutputType = {
+    id: string | null
+    type: $Enums.StackType | null
+    iconName: string | null
+    name: string | null
+  }
+
+  export type StackTechMaxAggregateOutputType = {
+    id: string | null
+    type: $Enums.StackType | null
+    iconName: string | null
+    name: string | null
+  }
+
+  export type StackTechCountAggregateOutputType = {
+    id: number
+    type: number
+    iconName: number
+    name: number
+    _all: number
+  }
+
+
+  export type StackTechMinAggregateInputType = {
+    id?: true
+    type?: true
+    iconName?: true
+    name?: true
+  }
+
+  export type StackTechMaxAggregateInputType = {
+    id?: true
+    type?: true
+    iconName?: true
+    name?: true
+  }
+
+  export type StackTechCountAggregateInputType = {
+    id?: true
+    type?: true
+    iconName?: true
+    name?: true
+    _all?: true
+  }
+
+  export type StackTechAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which StackTech to aggregate.
+     */
+    where?: StackTechWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of StackTeches to fetch.
+     */
+    orderBy?: StackTechOrderByWithRelationInput | StackTechOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: StackTechWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` StackTeches from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` StackTeches.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned StackTeches
+    **/
+    _count?: true | StackTechCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: StackTechMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: StackTechMaxAggregateInputType
+  }
+
+  export type GetStackTechAggregateType<T extends StackTechAggregateArgs> = {
+        [P in keyof T & keyof AggregateStackTech]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateStackTech[P]>
+      : GetScalarType<T[P], AggregateStackTech[P]>
+  }
+
+
+
+
+  export type StackTechGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: StackTechWhereInput
+    orderBy?: StackTechOrderByWithAggregationInput | StackTechOrderByWithAggregationInput[]
+    by: StackTechScalarFieldEnum[] | StackTechScalarFieldEnum
+    having?: StackTechScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: StackTechCountAggregateInputType | true
+    _min?: StackTechMinAggregateInputType
+    _max?: StackTechMaxAggregateInputType
+  }
+
+  export type StackTechGroupByOutputType = {
+    id: string
+    type: $Enums.StackType
+    iconName: string | null
+    name: string
+    _count: StackTechCountAggregateOutputType | null
+    _min: StackTechMinAggregateOutputType | null
+    _max: StackTechMaxAggregateOutputType | null
+  }
+
+  type GetStackTechGroupByPayload<T extends StackTechGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<StackTechGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof StackTechGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], StackTechGroupByOutputType[P]>
+            : GetScalarType<T[P], StackTechGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type StackTechSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    type?: boolean
+    iconName?: boolean
+    name?: boolean
+  }, ExtArgs["result"]["stackTech"]>
+
+  export type StackTechSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    type?: boolean
+    iconName?: boolean
+    name?: boolean
+  }, ExtArgs["result"]["stackTech"]>
+
+  export type StackTechSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    type?: boolean
+    iconName?: boolean
+    name?: boolean
+  }, ExtArgs["result"]["stackTech"]>
+
+  export type StackTechSelectScalar = {
+    id?: boolean
+    type?: boolean
+    iconName?: boolean
+    name?: boolean
+  }
+
+  export type StackTechOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "type" | "iconName" | "name", ExtArgs["result"]["stackTech"]>
+
+  export type $StackTechPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "StackTech"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      type: $Enums.StackType
+      iconName: string | null
+      name: string
+    }, ExtArgs["result"]["stackTech"]>
+    composites: {}
+  }
+
+  type StackTechGetPayload<S extends boolean | null | undefined | StackTechDefaultArgs> = $Result.GetResult<Prisma.$StackTechPayload, S>
+
+  type StackTechCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<StackTechFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: StackTechCountAggregateInputType | true
+    }
+
+  export interface StackTechDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['StackTech'], meta: { name: 'StackTech' } }
+    /**
+     * Find zero or one StackTech that matches the filter.
+     * @param {StackTechFindUniqueArgs} args - Arguments to find a StackTech
+     * @example
+     * // Get one StackTech
+     * const stackTech = await prisma.stackTech.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends StackTechFindUniqueArgs>(args: SelectSubset<T, StackTechFindUniqueArgs<ExtArgs>>): Prisma__StackTechClient<$Result.GetResult<Prisma.$StackTechPayload<ExtArgs>, T, "findUnique", ClientOptions> | null, null, ExtArgs, ClientOptions>
+
+    /**
+     * Find one StackTech that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {StackTechFindUniqueOrThrowArgs} args - Arguments to find a StackTech
+     * @example
+     * // Get one StackTech
+     * const stackTech = await prisma.stackTech.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends StackTechFindUniqueOrThrowArgs>(args: SelectSubset<T, StackTechFindUniqueOrThrowArgs<ExtArgs>>): Prisma__StackTechClient<$Result.GetResult<Prisma.$StackTechPayload<ExtArgs>, T, "findUniqueOrThrow", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Find the first StackTech that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StackTechFindFirstArgs} args - Arguments to find a StackTech
+     * @example
+     * // Get one StackTech
+     * const stackTech = await prisma.stackTech.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends StackTechFindFirstArgs>(args?: SelectSubset<T, StackTechFindFirstArgs<ExtArgs>>): Prisma__StackTechClient<$Result.GetResult<Prisma.$StackTechPayload<ExtArgs>, T, "findFirst", ClientOptions> | null, null, ExtArgs, ClientOptions>
+
+    /**
+     * Find the first StackTech that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StackTechFindFirstOrThrowArgs} args - Arguments to find a StackTech
+     * @example
+     * // Get one StackTech
+     * const stackTech = await prisma.stackTech.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends StackTechFindFirstOrThrowArgs>(args?: SelectSubset<T, StackTechFindFirstOrThrowArgs<ExtArgs>>): Prisma__StackTechClient<$Result.GetResult<Prisma.$StackTechPayload<ExtArgs>, T, "findFirstOrThrow", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Find zero or more StackTeches that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StackTechFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all StackTeches
+     * const stackTeches = await prisma.stackTech.findMany()
+     * 
+     * // Get first 10 StackTeches
+     * const stackTeches = await prisma.stackTech.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const stackTechWithIdOnly = await prisma.stackTech.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends StackTechFindManyArgs>(args?: SelectSubset<T, StackTechFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StackTechPayload<ExtArgs>, T, "findMany", ClientOptions>>
+
+    /**
+     * Create a StackTech.
+     * @param {StackTechCreateArgs} args - Arguments to create a StackTech.
+     * @example
+     * // Create one StackTech
+     * const StackTech = await prisma.stackTech.create({
+     *   data: {
+     *     // ... data to create a StackTech
+     *   }
+     * })
+     * 
+     */
+    create<T extends StackTechCreateArgs>(args: SelectSubset<T, StackTechCreateArgs<ExtArgs>>): Prisma__StackTechClient<$Result.GetResult<Prisma.$StackTechPayload<ExtArgs>, T, "create", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Create many StackTeches.
+     * @param {StackTechCreateManyArgs} args - Arguments to create many StackTeches.
+     * @example
+     * // Create many StackTeches
+     * const stackTech = await prisma.stackTech.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends StackTechCreateManyArgs>(args?: SelectSubset<T, StackTechCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many StackTeches and returns the data saved in the database.
+     * @param {StackTechCreateManyAndReturnArgs} args - Arguments to create many StackTeches.
+     * @example
+     * // Create many StackTeches
+     * const stackTech = await prisma.stackTech.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many StackTeches and only return the `id`
+     * const stackTechWithIdOnly = await prisma.stackTech.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends StackTechCreateManyAndReturnArgs>(args?: SelectSubset<T, StackTechCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StackTechPayload<ExtArgs>, T, "createManyAndReturn", ClientOptions>>
+
+    /**
+     * Delete a StackTech.
+     * @param {StackTechDeleteArgs} args - Arguments to delete one StackTech.
+     * @example
+     * // Delete one StackTech
+     * const StackTech = await prisma.stackTech.delete({
+     *   where: {
+     *     // ... filter to delete one StackTech
+     *   }
+     * })
+     * 
+     */
+    delete<T extends StackTechDeleteArgs>(args: SelectSubset<T, StackTechDeleteArgs<ExtArgs>>): Prisma__StackTechClient<$Result.GetResult<Prisma.$StackTechPayload<ExtArgs>, T, "delete", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Update one StackTech.
+     * @param {StackTechUpdateArgs} args - Arguments to update one StackTech.
+     * @example
+     * // Update one StackTech
+     * const stackTech = await prisma.stackTech.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends StackTechUpdateArgs>(args: SelectSubset<T, StackTechUpdateArgs<ExtArgs>>): Prisma__StackTechClient<$Result.GetResult<Prisma.$StackTechPayload<ExtArgs>, T, "update", ClientOptions>, never, ExtArgs, ClientOptions>
+
+    /**
+     * Delete zero or more StackTeches.
+     * @param {StackTechDeleteManyArgs} args - Arguments to filter StackTeches to delete.
+     * @example
+     * // Delete a few StackTeches
+     * const { count } = await prisma.stackTech.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends StackTechDeleteManyArgs>(args?: SelectSubset<T, StackTechDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more StackTeches.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StackTechUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many StackTeches
+     * const stackTech = await prisma.stackTech.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends StackTechUpdateManyArgs>(args: SelectSubset<T, StackTechUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more StackTeches and returns the data updated in the database.
+     * @param {StackTechUpdateManyAndReturnArgs} args - Arguments to update many StackTeches.
+     * @example
+     * // Update many StackTeches
+     * const stackTech = await prisma.stackTech.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more StackTeches and only return the `id`
+     * const stackTechWithIdOnly = await prisma.stackTech.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends StackTechUpdateManyAndReturnArgs>(args: SelectSubset<T, StackTechUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$StackTechPayload<ExtArgs>, T, "updateManyAndReturn", ClientOptions>>
+
+    /**
+     * Create or update one StackTech.
+     * @param {StackTechUpsertArgs} args - Arguments to update or create a StackTech.
+     * @example
+     * // Update or create a StackTech
+     * const stackTech = await prisma.stackTech.upsert({
+     *   create: {
+     *     // ... data to create a StackTech
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the StackTech we want to update
+     *   }
+     * })
+     */
+    upsert<T extends StackTechUpsertArgs>(args: SelectSubset<T, StackTechUpsertArgs<ExtArgs>>): Prisma__StackTechClient<$Result.GetResult<Prisma.$StackTechPayload<ExtArgs>, T, "upsert", ClientOptions>, never, ExtArgs, ClientOptions>
+
+
+    /**
+     * Count the number of StackTeches.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StackTechCountArgs} args - Arguments to filter StackTeches to count.
+     * @example
+     * // Count the number of StackTeches
+     * const count = await prisma.stackTech.count({
+     *   where: {
+     *     // ... the filter for the StackTeches we want to count
+     *   }
+     * })
+    **/
+    count<T extends StackTechCountArgs>(
+      args?: Subset<T, StackTechCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], StackTechCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a StackTech.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StackTechAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends StackTechAggregateArgs>(args: Subset<T, StackTechAggregateArgs>): Prisma.PrismaPromise<GetStackTechAggregateType<T>>
+
+    /**
+     * Group by StackTech.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {StackTechGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends StackTechGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: StackTechGroupByArgs['orderBy'] }
+        : { orderBy?: StackTechGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, StackTechGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetStackTechGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the StackTech model
+   */
+  readonly fields: StackTechFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for StackTech.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__StackTechClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the StackTech model
+   */ 
+  interface StackTechFieldRefs {
+    readonly id: FieldRef<"StackTech", 'String'>
+    readonly type: FieldRef<"StackTech", 'StackType'>
+    readonly iconName: FieldRef<"StackTech", 'String'>
+    readonly name: FieldRef<"StackTech", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * StackTech findUnique
+   */
+  export type StackTechFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StackTech
+     */
+    select?: StackTechSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the StackTech
+     */
+    omit?: StackTechOmit<ExtArgs> | null
+    /**
+     * Filter, which StackTech to fetch.
+     */
+    where: StackTechWhereUniqueInput
+  }
+
+  /**
+   * StackTech findUniqueOrThrow
+   */
+  export type StackTechFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StackTech
+     */
+    select?: StackTechSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the StackTech
+     */
+    omit?: StackTechOmit<ExtArgs> | null
+    /**
+     * Filter, which StackTech to fetch.
+     */
+    where: StackTechWhereUniqueInput
+  }
+
+  /**
+   * StackTech findFirst
+   */
+  export type StackTechFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StackTech
+     */
+    select?: StackTechSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the StackTech
+     */
+    omit?: StackTechOmit<ExtArgs> | null
+    /**
+     * Filter, which StackTech to fetch.
+     */
+    where?: StackTechWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of StackTeches to fetch.
+     */
+    orderBy?: StackTechOrderByWithRelationInput | StackTechOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for StackTeches.
+     */
+    cursor?: StackTechWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` StackTeches from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` StackTeches.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of StackTeches.
+     */
+    distinct?: StackTechScalarFieldEnum | StackTechScalarFieldEnum[]
+  }
+
+  /**
+   * StackTech findFirstOrThrow
+   */
+  export type StackTechFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StackTech
+     */
+    select?: StackTechSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the StackTech
+     */
+    omit?: StackTechOmit<ExtArgs> | null
+    /**
+     * Filter, which StackTech to fetch.
+     */
+    where?: StackTechWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of StackTeches to fetch.
+     */
+    orderBy?: StackTechOrderByWithRelationInput | StackTechOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for StackTeches.
+     */
+    cursor?: StackTechWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` StackTeches from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` StackTeches.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of StackTeches.
+     */
+    distinct?: StackTechScalarFieldEnum | StackTechScalarFieldEnum[]
+  }
+
+  /**
+   * StackTech findMany
+   */
+  export type StackTechFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StackTech
+     */
+    select?: StackTechSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the StackTech
+     */
+    omit?: StackTechOmit<ExtArgs> | null
+    /**
+     * Filter, which StackTeches to fetch.
+     */
+    where?: StackTechWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of StackTeches to fetch.
+     */
+    orderBy?: StackTechOrderByWithRelationInput | StackTechOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing StackTeches.
+     */
+    cursor?: StackTechWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` StackTeches from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` StackTeches.
+     */
+    skip?: number
+    distinct?: StackTechScalarFieldEnum | StackTechScalarFieldEnum[]
+  }
+
+  /**
+   * StackTech create
+   */
+  export type StackTechCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StackTech
+     */
+    select?: StackTechSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the StackTech
+     */
+    omit?: StackTechOmit<ExtArgs> | null
+    /**
+     * The data needed to create a StackTech.
+     */
+    data: XOR<StackTechCreateInput, StackTechUncheckedCreateInput>
+  }
+
+  /**
+   * StackTech createMany
+   */
+  export type StackTechCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many StackTeches.
+     */
+    data: StackTechCreateManyInput | StackTechCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * StackTech createManyAndReturn
+   */
+  export type StackTechCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StackTech
+     */
+    select?: StackTechSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the StackTech
+     */
+    omit?: StackTechOmit<ExtArgs> | null
+    /**
+     * The data used to create many StackTeches.
+     */
+    data: StackTechCreateManyInput | StackTechCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * StackTech update
+   */
+  export type StackTechUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StackTech
+     */
+    select?: StackTechSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the StackTech
+     */
+    omit?: StackTechOmit<ExtArgs> | null
+    /**
+     * The data needed to update a StackTech.
+     */
+    data: XOR<StackTechUpdateInput, StackTechUncheckedUpdateInput>
+    /**
+     * Choose, which StackTech to update.
+     */
+    where: StackTechWhereUniqueInput
+  }
+
+  /**
+   * StackTech updateMany
+   */
+  export type StackTechUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update StackTeches.
+     */
+    data: XOR<StackTechUpdateManyMutationInput, StackTechUncheckedUpdateManyInput>
+    /**
+     * Filter which StackTeches to update
+     */
+    where?: StackTechWhereInput
+    /**
+     * Limit how many StackTeches to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * StackTech updateManyAndReturn
+   */
+  export type StackTechUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StackTech
+     */
+    select?: StackTechSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the StackTech
+     */
+    omit?: StackTechOmit<ExtArgs> | null
+    /**
+     * The data used to update StackTeches.
+     */
+    data: XOR<StackTechUpdateManyMutationInput, StackTechUncheckedUpdateManyInput>
+    /**
+     * Filter which StackTeches to update
+     */
+    where?: StackTechWhereInput
+    /**
+     * Limit how many StackTeches to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * StackTech upsert
+   */
+  export type StackTechUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StackTech
+     */
+    select?: StackTechSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the StackTech
+     */
+    omit?: StackTechOmit<ExtArgs> | null
+    /**
+     * The filter to search for the StackTech to update in case it exists.
+     */
+    where: StackTechWhereUniqueInput
+    /**
+     * In case the StackTech found by the `where` argument doesn't exist, create a new StackTech with this data.
+     */
+    create: XOR<StackTechCreateInput, StackTechUncheckedCreateInput>
+    /**
+     * In case the StackTech was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<StackTechUpdateInput, StackTechUncheckedUpdateInput>
+  }
+
+  /**
+   * StackTech delete
+   */
+  export type StackTechDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StackTech
+     */
+    select?: StackTechSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the StackTech
+     */
+    omit?: StackTechOmit<ExtArgs> | null
+    /**
+     * Filter which StackTech to delete.
+     */
+    where: StackTechWhereUniqueInput
+  }
+
+  /**
+   * StackTech deleteMany
+   */
+  export type StackTechDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which StackTeches to delete
+     */
+    where?: StackTechWhereInput
+    /**
+     * Limit how many StackTeches to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * StackTech without action
+   */
+  export type StackTechDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StackTech
+     */
+    select?: StackTechSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the StackTech
+     */
+    omit?: StackTechOmit<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -2917,6 +4007,16 @@ export namespace Prisma {
   };
 
   export type ProjectScalarFieldEnum = (typeof ProjectScalarFieldEnum)[keyof typeof ProjectScalarFieldEnum]
+
+
+  export const StackTechScalarFieldEnum: {
+    id: 'id',
+    type: 'type',
+    iconName: 'iconName',
+    name: 'name'
+  };
+
+  export type StackTechScalarFieldEnum = (typeof StackTechScalarFieldEnum)[keyof typeof StackTechScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -2990,6 +4090,20 @@ export namespace Prisma {
    * Reference to a field of type 'QueryMode'
    */
   export type EnumQueryModeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'QueryMode'>
+    
+
+
+  /**
+   * Reference to a field of type 'StackType'
+   */
+  export type EnumStackTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'StackType'>
+    
+
+
+  /**
+   * Reference to a field of type 'StackType[]'
+   */
+  export type ListEnumStackTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'StackType[]'>
     
 
 
@@ -3094,6 +4208,53 @@ export namespace Prisma {
     desc?: JsonNullableWithAggregatesFilter<"Project">
   }
 
+  export type StackTechWhereInput = {
+    AND?: StackTechWhereInput | StackTechWhereInput[]
+    OR?: StackTechWhereInput[]
+    NOT?: StackTechWhereInput | StackTechWhereInput[]
+    id?: StringFilter<"StackTech"> | string
+    type?: EnumStackTypeFilter<"StackTech"> | $Enums.StackType
+    iconName?: StringNullableFilter<"StackTech"> | string | null
+    name?: StringFilter<"StackTech"> | string
+  }
+
+  export type StackTechOrderByWithRelationInput = {
+    id?: SortOrder
+    type?: SortOrder
+    iconName?: SortOrderInput | SortOrder
+    name?: SortOrder
+  }
+
+  export type StackTechWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: StackTechWhereInput | StackTechWhereInput[]
+    OR?: StackTechWhereInput[]
+    NOT?: StackTechWhereInput | StackTechWhereInput[]
+    type?: EnumStackTypeFilter<"StackTech"> | $Enums.StackType
+    iconName?: StringNullableFilter<"StackTech"> | string | null
+    name?: StringFilter<"StackTech"> | string
+  }, "id">
+
+  export type StackTechOrderByWithAggregationInput = {
+    id?: SortOrder
+    type?: SortOrder
+    iconName?: SortOrderInput | SortOrder
+    name?: SortOrder
+    _count?: StackTechCountOrderByAggregateInput
+    _max?: StackTechMaxOrderByAggregateInput
+    _min?: StackTechMinOrderByAggregateInput
+  }
+
+  export type StackTechScalarWhereWithAggregatesInput = {
+    AND?: StackTechScalarWhereWithAggregatesInput | StackTechScalarWhereWithAggregatesInput[]
+    OR?: StackTechScalarWhereWithAggregatesInput[]
+    NOT?: StackTechScalarWhereWithAggregatesInput | StackTechScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"StackTech"> | string
+    type?: EnumStackTypeWithAggregatesFilter<"StackTech"> | $Enums.StackType
+    iconName?: StringNullableWithAggregatesFilter<"StackTech"> | string | null
+    name?: StringWithAggregatesFilter<"StackTech"> | string
+  }
+
   export type UserCreateInput = {
     id?: string
     email: string
@@ -3176,6 +4337,55 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableJsonNullValueInput | InputJsonValue
     desc?: NullableJsonNullValueInput | InputJsonValue
+  }
+
+  export type StackTechCreateInput = {
+    id?: string
+    type: $Enums.StackType
+    iconName?: string | null
+    name: string
+  }
+
+  export type StackTechUncheckedCreateInput = {
+    id?: string
+    type: $Enums.StackType
+    iconName?: string | null
+    name: string
+  }
+
+  export type StackTechUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    type?: EnumStackTypeFieldUpdateOperationsInput | $Enums.StackType
+    iconName?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type StackTechUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    type?: EnumStackTypeFieldUpdateOperationsInput | $Enums.StackType
+    iconName?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type StackTechCreateManyInput = {
+    id?: string
+    type: $Enums.StackType
+    iconName?: string | null
+    name: string
+  }
+
+  export type StackTechUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    type?: EnumStackTypeFieldUpdateOperationsInput | $Enums.StackType
+    iconName?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type StackTechUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    type?: EnumStackTypeFieldUpdateOperationsInput | $Enums.StackType
+    iconName?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -3330,12 +4540,54 @@ export namespace Prisma {
     _max?: NestedJsonNullableFilter<$PrismaModel>
   }
 
+  export type EnumStackTypeFilter<$PrismaModel = never> = {
+    equals?: $Enums.StackType | EnumStackTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.StackType[] | ListEnumStackTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.StackType[] | ListEnumStackTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumStackTypeFilter<$PrismaModel> | $Enums.StackType
+  }
+
+  export type StackTechCountOrderByAggregateInput = {
+    id?: SortOrder
+    type?: SortOrder
+    iconName?: SortOrder
+    name?: SortOrder
+  }
+
+  export type StackTechMaxOrderByAggregateInput = {
+    id?: SortOrder
+    type?: SortOrder
+    iconName?: SortOrder
+    name?: SortOrder
+  }
+
+  export type StackTechMinOrderByAggregateInput = {
+    id?: SortOrder
+    type?: SortOrder
+    iconName?: SortOrder
+    name?: SortOrder
+  }
+
+  export type EnumStackTypeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.StackType | EnumStackTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.StackType[] | ListEnumStackTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.StackType[] | ListEnumStackTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumStackTypeWithAggregatesFilter<$PrismaModel> | $Enums.StackType
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumStackTypeFilter<$PrismaModel>
+    _max?: NestedEnumStackTypeFilter<$PrismaModel>
+  }
+
   export type StringFieldUpdateOperationsInput = {
     set?: string
   }
 
   export type NullableStringFieldUpdateOperationsInput = {
     set?: string | null
+  }
+
+  export type EnumStackTypeFieldUpdateOperationsInput = {
+    set?: $Enums.StackType
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -3443,6 +4695,23 @@ export namespace Prisma {
     gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
     gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
     not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+  }
+
+  export type NestedEnumStackTypeFilter<$PrismaModel = never> = {
+    equals?: $Enums.StackType | EnumStackTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.StackType[] | ListEnumStackTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.StackType[] | ListEnumStackTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumStackTypeFilter<$PrismaModel> | $Enums.StackType
+  }
+
+  export type NestedEnumStackTypeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.StackType | EnumStackTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.StackType[] | ListEnumStackTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.StackType[] | ListEnumStackTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumStackTypeWithAggregatesFilter<$PrismaModel> | $Enums.StackType
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumStackTypeFilter<$PrismaModel>
+    _max?: NestedEnumStackTypeFilter<$PrismaModel>
   }
 
 
