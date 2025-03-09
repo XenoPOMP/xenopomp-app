@@ -2,10 +2,6 @@
   "name": "@repo/eslint-config",
   "version": "0.0.0",
   "private": true,
-  "scripts": {
-    "dev": "tsc --watch",
-    "build": "tsc"
-  },
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts"
+  "scripts": {},
+  "main": "index.ts"
 }
