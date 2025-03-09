@@ -5,11 +5,11 @@ import type { LocalizedProject, SuccessfulResponse } from '@repo/backend-types';
 // eslint-disable-next-line ts/consistent-type-imports
 import { ProjectsService } from './projects.service';
 
-@Controller('projects')
+@Controller('project')
 export class ProjectsController {
   constructor(private readonly projectsService: ProjectsService) {}
 
-  @Get()
+  @Get('/all')
   async get(): Promise<SuccessfulResponse<LocalizedProject[]>> {
     const projects = await this.projectsService.get();
     return {
