@@ -11,4 +11,5 @@ const createTemplate = (
 
 export const packageActions: PlopTypes.ActionType[] = [
   createTemplate('package.json', 'packageJson.hbs'),
+  createTemplate('tsconfig.json', 'tsconfig.hbs'),
 ];
