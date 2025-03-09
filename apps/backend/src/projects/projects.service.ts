@@ -40,11 +40,7 @@ export class ProjectsService {
     const projects = await this.prisma.project[method](...params);
 
     const func = pipe((v: Project[]) =>
-      v.map(({ name, desc, ...v }) => ({
-        name: this.loc.parse(name),
-        desc: this.loc.parse(desc),
-        ...v,
-      })),
+      v.map(proj => this.loc.parseObj(proj, ['name', 'desc'])),
     ).pipe(async _v =>
       Promise.all(
         _v.map(async ({ id, ...v }) => {

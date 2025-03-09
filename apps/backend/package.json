@@ -27,12 +27,13 @@
     "@nestjs/core": "^11.0.1",
     "@nestjs/mapped-types": "*",
     "@nestjs/platform-express": "^11.0.1",
+    "@repo/backend-types": "*",
+    "@repo/constants": "*",
+    "@repo/eslint-config": "*",
+    "lodash.set": "^4.3.2",
     "prisma": "^6.4.1",
     "reflect-metadata": "^0.2.2",
-    "rxjs": "^7.8.1",
-    "@repo/constants": "*",
-    "@repo/backend-types": "*",
-    "@repo/eslint-config": "*"
+    "rxjs": "^7.8.1"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.2.0",
