@@ -22,6 +22,8 @@ model User {
   id    String  @id @default(cuid())
   email String  @unique
   name  String?
+
+  @@map("user")
 }
 
 model Project {
@@ -33,6 +35,8 @@ model Project {
 
   // Relations
   StackOfProject StackOfProject[]
+
+  @@map("project")
 }
 
 model StackOfProject {
@@ -43,6 +47,8 @@ model StackOfProject {
   projectId   String    @map("project_id")
   stackTech   StackTech @relation(fields: [stackTechId], references: [id])
   stackTechId String    @map("stack_tech_id")
+
+  @@map("stack_of_project")
 }
 
 enum StackType {
@@ -58,4 +64,6 @@ model StackTech {
 
   // Relations
   StackOfProject StackOfProject[]
+
+  @@map("stack_tech")
 }
