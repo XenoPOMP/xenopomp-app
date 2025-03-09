@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import type { Project } from '@prisma/client';
+import type { Project, StackTech } from '@prisma/client';
 import { pipe } from 'xenopomp-essentials';
 
 import type { LocalizedProject } from '@repo/backend-types';
