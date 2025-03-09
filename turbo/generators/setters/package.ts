@@ -25,6 +25,9 @@ export const packageGenerator = (plop: PlopTypes.NodePlopAPI) => {
           }
           return true;
         },
+        transformer(input: any) {
+          return input.toString().replace(/^@repo/, '');
+        },
       },
     ],
     actions: packageActions,
