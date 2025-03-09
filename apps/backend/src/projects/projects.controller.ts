@@ -21,7 +21,7 @@ export class ProjectsController {
   }
 
   @Get('/all')
-  async get(): Promise<SuccessfulResponse<LocalizedProject[]>> {
+  async get(): Promise<SuccessfulResponse<LocalizedProject[] | null>> {
     const projects = await this.projectsService.get();
     return {
       data: projects,

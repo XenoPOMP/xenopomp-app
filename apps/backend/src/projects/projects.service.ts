@@ -34,10 +34,13 @@ export class ProjectsService {
   }
 
   async get(
-    method: keyof Pick<typeof this.prisma.project, 'findMany'> = 'findMany',
+    method: keyof Pick<
+      typeof this.prisma.project,
+      'findMany' | 'findFirst'
+    > = 'findMany',
     ...params: Parameters<typeof this.prisma.project.findMany>
-  ): Promise<LocalizedProject[]> {
-    const projects = await this.prisma.project[method](...params);
+  ): Promise<LocalizedProject[] | null> {
+    const query = await this.prisma.project[method](...params);
 
     const func = pipe((v: Project[]) =>
       v.map(proj => this.loc.parseObj(proj, ['name', 'desc'])),
@@ -50,6 +53,14 @@ export class ProjectsService {
       ),
     );
 
-    return func(projects);
+    if (Array.isArray(query)) {
+      return func(query);
+    }
+
+    if (query === null) {
+      return query;
+    }
+
+    return func([query]);
   }
 }
