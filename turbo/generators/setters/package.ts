@@ -20,13 +20,7 @@ export const packageGenerator = (plop: PlopTypes.NodePlopAPI) => {
           if (!input) {
             return 'package name is required';
           }
-          if (!input.startsWith('@repo')) {
-            return 'package name should start with @repo';
-          }
           return true;
-        },
-        transformer(input: any) {
-          return input.toString().replace(/^@repo/, '');
         },
       },
     ],
