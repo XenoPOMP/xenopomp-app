@@ -5,7 +5,7 @@ const createTemplate = (
   template: string,
 ): PlopTypes.ActionType => ({
   type: 'add',
-  path: `{{ turbo.paths.root }}/{{ dashCase packageName }}/${filename}`,
+  path: `{{ turbo.paths.root }}/packages/{{ dashCase packageName }}/${filename}`,
   templateFile: `templates/package/${template}`,
 });
 
