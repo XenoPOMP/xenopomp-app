@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import type { Project } from '@prisma/client';
+import type { Project, StackTech } from '@prisma/client';
 import { pipe } from 'xenopomp-essentials';
 
 import type { LocalizedProject } from '@repo/backend-types';
@@ -20,6 +20,19 @@ export class ProjectsService {
     return this.prisma.project.count();
   }
 
+  async getStackById(projectId: string): Promise<StackTech[]> {
+    const manyToMany = await this.prisma.stackOfProject.findMany({
+      where: {
+        projectId,
+      },
+      include: {
+        stackTech: true,
+      },
+    });
+
+    return manyToMany.map(v => v.stackTech);
+  }
+
   async get(): Promise<LocalizedProject[]> {
     const projects = await this.prisma.project.findMany();
 
@@ -29,6 +42,13 @@ export class ProjectsService {
         desc: this.loc.parse(desc),
         ...v,
       })),
+    ).pipe(async _v =>
+      Promise.all(
+        _v.map(async ({ id, ...v }) => {
+          const stack = (await this.getStackById(id)).map(v => v.id);
+          return { id, stackIds: stack, ...v };
+        }),
+      ),
     );
 
     return func(projects);

@@ -1,8 +1,10 @@
-import { Project } from '@prisma/client';
+import type { Project } from '@prisma/client';
 
-import { Localized } from './locales';
+import type { Localized } from './locales';
 
-type Stack = {};
+interface Stack {
+  stackIds: string[];
+}
 
 /** Parsed project with resolved locales. */
 export type LocalizedProject = Localized<Project, 'name' | 'desc'> & Stack;
