@@ -10,7 +10,7 @@ import { ProjectsService } from './projects.service';
 export class ProjectsController {
   constructor(private readonly projectsService: ProjectsService) {}
 
-  @Get('/:projectId/stack')
+  @Get('/single/:projectId/stack')
   async getStack(
     @Param('projectId') projectId: string,
   ): Promise<SuccessfulResponse<StackTech[]>> {
@@ -20,15 +20,22 @@ export class ProjectsController {
     };
   }
 
+  @Get('/single/:projectId/get')
+  async getById(@Param('projectId') projectId: string) {
+    return {
+      data: 'sus',
+    };
+  }
+
   @Get('/all')
   async get(): Promise<SuccessfulResponse<LocalizedProject[] | null>> {
-    const projects = await this.projectsService.get();
+    const projects = await this.projectsService.getAll();
     return {
       data: projects,
     };
   }
 
-  @Get('/count')
+  @Get('/all/count')
   async getCount(): Promise<SuccessfulResponse<number>> {
     const count = await this.projectsService.getCount();
     return {
