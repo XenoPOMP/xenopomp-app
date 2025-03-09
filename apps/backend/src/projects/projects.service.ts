@@ -44,28 +44,30 @@ export class ProjectsService {
       return null;
     }
 
-    const func = pipe(this.localizeProject).pipe(this.fetchStack);
-    return func(query);
+    return this.prepareProject(query);
   }
 
   async getAll(): Promise<LocalizedProject[]> {
     const query = await this.prisma.project.findMany();
+    const prepared: LocalizedProject[] = [];
 
-    const func = pipe((v: Project[]) => v.map(this.localizeProject)).pipe(
-      async _v => Promise.all(_v.map(this.fetchStack)),
-    );
+    for (const proj of query) {
+      const prep = await this.prepareProject(proj);
+      prepared.push(prep);
+    }
 
-    return func(query);
+    return prepared;
   }
 
-  private localizeProject(project: Project) {
-    return this.loc.parseObj(project, ['name', 'desc']);
-  }
+  /**
+   * Localizes project and fetches stack techs ids.
+   * @param project
+   * @private
+   */
+  private async prepareProject(project: Project): Promise<LocalizedProject> {
+    const localized = this.loc.parseObj(project, ['name', 'desc']);
 
-  private async fetchStack(
-    project: Localized<Project, 'name' | 'desc'>,
-  ): Promise<LocalizedProject> {
-    const { id, ...v } = project;
+    const { id, ...v } = localized;
     const stack = (await this.getStackById(id)).map(v => v.id);
     return { id, stackIds: stack, ...v };
   }

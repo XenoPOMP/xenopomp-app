@@ -24,9 +24,9 @@ export class ProjectsController {
   async getById(
     @Param('projectId') projectId: string,
   ): Promise<SuccessfulResponse<LocalizedProject | null>> {
-    const query = await this.projectsService.getById(projectId);
+    const project = await this.projectsService.getById(projectId);
     return {
-      data: query,
+      data: project,
     };
   }
 
