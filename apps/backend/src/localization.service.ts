@@ -12,6 +12,10 @@ const schema = z.object({
 @Injectable()
 export class LocalizationService {
   parse(obj: JsonValue): Locale {
-    return schema.parse(obj);
+    try {
+      return schema.parse(obj);
+    } catch {
+      return {};
+    }
   }
 }
