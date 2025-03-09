@@ -33,14 +33,8 @@ export class ProjectsService {
     return manyToMany.map(v => v.stackTech);
   }
 
-  async get(
-    method: keyof Pick<
-      typeof this.prisma.project,
-      'findMany' | 'findFirst'
-    > = 'findMany',
-    ...params: Parameters<typeof this.prisma.project.findMany>
-  ): Promise<LocalizedProject[] | null> {
-    const query = await this.prisma.project[method](...params);
+  async getAll(): Promise<LocalizedProject[]> {
+    const query = await this.prisma.project.findMany();
 
     const func = pipe((v: Project[]) =>
       v.map(proj => this.loc.parseObj(proj, ['name', 'desc'])),
@@ -53,14 +47,6 @@ export class ProjectsService {
       ),
     );
 
-    if (Array.isArray(query)) {
-      return func(query);
-    }
-
-    if (query === null) {
-      return query;
-    }
-
-    return func([query]);
+    return func(query);
   }
 }
