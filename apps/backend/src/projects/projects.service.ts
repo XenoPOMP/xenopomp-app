@@ -4,8 +4,8 @@ import { pipe } from 'xenopomp-essentials';
 
 import type { LocalizedProject } from '@repo/backend-types';
 
-import type { LocalizationService } from '../localization.service';
-import type { PrismaService } from '../prisma.service';
+import { LocalizationService } from '../localization.service';
+import { PrismaService } from '../prisma.service';
 
 @Injectable()
 export class ProjectsService {
