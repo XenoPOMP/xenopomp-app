@@ -35,7 +35,7 @@ export type StackTech = $Result.DefaultSelection<Prisma.$StackTechPayload>
 export namespace $Enums {
   export const StackType: {
   frontend: 'frontend',
-  backendh: 'backendh'
+  backend: 'backend'
 };
 
 export type StackType = (typeof StackType)[keyof typeof StackType]

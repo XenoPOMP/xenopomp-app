@@ -34,7 +34,7 @@ model Project {
 
 enum StackType {
   frontend
-  backendh
+  backend
 }
 
 model StackTech {
