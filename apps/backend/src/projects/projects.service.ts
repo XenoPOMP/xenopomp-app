@@ -2,6 +2,8 @@ import { Injectable } from '@nestjs/common';
 import { Project } from '@prisma/client';
 import { pipe } from 'xenopomp-essentials';
 
+import { LocalizedProject } from '@repo/backend-types';
+
 import { LocalizationService } from '../localization.service';
 import { PrismaService } from '../prisma.service';
 
@@ -16,7 +18,7 @@ export class ProjectsService {
     return this.prisma.project.count();
   }
 
-  async get() {
+  async get(): Promise<LocalizedProject[]> {
     const projects = await this.prisma.project.findMany();
 
     const func = pipe((v: Project[]) =>
