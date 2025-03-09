@@ -1,4 +1,4 @@
-import { AnyObject } from 'xenopomp-essentials';
+import type { AnyObject } from 'xenopomp-essentials';
 
 type Lang = 'ru' | 'en';
 
