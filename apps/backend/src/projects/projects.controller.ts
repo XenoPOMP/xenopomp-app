@@ -2,6 +2,7 @@ import { Controller, Get } from '@nestjs/common';
 
 import type { LocalizedProject, SuccessfulResponse } from '@repo/backend-types';
 
+// eslint-disable-next-line ts/consistent-type-imports
 import { ProjectsService } from './projects.service';
 
 @Controller('projects')

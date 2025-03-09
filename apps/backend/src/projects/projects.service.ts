@@ -1,10 +1,12 @@
 import { Injectable } from '@nestjs/common';
-import type { Project, StackTech } from '@prisma/client';
+import type { Project } from '@prisma/client';
 import { pipe } from 'xenopomp-essentials';
 
 import type { LocalizedProject } from '@repo/backend-types';
 
+// eslint-disable-next-line ts/consistent-type-imports
 import { LocalizationService } from '../localization.service';
+// eslint-disable-next-line ts/consistent-type-imports
 import { PrismaService } from '../prisma.service';
 
 @Injectable()
