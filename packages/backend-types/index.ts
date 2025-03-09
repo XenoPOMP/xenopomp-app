@@ -1,1 +1,1 @@
-export type Sus = 12;
+export * from './src/entities';
