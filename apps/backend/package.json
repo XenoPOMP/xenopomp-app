@@ -30,7 +30,8 @@
     "reflect-metadata": "^0.2.2",
     "rxjs": "^7.8.1",
     "@repo/constants": "*",
-    "@repo/backend-types": "*"
+    "@repo/backend-types": "*",
+    "@repo/eslint-config": "*"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.2.0",
