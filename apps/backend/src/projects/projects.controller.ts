@@ -20,9 +20,6 @@ export class ProjectsController {
     };
   }
 
-  @Get('/:projectId')
-  async getById(@Param('projectId') projectId: string) {}
-
   @Get('/all')
   async get(): Promise<SuccessfulResponse<LocalizedProject[]>> {
     const projects = await this.projectsService.get();
