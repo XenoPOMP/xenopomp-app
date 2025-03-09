@@ -19,7 +19,8 @@
     "xenopomp-essentials": "^0.0.1-beta.13",
     "zod": "^3.24.2",
     "jiti": "^2.4.2",
-    "eslint-config-xeno": "^2.0.3-rc.3"
+    "eslint-config-xeno": "^2.0.3-rc.3",
+    "@turbo/gen": "^2.4.4"
   },
   "engines": {
     "node": ">=18"
