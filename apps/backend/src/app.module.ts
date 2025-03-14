@@ -1,8 +1,10 @@
 import { Module } from '@nestjs/common';
 
-import { AppController, AppService } from '~/app';
-import { DataService, PrismaService } from '~/features';
-import { ProjectsModule } from '~/routes/projects';
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
+import { DataService } from './features/data.service';
+import { PrismaService } from './features/prisma.service';
+import { ProjectsModule } from './routes/projects/projects.module';
 
 @Module({
   imports: [ProjectsModule],

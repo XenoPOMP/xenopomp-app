@@ -4,7 +4,7 @@ import type { Project, StackTech } from '@prisma/client';
 import type { SuccessfulResponse } from '@repo/backend-types';
 
 // eslint-disable-next-line ts/consistent-type-imports
-import { ProjectsService } from '~/routes/projects';
+import { ProjectsService } from './projects.service';
 
 @Controller('project')
 export class ProjectsController {
