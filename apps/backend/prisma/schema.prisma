@@ -30,8 +30,8 @@ model Project {
   id String @id @default(cuid())
 
   // Locales
-  name Json?
-  desc Json?
+  name String?
+  desc String?
 
   // Relations
   StackOfProject StackOfProject[]

@@ -2198,10 +2198,14 @@ export namespace Prisma {
 
   export type ProjectMinAggregateOutputType = {
     id: string | null
+    name: string | null
+    desc: string | null
   }
 
   export type ProjectMaxAggregateOutputType = {
     id: string | null
+    name: string | null
+    desc: string | null
   }
 
   export type ProjectCountAggregateOutputType = {
@@ -2214,10 +2218,14 @@ export namespace Prisma {
 
   export type ProjectMinAggregateInputType = {
     id?: true
+    name?: true
+    desc?: true
   }
 
   export type ProjectMaxAggregateInputType = {
     id?: true
+    name?: true
+    desc?: true
   }
 
   export type ProjectCountAggregateInputType = {
@@ -2301,8 +2309,8 @@ export namespace Prisma {
 
   export type ProjectGroupByOutputType = {
     id: string
-    name: JsonValue | null
-    desc: JsonValue | null
+    name: string | null
+    desc: string | null
     _count: ProjectCountAggregateOutputType | null
     _min: ProjectMinAggregateOutputType | null
     _max: ProjectMaxAggregateOutputType | null
@@ -2363,8 +2371,8 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      name: Prisma.JsonValue | null
-      desc: Prisma.JsonValue | null
+      name: string | null
+      desc: string | null
     }, ExtArgs["result"]["project"]>
     composites: {}
   }
@@ -2790,8 +2798,8 @@ export namespace Prisma {
    */ 
   interface ProjectFieldRefs {
     readonly id: FieldRef<"Project", 'String'>
-    readonly name: FieldRef<"Project", 'Json'>
-    readonly desc: FieldRef<"Project", 'Json'>
+    readonly name: FieldRef<"Project", 'String'>
+    readonly desc: FieldRef<"Project", 'String'>
   }
     
 
@@ -5378,14 +5386,6 @@ export namespace Prisma {
   export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
 
 
-  export const NullableJsonNullValueInput: {
-    DbNull: typeof DbNull,
-    JsonNull: typeof JsonNull
-  };
-
-  export type NullableJsonNullValueInput = (typeof NullableJsonNullValueInput)[keyof typeof NullableJsonNullValueInput]
-
-
   export const QueryMode: {
     default: 'default',
     insensitive: 'insensitive'
@@ -5400,15 +5400,6 @@ export namespace Prisma {
   };
 
   export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
-
-
-  export const JsonNullValueFilter: {
-    DbNull: typeof DbNull,
-    JsonNull: typeof JsonNull,
-    AnyNull: typeof AnyNull
-  };
-
-  export type JsonNullValueFilter = (typeof JsonNullValueFilter)[keyof typeof JsonNullValueFilter]
 
 
   /**
@@ -5427,20 +5418,6 @@ export namespace Prisma {
    * Reference to a field of type 'String[]'
    */
   export type ListStringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String[]'>
-    
-
-
-  /**
-   * Reference to a field of type 'Json'
-   */
-  export type JsonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Json'>
-    
-
-
-  /**
-   * Reference to a field of type 'QueryMode'
-   */
-  export type EnumQueryModeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'QueryMode'>
     
 
 
@@ -5522,8 +5499,8 @@ export namespace Prisma {
     OR?: ProjectWhereInput[]
     NOT?: ProjectWhereInput | ProjectWhereInput[]
     id?: StringFilter<"Project"> | string
-    name?: JsonNullableFilter<"Project">
-    desc?: JsonNullableFilter<"Project">
+    name?: StringNullableFilter<"Project"> | string | null
+    desc?: StringNullableFilter<"Project"> | string | null
     StackOfProject?: StackOfProjectListRelationFilter
   }
 
@@ -5539,8 +5516,8 @@ export namespace Prisma {
     AND?: ProjectWhereInput | ProjectWhereInput[]
     OR?: ProjectWhereInput[]
     NOT?: ProjectWhereInput | ProjectWhereInput[]
-    name?: JsonNullableFilter<"Project">
-    desc?: JsonNullableFilter<"Project">
+    name?: StringNullableFilter<"Project"> | string | null
+    desc?: StringNullableFilter<"Project"> | string | null
     StackOfProject?: StackOfProjectListRelationFilter
   }, "id">
 
@@ -5558,8 +5535,8 @@ export namespace Prisma {
     OR?: ProjectScalarWhereWithAggregatesInput[]
     NOT?: ProjectScalarWhereWithAggregatesInput | ProjectScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Project"> | string
-    name?: JsonNullableWithAggregatesFilter<"Project">
-    desc?: JsonNullableWithAggregatesFilter<"Project">
+    name?: StringNullableWithAggregatesFilter<"Project"> | string | null
+    desc?: StringNullableWithAggregatesFilter<"Project"> | string | null
   }
 
   export type StackOfProjectWhereInput = {
@@ -5704,48 +5681,48 @@ export namespace Prisma {
 
   export type ProjectCreateInput = {
     id?: string
-    name?: NullableJsonNullValueInput | InputJsonValue
-    desc?: NullableJsonNullValueInput | InputJsonValue
+    name?: string | null
+    desc?: string | null
     StackOfProject?: StackOfProjectCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectUncheckedCreateInput = {
     id?: string
-    name?: NullableJsonNullValueInput | InputJsonValue
-    desc?: NullableJsonNullValueInput | InputJsonValue
+    name?: string | null
+    desc?: string | null
     StackOfProject?: StackOfProjectUncheckedCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: NullableJsonNullValueInput | InputJsonValue
-    desc?: NullableJsonNullValueInput | InputJsonValue
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    desc?: NullableStringFieldUpdateOperationsInput | string | null
     StackOfProject?: StackOfProjectUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: NullableJsonNullValueInput | InputJsonValue
-    desc?: NullableJsonNullValueInput | InputJsonValue
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    desc?: NullableStringFieldUpdateOperationsInput | string | null
     StackOfProject?: StackOfProjectUncheckedUpdateManyWithoutProjectNestedInput
   }
 
   export type ProjectCreateManyInput = {
     id?: string
-    name?: NullableJsonNullValueInput | InputJsonValue
-    desc?: NullableJsonNullValueInput | InputJsonValue
+    name?: string | null
+    desc?: string | null
   }
 
   export type ProjectUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: NullableJsonNullValueInput | InputJsonValue
-    desc?: NullableJsonNullValueInput | InputJsonValue
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    desc?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ProjectUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: NullableJsonNullValueInput | InputJsonValue
-    desc?: NullableJsonNullValueInput | InputJsonValue
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    desc?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type StackOfProjectCreateInput = {
@@ -5929,29 +5906,6 @@ export namespace Prisma {
     _min?: NestedStringNullableFilter<$PrismaModel>
     _max?: NestedStringNullableFilter<$PrismaModel>
   }
-  export type JsonNullableFilter<$PrismaModel = never> = 
-    | PatchUndefined<
-        Either<Required<JsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>,
-        Required<JsonNullableFilterBase<$PrismaModel>>
-      >
-    | OptionalFlat<Omit<Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>
-
-  export type JsonNullableFilterBase<$PrismaModel = never> = {
-    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-    path?: string[]
-    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
-    string_contains?: string | StringFieldRefInput<$PrismaModel>
-    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
-    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
-    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-  }
 
   export type StackOfProjectListRelationFilter = {
     every?: StackOfProjectWhereInput
@@ -5971,36 +5925,14 @@ export namespace Prisma {
 
   export type ProjectMaxOrderByAggregateInput = {
     id?: SortOrder
+    name?: SortOrder
+    desc?: SortOrder
   }
 
   export type ProjectMinOrderByAggregateInput = {
     id?: SortOrder
-  }
-  export type JsonNullableWithAggregatesFilter<$PrismaModel = never> = 
-    | PatchUndefined<
-        Either<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>,
-        Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>
-      >
-    | OptionalFlat<Omit<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>
-
-  export type JsonNullableWithAggregatesFilterBase<$PrismaModel = never> = {
-    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-    path?: string[]
-    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
-    string_contains?: string | StringFieldRefInput<$PrismaModel>
-    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
-    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
-    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedJsonNullableFilter<$PrismaModel>
-    _max?: NestedJsonNullableFilter<$PrismaModel>
+    name?: SortOrder
+    desc?: SortOrder
   }
 
   export type ProjectScalarRelationFilter = {
@@ -6276,29 +6208,6 @@ export namespace Prisma {
     gte?: number | IntFieldRefInput<$PrismaModel>
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
-  export type NestedJsonNullableFilter<$PrismaModel = never> = 
-    | PatchUndefined<
-        Either<Required<NestedJsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>,
-        Required<NestedJsonNullableFilterBase<$PrismaModel>>
-      >
-    | OptionalFlat<Omit<Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>
-
-  export type NestedJsonNullableFilterBase<$PrismaModel = never> = {
-    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-    path?: string[]
-    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
-    string_contains?: string | StringFieldRefInput<$PrismaModel>
-    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
-    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
-    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-  }
 
   export type NestedEnumStackTypeFilter<$PrismaModel = never> = {
     equals?: $Enums.StackType | EnumStackTypeFieldRefInput<$PrismaModel>
@@ -6364,14 +6273,14 @@ export namespace Prisma {
 
   export type ProjectCreateWithoutStackOfProjectInput = {
     id?: string
-    name?: NullableJsonNullValueInput | InputJsonValue
-    desc?: NullableJsonNullValueInput | InputJsonValue
+    name?: string | null
+    desc?: string | null
   }
 
   export type ProjectUncheckedCreateWithoutStackOfProjectInput = {
     id?: string
-    name?: NullableJsonNullValueInput | InputJsonValue
-    desc?: NullableJsonNullValueInput | InputJsonValue
+    name?: string | null
+    desc?: string | null
   }
 
   export type ProjectCreateOrConnectWithoutStackOfProjectInput = {
@@ -6411,14 +6320,14 @@ export namespace Prisma {
 
   export type ProjectUpdateWithoutStackOfProjectInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: NullableJsonNullValueInput | InputJsonValue
-    desc?: NullableJsonNullValueInput | InputJsonValue
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    desc?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ProjectUncheckedUpdateWithoutStackOfProjectInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: NullableJsonNullValueInput | InputJsonValue
-    desc?: NullableJsonNullValueInput | InputJsonValue
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    desc?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type StackTechUpsertWithoutStackOfProjectInput = {
