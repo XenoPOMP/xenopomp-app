@@ -49,7 +49,7 @@ interface EndpointOptions {
  *
  * // GET http://localhost:3001/test 201
  */
-export function Endpoint(type: Method, path: Path, options?: EndpointOptions) {
+export function Endpoint(type: Method, path?: Path, options?: EndpointOptions) {
   const method = methodsMap[type];
   const code = options?.code ?? 200;
 
