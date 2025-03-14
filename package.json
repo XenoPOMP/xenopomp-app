@@ -12,7 +12,6 @@
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "^5.2.2",
     "@turbo/gen": "^2.4.4",
-    "eslint-config-xeno": "^2.0.3-rc.3",
     "esno": "^4.8.0",
     "husky": "^9.1.7",
     "jiti": "^2.4.2",
@@ -21,7 +20,7 @@
     "turbo": "^2.4.4",
     "type-fest": "^4.37.0",
     "typescript": "5.8.2",
-    "xenopomp-essentials": "^0.0.1-beta.13",
+    "xenopomp-essentials": "^0.1.1",
     "zod": "^3.24.2"
   },
   "engines": {

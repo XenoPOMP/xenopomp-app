@@ -1,4 +1,4 @@
-import xenopomp from 'eslint-config-xeno';
+import xenopomp from 'xenopomp-essentials/eslint';
 
 type Params = Parameters<typeof xenopomp>;
 type RiridOptions = Params[0];
