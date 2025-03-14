@@ -1,19 +1,12 @@
 import { Injectable } from '@nestjs/common';
 import type { Project, StackTech } from '@prisma/client';
 
-import type { LocalizedProject } from '@repo/backend-types';
-
-// eslint-disable-next-line ts/consistent-type-imports
-import { LocalizationService } from '../localization.service';
 // eslint-disable-next-line ts/consistent-type-imports
 import { PrismaService } from '../prisma.service';
 
 @Injectable()
 export class ProjectsService {
-  constructor(
-    private readonly prisma: PrismaService,
-    private readonly loc: LocalizationService,
-  ) {}
+  constructor(private readonly prisma: PrismaService) {}
 
   async getCount(): Promise<number> {
     return this.prisma.project.count();
@@ -32,33 +25,15 @@ export class ProjectsService {
     return manyToMany.map(v => v.stackTech);
   }
 
-  async getById(projectId: string): Promise<LocalizedProject | null> {
-    const query = await this.prisma.project.findFirst({
+  async getById(projectId: string): Promise<Project | null> {
+    return this.prisma.project.findFirst({
       where: {
         id: projectId,
       },
     });
-
-    if (query === null) {
-      return null;
-    }
-
-    return this.prepareProject(query);
   }
 
-  async getAll(): Promise<LocalizedProject[]> {
-    const query = await this.prisma.project.findMany();
-    const prepared: LocalizedProject[] = [];
-
-    for (const proj of query) {
-      const prep = await this.prepareProject(proj);
-      prepared.push(prep);
-    }
-
-    return prepared;
-  }
-
-  private async prepareProject(project: Project): Promise<LocalizedProject> {
-    return this.loc.parseObj(project, ['name', 'desc']);
+  async getAll(): Promise<Project[]> {
+    return this.prisma.project.findMany();
   }
 }

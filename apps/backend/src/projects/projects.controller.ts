@@ -1,7 +1,7 @@
 import { Controller, Get, Param } from '@nestjs/common';
-import type { StackTech } from '@prisma/client';
+import type { Project, StackTech } from '@prisma/client';
 
-import type { LocalizedProject, SuccessfulResponse } from '@repo/backend-types';
+import type { SuccessfulResponse } from '@repo/backend-types';
 
 // eslint-disable-next-line ts/consistent-type-imports
 import { ProjectsService } from './projects.service';
@@ -23,7 +23,7 @@ export class ProjectsController {
   @Get('/single/:projectId/get')
   async getById(
     @Param('projectId') projectId: string,
-  ): Promise<SuccessfulResponse<LocalizedProject | null>> {
+  ): Promise<SuccessfulResponse<Project | null>> {
     const project = await this.projectsService.getById(projectId);
     return {
       data: project,
@@ -31,7 +31,7 @@ export class ProjectsController {
   }
 
   @Get('/all')
-  async get(): Promise<SuccessfulResponse<LocalizedProject[]>> {
+  async get(): Promise<SuccessfulResponse<Project[]>> {
     const projects = await this.projectsService.getAll();
     return {
       data: projects,
