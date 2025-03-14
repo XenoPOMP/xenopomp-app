@@ -1,7 +1,7 @@
 import { Controller, Get, Param } from '@nestjs/common';
 import type { Project, StackTech } from '@prisma/client';
 
-import type { BackendResponse, SuccessfulResponse } from '@repo/backend-types';
+import type { DataResponse } from '@repo/backend-types';
 
 import { handleData } from '../../features';
 
@@ -15,14 +15,14 @@ export class ProjectsController {
   @Get('/single/:projectId/stack')
   async getStack(
     @Param('projectId') projectId: string,
-  ): Promise<SuccessfulResponse<StackTech[]>> {
+  ): Promise<DataResponse<StackTech[]>> {
     return handleData(await this.projectsService.getStackById(projectId));
   }
 
   @Get('/single/:projectId/get')
   async getById(
     @Param('projectId') projectId: string,
-  ): Promise<SuccessfulResponse<Project | null>> {
+  ): Promise<DataResponse<Project | null>> {
     const project = await this.projectsService.getById(projectId);
     return {
       data: project,
@@ -30,7 +30,7 @@ export class ProjectsController {
   }
 
   @Get('/all')
-  async get(): Promise<SuccessfulResponse<Project[]>> {
+  async get(): Promise<DataResponse<Project[]>> {
     const projects = await this.projectsService.getAll();
     return {
       data: projects,
@@ -38,7 +38,7 @@ export class ProjectsController {
   }
 
   @Get('/all/count')
-  async getCount(): Promise<SuccessfulResponse<number>> {
+  async getCount(): Promise<DataResponse<number>> {
     const count = await this.projectsService.getCount();
     return {
       data: count,

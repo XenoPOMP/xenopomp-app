@@ -1,6 +1,6 @@
 import { Controller, Get } from '@nestjs/common';
 
-import type { SuccessfulResponse } from '@repo/backend-types';
+import type { DataResponse } from '@repo/backend-types';
 
 // eslint-disable-next-line ts/consistent-type-imports
 import { AppService } from './app.service';
@@ -10,7 +10,7 @@ export class AppController {
   constructor(private readonly appService: AppService) {}
 
   @Get()
-  getHello(): SuccessfulResponse<string> {
+  getHello(): DataResponse<string> {
     return {
       data: 'ok',
     };
