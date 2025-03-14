@@ -1,3 +1,4 @@
 MIGRATION_NAME=$1
 
-echo "$MIGRATION_NAME is first argument..."
+yarn migrate:dev --name "$MIGRATION_NAME"
+yarn pack:types
