@@ -1,8 +1,6 @@
 BASEDIR=$(PWD)
 MIGRATION_NAME=$1
 
-echo "$BASEDIR"
-
 if [[ $BASEDIR =~ backend$ ]]; then
     echo "Starting migration..."
 else
