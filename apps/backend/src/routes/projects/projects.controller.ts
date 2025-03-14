@@ -1,7 +1,9 @@
 import { Controller, Get, Param } from '@nestjs/common';
 import type { Project, StackTech } from '@prisma/client';
 
-import type { SuccessfulResponse } from '@repo/backend-types';
+import type { BackendResponse, SuccessfulResponse } from '@repo/backend-types';
+
+import { handleData } from '../../features';
 
 // eslint-disable-next-line ts/consistent-type-imports
 import { ProjectsService } from './projects.service';
@@ -14,10 +16,7 @@ export class ProjectsController {
   async getStack(
     @Param('projectId') projectId: string,
   ): Promise<SuccessfulResponse<StackTech[]>> {
-    const stack = await this.projectsService.getStackById(projectId);
-    return {
-      data: stack,
-    };
+    return handleData(await this.projectsService.getStackById(projectId));
   }
 
   @Get('/single/:projectId/get')

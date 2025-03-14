@@ -1,6 +1,11 @@
-import { Injectable } from '@nestjs/common';
+import type { SuccessfulResponse } from '@repo/backend-types';
 
-@Injectable()
-export class DataService {
-  async run<T>() {}
+/**
+ * Executes promise and returns proper response for route. Use only in controllers!
+ * @param data
+ */
+export async function handleData<T>(data: T): Promise<SuccessfulResponse<T>> {
+  return {
+    data,
+  };
 }
