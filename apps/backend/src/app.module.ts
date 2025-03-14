@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 
 import { AppController, AppService } from '~/app';
 import { DataService, PrismaService } from '~/features';
-import { ProjectsModule } from '~/routes/projects/projects.module';
+import { ProjectsModule } from '~/routes/projects';
 
 @Module({
   imports: [ProjectsModule],
