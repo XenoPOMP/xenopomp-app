@@ -13,6 +13,7 @@ const PATH_TO_OUTPUT = '../../packages/prisma-model';
   const libSrcDir = path.join(cwd(), PATH_TO_OUTPUT);
 
   /** Package.json from library folder. */
+  // eslint-disable-next-line ts/no-require-imports
   const packageJson: PackageJson = require(
     path.join(libSrcDir, 'package.json'),
   );
