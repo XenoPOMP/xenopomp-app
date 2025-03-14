@@ -8,6 +8,7 @@ const RIRID_CONFIG: RiridOptions = {
   rules: {
     'style/brace-style': 'off',
     'perfectionist/sort-imports': 'off',
+    'antfu/if-newline': 'off',
   },
 };
 
