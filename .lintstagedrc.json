@@ -1,3 +1,0 @@
-{
-  "./{apps,packages}/**/*.{js,ts,jsx,tsx}": "eslint"
-}
