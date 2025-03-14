@@ -9,6 +9,7 @@ const RIRID_CONFIG: RiridOptions = {
     'style/brace-style': 'off',
     'perfectionist/sort-imports': 'off',
     'antfu/if-newline': 'off',
+    'perfectionist/sort-named-imports': 'off',
   },
 };
 
