@@ -1,11 +1,11 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="dev (backend)" type="js.build_tools.npm" folderName="Tasks">
+  <configuration default="false" name="dev (packages only)" type="js.build_tools.npm" folderName="Tasks">
     <package-json value="$PROJECT_DIR$/package.json" />
     <command value="run" />
     <scripts>
       <script value="dev" />
     </scripts>
-    <arguments value="--filter=backend..." />
+    <arguments value="--filter={./packages/*}" />
     <node-interpreter value="project" />
     <envs />
     <method v="2" />
