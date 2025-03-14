@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import type { Project, StackTech } from '@prisma/client';
 
 // eslint-disable-next-line ts/consistent-type-imports
-import { PrismaService } from '../features/prisma.service';
+import { PrismaService } from '../../features/prisma.service';
 
 @Injectable()
 export class ProjectsService {
