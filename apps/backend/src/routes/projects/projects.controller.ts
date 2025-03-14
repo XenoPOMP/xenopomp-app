@@ -1,23 +1,27 @@
 import { Controller, Get, Param } from '@nestjs/common';
 import type { Project, StackTech } from '@prisma/client';
 
-import type { SuccessfulResponse } from '@repo/backend-types';
+import type { BackendResponse, SuccessfulResponse } from '@repo/backend-types';
 
+// eslint-disable-next-line ts/consistent-type-imports
+import { DataService } from '~/features';
 // eslint-disable-next-line ts/consistent-type-imports
 import { ProjectsService } from '~/routes/projects';
 
 @Controller('project')
 export class ProjectsController {
-  constructor(private readonly projectsService: ProjectsService) {}
+  constructor(
+    private readonly projectsService: ProjectsService,
+    private readonly data: DataService,
+  ) {}
 
   @Get('/single/:projectId/stack')
   async getStack(
     @Param('projectId') projectId: string,
-  ): Promise<SuccessfulResponse<StackTech[]>> {
-    const stack = await this.projectsService.getStackById(projectId);
-    return {
-      data: stack,
-    };
+  ): Promise<BackendResponse<StackTech[]>> {
+    return this.data.run(async () =>
+      this.projectsService.getStackById(projectId),
+    );
   }
 
   @Get('/single/:projectId/get')
