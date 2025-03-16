@@ -53,5 +53,10 @@ export function Endpoint(type: Method, path?: Path, options?: EndpointOptions) {
   const method = methodsMap[type];
   const code = options?.code ?? 200;
 
-  return applyDecorators(HttpCode(code), method(path));
+  // Allow optionally adding decorators
+  const decorators = [HttpCode(code), method(path)].filter(
+    d => d !== undefined,
+  );
+
+  return applyDecorators(...decorators);
 }
