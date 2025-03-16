@@ -1,3 +1,0 @@
-{
-  "./apps/backend/**/*.{js,ts,jsx,tsx}": "eslint -c ./apps/backend/eslint.config.ts"
-}
