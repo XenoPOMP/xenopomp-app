@@ -2,20 +2,8 @@
   "name": "@repo/eslint-config",
   "version": "0.0.0",
   "private": true,
-  "scripts": {
-    "dev": "yarn tsup --watch",
-    "build": "yarn tsup",
-    "lint": "echo 'Add lint script...'",
-    "tsup": "tsup index.ts --format cjs,esm --dts --target es2022 --clean --out-dir dist"
-  },
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
-  "peerDependencies": {
-    "xenopomp-essentials": "^0.1.3-rc.4"
-  },
-  "dependencies": {
-    "xenopomp-essentials": "^0.1.3-rc.4"
-  },
+  "scripts": {},
+  "main": "index.ts",
   "devDependencies": {
     "@repo/ts-config": "*"
   }
