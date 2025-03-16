@@ -24,25 +24,16 @@ export class ProjectsController {
   async getById(
     @Param('projectId') projectId: string,
   ): Promise<DataResponse<Project | null>> {
-    const project = await this.projectsService.getById(projectId);
-    return {
-      data: project,
-    };
+    return handleData(await this.projectsService.getById(projectId));
   }
 
   @Endpoint('GET', '/all')
   async get(): Promise<DataResponse<Project[]>> {
-    const projects = await this.projectsService.getAll();
-    return {
-      data: projects,
-    };
+    return handleData(await this.projectsService.getAll());
   }
 
   @Endpoint('GET', '/all/count')
   async getCount(): Promise<DataResponse<number>> {
-    const count = await this.projectsService.getCount();
-    return {
-      data: count,
-    };
+    return handleData(await this.projectsService.getCount());
   }
 }
