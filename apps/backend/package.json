@@ -9,6 +9,7 @@
     "build": "yarn pack:all && nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "dev": "nest start --watch",
+    "prep": "yarn pack:all",
     "start:debug": "nest start --debug --watch",
     "start": "yarn build && node dist/src/main",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\"",
