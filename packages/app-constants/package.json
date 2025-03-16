@@ -11,6 +11,7 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "devDependencies": {
-    "@repo/eslint-config": "*"
+    "@repo/eslint-config": "*",
+    "@repo/ts-config": "*"
   }
 }
