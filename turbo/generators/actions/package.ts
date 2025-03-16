@@ -14,5 +14,4 @@ export const packageActions: PlopTypes.ActionType[] = [
   createTemplate('tsconfig.json', 'tsconfig.hbs'),
   createTemplate('eslint.config.ts', 'eslint.hbs'),
   createTemplate('src/index.ts', 'index.hbs'),
-  createTemplate('.lintstagedrc.json', 'lint-staged.hbs'),
 ];
