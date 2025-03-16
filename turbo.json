@@ -15,6 +15,9 @@
     "lint": {
       "dependsOn": ["^lint"]
     },
+    "prep": {
+      "dependsOn": ["^prep"]
+    },
     "check-types": {
       "dependsOn": ["^check-types"]
     },
