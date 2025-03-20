@@ -1,7 +1,7 @@
 import { Controller, Param } from '@nestjs/common';
-import type { Project, StackTech } from '@prisma/client';
+import type { Project } from '@prisma/client';
 
-import type { DataResponse } from '@repo/backend-types';
+import type { DataResponse, GetSingleProjectStack } from '@repo/backend-types';
 
 import { Endpoint } from '../../decorators';
 import { handleData } from '../../features';
@@ -16,7 +16,7 @@ export class ProjectsController {
   @Endpoint('GET', '/single/:projectId/stack')
   async getStack(
     @Param('projectId') projectId: string,
-  ): Promise<DataResponse<StackTech[]>> {
+  ): Promise<GetSingleProjectStack> {
     return handleData(await this.projectsService.getStackById(projectId));
   }
 
