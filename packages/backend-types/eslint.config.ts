@@ -1,3 +1,3 @@
-import config from '@repo/eslint-config';
+import xenopomp from 'xenopomp-essentials/eslint';
 
-export default config();
+export default xenopomp();

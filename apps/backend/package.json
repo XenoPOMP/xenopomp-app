@@ -30,7 +30,6 @@
     "@nestjs/platform-express": "^11.0.1",
     "@repo/backend-types": "*",
     "@repo/constants": "*",
-    "@repo/eslint-config": "*",
     "@repo/ts-config": "*",
     "lodash.set": "^4.3.2",
     "prisma": "^6.4.1",
