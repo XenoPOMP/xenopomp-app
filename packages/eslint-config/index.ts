@@ -1,10 +1,7 @@
+import type { Options, UserConfigItem } from 'xenopomp-essentials/eslint';
 import xenopomp from 'xenopomp-essentials/eslint';
 
-type Params = Parameters<typeof xenopomp>;
-type RiridOptions = Params[0];
-type Options = Params[1];
-
-const RIRID_CONFIG: RiridOptions = {
+const ANTFU_CONFIG: Options = {
   rules: {
     'style/brace-style': 'off',
     'perfectionist/sort-imports': 'off',
@@ -15,14 +12,10 @@ const RIRID_CONFIG: RiridOptions = {
 
 /**
  * Default customizable config. Uses ririd under the hood.
- * @param options
+ * @param userConfigs
  */
-const config = (options?: Options) => {
-  if (options) {
-    return xenopomp(RIRID_CONFIG, options);
-  }
-
-  return xenopomp(RIRID_CONFIG);
+const config = (...userConfigs: UserConfigItem[]) => {
+  return xenopomp(ANTFU_CONFIG, ...userConfigs);
 };
 
 export default config;
