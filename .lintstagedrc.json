@@ -1,5 +1,3 @@
 {
-  "apps/backend/**.{js,ts,jsx,tsx}": "eslint -c apps/backend/eslint.config.ts",
-  "packages/app-constants/**.{js,ts,jsx,tsx}": "eslint -c packages/app-constants/eslint.config.ts",
-  "packages/backend-types/**.{js,ts,jsx,tsx}": "eslint -c packages/backend-types/eslint.config.ts"
+  "./**.{js,ts,jsx,tsx}": "eslint"
 }

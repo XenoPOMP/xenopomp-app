@@ -1,8 +1,3 @@
-import config from '@repo/eslint-config';
+import xenopomp from 'xenopomp-essentials/eslint';
 
-export default config({
-  rules: {
-    'react/no-forward-ref': 'off',
-    'react/ensure-forward-ref-using-ref': 'off',
-  },
-});
+export default xenopomp();
