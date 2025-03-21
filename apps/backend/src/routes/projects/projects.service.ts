@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import type { Project } from '@prisma/client';
 
-import type { SingleProjectStack } from '@repo/backend-types';
+import type { ProjectById, SingleProjectStack } from '@repo/backend-types';
 
 // eslint-disable-next-line ts/consistent-type-imports
 import { PrismaService } from '../../features';
@@ -27,7 +27,7 @@ export class ProjectsService {
     return manyToMany.map(v => v.stackTech);
   }
 
-  async getById(projectId: string): Promise<Project | null> {
+  async getById(projectId: string): Promise<ProjectById> {
     return this.prisma.project.findFirst({
       where: {
         id: projectId,
