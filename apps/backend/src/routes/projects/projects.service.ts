@@ -1,7 +1,11 @@
 import { Injectable } from '@nestjs/common';
-import type { Project } from '@prisma/client';
 
-import type { ProjectById, SingleProjectStack } from '@repo/backend-types';
+import type {
+  AllProjects,
+  ProjectById,
+  ProjectCount,
+  SingleProjectStack,
+} from '@repo/backend-types';
 
 // eslint-disable-next-line ts/consistent-type-imports
 import { PrismaService } from '../../features';
@@ -10,7 +14,7 @@ import { PrismaService } from '../../features';
 export class ProjectsService {
   constructor(private readonly prisma: PrismaService) {}
 
-  async getCount(): Promise<number> {
+  async getCount(): Promise<ProjectCount> {
     return this.prisma.project.count();
   }
 
@@ -35,7 +39,7 @@ export class ProjectsService {
     });
   }
 
-  async getAll(): Promise<Project[]> {
+  async getAll(): Promise<AllProjects> {
     return this.prisma.project.findMany();
   }
 }

@@ -1,9 +1,9 @@
 import { Controller, Param } from '@nestjs/common';
-import type { Project } from '@prisma/client';
 
 import type {
-  DataResponse,
+  GetAllProjects,
   GetProjectById,
+  GetProjectCount,
   GetSingleProjectStack,
 } from '@repo/backend-types';
 
@@ -32,12 +32,12 @@ export class ProjectsController {
   }
 
   @Endpoint('GET', '/all')
-  async get(): Promise<DataResponse<Project[]>> {
+  async get(): Promise<GetAllProjects> {
     return handleData(await this.projectsService.getAll());
   }
 
   @Endpoint('GET', '/all/count')
-  async getCount(): Promise<DataResponse<number>> {
+  async getCount(): Promise<GetProjectCount> {
     return handleData(await this.projectsService.getCount());
   }
 }
