@@ -1,19 +1,19 @@
 import { Injectable } from '@nestjs/common';
 import type { User } from '@prisma/client';
+import { hash } from 'argon2';
 
 import type { CrudService } from '@repo/nest';
 
 // eslint-disable-next-line ts/consistent-type-imports
 import { PrismaService } from '../../features';
+// eslint-disable-next-line ts/consistent-type-imports
 import { AuthDto } from '../auth/dto';
 
 // eslint-disable-next-line ts/consistent-type-imports
 import { UserDto } from './dto';
 
 @Injectable()
-export class UserService
-  implements Pick<CrudService<User, AuthDto, UserDto>, 'getById' | 'getMany'>
-{
+export class UserService implements CrudService<User, AuthDto, UserDto> {
   constructor(private readonly prisma: PrismaService) {}
 
   async getById(id: User['id']) {
@@ -28,8 +28,41 @@ export class UserService
     return this.prisma.user.findMany();
   }
 
-  async create(dto: UserDto) {
-    // eslint-disable-next-line no-console
-    console.log(dto);
+  async create(dto: AuthDto) {
+    const newUser: Pick<User, 'email' | 'password'> = {
+      email: dto.email,
+      password: await hash(dto.password),
+    };
+
+    return this.prisma.user.create({
+      data: newUser,
+    });
+  }
+
+  async updateById(id: User['id'], dto: UserDto) {
+    let data = dto;
+
+    if (dto.password) {
+      data = { ...dto, password: await hash(dto.password) };
+    }
+
+    return this.prisma.user.update({
+      where: {
+        id,
+      },
+      data,
+      select: {
+        name: true,
+        email: true,
+      },
+    });
+  }
+
+  async deleteById(id: User['id']) {
+    await this.prisma.user.delete({
+      where: {
+        id,
+      },
+    });
   }
 }

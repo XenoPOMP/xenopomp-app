@@ -25,7 +25,7 @@ export interface CrudService<
   /**
    * Updates entity from DTO.
    */
-  update: (dto: UpdateDto) => Promise<Partial<Entity>>;
+  updateById: (id: Entity['id'], dto: UpdateDto) => Promise<Partial<Entity>>;
 
   /**
    * Deletes entity by id.
