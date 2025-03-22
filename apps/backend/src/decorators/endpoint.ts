@@ -14,6 +14,8 @@ import {
 import { AllMethods } from 'supertest/types';
 import { Fn } from 'xenopomp-essentials';
 
+import { Auth } from '../routes/auth/decorators';
+
 type Method = keyof typeof methodsMap;
 type Path = string | string[];
 
@@ -35,6 +37,9 @@ interface EndpointOptions {
 
   /** Enables validation with class-validator via pipes. */
   validate?: boolean;
+
+  /** If true, will pass only registered users. */
+  authRequired?: boolean;
 }
 
 /**
@@ -58,12 +63,14 @@ export function Endpoint(type: Method, path?: Path, options?: EndpointOptions) {
   const Method = methodsMap[type];
   const code = options?.code ?? 200;
   const validate = options?.validate ?? false;
+  const authRequired = options?.authRequired ?? false;
 
   // Allow optionally adding decorators
   const decorators = [
     validate ? UsePipes(new ValidationPipe()) : undefined,
     HttpCode(code),
     Method(path),
+    authRequired ? Auth() : undefined,
   ]
     .filter(d => d !== undefined)
     .reverse();
