@@ -1,4 +1,10 @@
-import { Body, Controller, HttpStatus, Param } from '@nestjs/common';
+import {
+  BadRequestException,
+  Body,
+  Controller,
+  HttpStatus,
+  Param,
+} from '@nestjs/common';
 
 import {
   GetAllProjects,
@@ -6,6 +12,7 @@ import {
   GetProjectCount,
   GetSingleProjectStack,
 } from '@repo/backend-types';
+import { issueErrorCode } from '@repo/errors';
 
 import { Endpoint } from '../../decorators';
 import { handleData } from '../../features';
@@ -24,7 +31,7 @@ export class ProjectsController {
     return handleData(await this.projectsService.getStackById(projectId));
   }
 
-  @Endpoint('GET', '/single/:projectId/get')
+  @Endpoint('GET', '/single/:projectId')
   async getById(
     @Param('projectId') projectId: string,
   ): Promise<GetProjectById> {
@@ -53,7 +60,7 @@ export class ProjectsController {
     return handleData(await this.projectsService.create(dto));
   }
 
-  @Endpoint('DELETE', '/single/:projectId/delete', {
+  @Endpoint('DELETE', '/single/:projectId', {
     code: HttpStatus.NO_CONTENT,
     authRequired: true,
     permissions: {
@@ -61,6 +68,10 @@ export class ProjectsController {
     },
   })
   async deleteOneProject(@Param('projectId') projectId: string) {
-    await this.projectsService.deleteById(projectId);
+    try {
+      await this.projectsService.deleteById(projectId);
+    } catch (e) {
+      throw new BadRequestException(issueErrorCode('ENOENT'));
+    }
   }
 }

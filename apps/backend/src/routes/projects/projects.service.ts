@@ -51,6 +51,15 @@ export class ProjectsService {
     });
   }
 
+  async updateById(projectId: Project['id'], dto: ProjectDto) {
+    return this.prisma.project.update({
+      where: {
+        id: projectId,
+      },
+      data: dto,
+    });
+  }
+
   async deleteById(projectId: Project['id']) {
     await this.prisma.stackOfProject.deleteMany({
       where: {
@@ -58,7 +67,7 @@ export class ProjectsService {
       },
     });
 
-    return this.prisma.project.deleteMany({
+    await this.prisma.project.deleteMany({
       where: {
         id: projectId,
       },
