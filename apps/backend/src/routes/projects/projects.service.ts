@@ -51,10 +51,16 @@ export class ProjectsService {
     });
   }
 
-  async deleteById(id: Project['id']) {
+  async deleteById(projectId: Project['id']) {
+    await this.prisma.stackOfProject.deleteMany({
+      where: {
+        projectId,
+      },
+    });
+
     return this.prisma.project.delete({
       where: {
-        id,
+        id: projectId,
       },
     });
   }
