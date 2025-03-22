@@ -44,7 +44,9 @@ export type StackTech = $Result.DefaultSelection<Prisma.$StackTechPayload>
  */
 export namespace $Enums {
   export const Permissions: {
-  all: 'all'
+  all: 'all',
+  createProjects: 'createProjects',
+  updateProjects: 'updateProjects'
 };
 
 export type Permissions = (typeof Permissions)[keyof typeof Permissions]

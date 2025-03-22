@@ -43,6 +43,10 @@ model UserRole {
 // List of permissions that can be applied to role
 enum Permissions {
   all
+
+  // Projects
+  createProjects
+  updateProjects
 }
 
 model Project {
