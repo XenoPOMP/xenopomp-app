@@ -7,6 +7,8 @@ import {
   Patch,
   Post,
   Put,
+  UsePipes,
+  ValidationPipe,
   applyDecorators,
 } from '@nestjs/common';
 import type { AllMethods } from 'supertest/types';
@@ -30,6 +32,9 @@ const methodsMap = {
 interface EndpointOptions {
   /** Return code on successful response. */
   code?: number;
+
+  /** Enables validation with class-validator via pipes. */
+  validate?: boolean;
 }
 
 /**
@@ -52,11 +57,14 @@ interface EndpointOptions {
 export function Endpoint(type: Method, path?: Path, options?: EndpointOptions) {
   const method = methodsMap[type];
   const code = options?.code ?? 200;
+  const validate = options?.validate ?? false;
 
   // Allow optionally adding decorators
-  const decorators = [HttpCode(code), method(path)].filter(
-    d => d !== undefined,
-  );
+  const decorators = [
+    HttpCode(code),
+    method(path),
+    validate ? UsePipes(new ValidationPipe()) : undefined,
+  ].filter(d => d !== undefined);
 
   return applyDecorators(...decorators);
 }
