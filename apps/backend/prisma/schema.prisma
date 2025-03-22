@@ -21,10 +21,9 @@ datasource db {
 model User {
   id String @id @default(cuid())
 
-  login    String  @unique
   email    String  @unique
-  nickName String? @map("nick_name")
   password String
+  name     String?
 
   @@map("user")
 }

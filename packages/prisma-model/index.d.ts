@@ -1229,52 +1229,46 @@ export namespace Prisma {
 
   export type UserMinAggregateOutputType = {
     id: string | null
-    login: string | null
     email: string | null
-    nickName: string | null
     password: string | null
+    name: string | null
   }
 
   export type UserMaxAggregateOutputType = {
     id: string | null
-    login: string | null
     email: string | null
-    nickName: string | null
     password: string | null
+    name: string | null
   }
 
   export type UserCountAggregateOutputType = {
     id: number
-    login: number
     email: number
-    nickName: number
     password: number
+    name: number
     _all: number
   }
 
 
   export type UserMinAggregateInputType = {
     id?: true
-    login?: true
     email?: true
-    nickName?: true
     password?: true
+    name?: true
   }
 
   export type UserMaxAggregateInputType = {
     id?: true
-    login?: true
     email?: true
-    nickName?: true
     password?: true
+    name?: true
   }
 
   export type UserCountAggregateInputType = {
     id?: true
-    login?: true
     email?: true
-    nickName?: true
     password?: true
+    name?: true
     _all?: true
   }
 
@@ -1352,10 +1346,9 @@ export namespace Prisma {
 
   export type UserGroupByOutputType = {
     id: string
-    login: string
     email: string
-    nickName: string | null
     password: string
+    name: string | null
     _count: UserCountAggregateOutputType | null
     _min: UserMinAggregateOutputType | null
     _max: UserMaxAggregateOutputType | null
@@ -1377,47 +1370,42 @@ export namespace Prisma {
 
   export type UserSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    login?: boolean
     email?: boolean
-    nickName?: boolean
     password?: boolean
+    name?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    login?: boolean
     email?: boolean
-    nickName?: boolean
     password?: boolean
+    name?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    login?: boolean
     email?: boolean
-    nickName?: boolean
     password?: boolean
+    name?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectScalar = {
     id?: boolean
-    login?: boolean
     email?: boolean
-    nickName?: boolean
     password?: boolean
+    name?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "login" | "email" | "nickName" | "password", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "password" | "name", ExtArgs["result"]["user"]>
 
   export type $UserPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "User"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      login: string
       email: string
-      nickName: string | null
       password: string
+      name: string | null
     }, ExtArgs["result"]["user"]>
     composites: {}
   }
@@ -1842,10 +1830,9 @@ export namespace Prisma {
    */ 
   interface UserFieldRefs {
     readonly id: FieldRef<"User", 'String'>
-    readonly login: FieldRef<"User", 'String'>
     readonly email: FieldRef<"User", 'String'>
-    readonly nickName: FieldRef<"User", 'String'>
     readonly password: FieldRef<"User", 'String'>
+    readonly name: FieldRef<"User", 'String'>
   }
     
 
@@ -5369,10 +5356,9 @@ export namespace Prisma {
 
   export const UserScalarFieldEnum: {
     id: 'id',
-    login: 'login',
     email: 'email',
-    nickName: 'nickName',
-    password: 'password'
+    password: 'password',
+    name: 'name'
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -5485,37 +5471,33 @@ export namespace Prisma {
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
     id?: StringFilter<"User"> | string
-    login?: StringFilter<"User"> | string
     email?: StringFilter<"User"> | string
-    nickName?: StringNullableFilter<"User"> | string | null
     password?: StringFilter<"User"> | string
+    name?: StringNullableFilter<"User"> | string | null
   }
 
   export type UserOrderByWithRelationInput = {
     id?: SortOrder
-    login?: SortOrder
     email?: SortOrder
-    nickName?: SortOrderInput | SortOrder
     password?: SortOrder
+    name?: SortOrderInput | SortOrder
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    login?: string
     email?: string
     AND?: UserWhereInput | UserWhereInput[]
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
-    nickName?: StringNullableFilter<"User"> | string | null
     password?: StringFilter<"User"> | string
-  }, "id" | "login" | "email">
+    name?: StringNullableFilter<"User"> | string | null
+  }, "id" | "email">
 
   export type UserOrderByWithAggregationInput = {
     id?: SortOrder
-    login?: SortOrder
     email?: SortOrder
-    nickName?: SortOrderInput | SortOrder
     password?: SortOrder
+    name?: SortOrderInput | SortOrder
     _count?: UserCountOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
     _min?: UserMinOrderByAggregateInput
@@ -5526,10 +5508,9 @@ export namespace Prisma {
     OR?: UserScalarWhereWithAggregatesInput[]
     NOT?: UserScalarWhereWithAggregatesInput | UserScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"User"> | string
-    login?: StringWithAggregatesFilter<"User"> | string
     email?: StringWithAggregatesFilter<"User"> | string
-    nickName?: StringNullableWithAggregatesFilter<"User"> | string | null
     password?: StringWithAggregatesFilter<"User"> | string
+    name?: StringNullableWithAggregatesFilter<"User"> | string | null
   }
 
   export type ProjectWhereInput = {
@@ -5677,58 +5658,51 @@ export namespace Prisma {
 
   export type UserCreateInput = {
     id?: string
-    login: string
     email: string
-    nickName?: string | null
     password: string
+    name?: string | null
   }
 
   export type UserUncheckedCreateInput = {
     id?: string
-    login: string
     email: string
-    nickName?: string | null
     password: string
+    name?: string | null
   }
 
   export type UserUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    login?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    nickName?: NullableStringFieldUpdateOperationsInput | string | null
     password?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type UserUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    login?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    nickName?: NullableStringFieldUpdateOperationsInput | string | null
     password?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type UserCreateManyInput = {
     id?: string
-    login: string
     email: string
-    nickName?: string | null
     password: string
+    name?: string | null
   }
 
   export type UserUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    login?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    nickName?: NullableStringFieldUpdateOperationsInput | string | null
     password?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type UserUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    login?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    nickName?: NullableStringFieldUpdateOperationsInput | string | null
     password?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ProjectCreateInput = {
@@ -5907,26 +5881,23 @@ export namespace Prisma {
 
   export type UserCountOrderByAggregateInput = {
     id?: SortOrder
-    login?: SortOrder
     email?: SortOrder
-    nickName?: SortOrder
     password?: SortOrder
+    name?: SortOrder
   }
 
   export type UserMaxOrderByAggregateInput = {
     id?: SortOrder
-    login?: SortOrder
     email?: SortOrder
-    nickName?: SortOrder
     password?: SortOrder
+    name?: SortOrder
   }
 
   export type UserMinOrderByAggregateInput = {
     id?: SortOrder
-    login?: SortOrder
     email?: SortOrder
-    nickName?: SortOrder
     password?: SortOrder
+    name?: SortOrder
   }
 
   export type StringWithAggregatesFilter<$PrismaModel = never> = {
