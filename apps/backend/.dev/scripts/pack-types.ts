@@ -2,7 +2,7 @@ import { writeFile } from 'node:fs/promises';
 // @ts-expect-error Just a script...
 import path from 'node:path';
 import { cwd } from 'node:process';
-import type { PackageJson } from 'type-fest';
+import { PackageJson } from 'type-fest';
 
 // Constants
 const LIB_NAME = '@repo/prisma-model';
