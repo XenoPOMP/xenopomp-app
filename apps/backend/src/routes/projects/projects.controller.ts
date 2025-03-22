@@ -1,4 +1,4 @@
-import { Controller, Param } from '@nestjs/common';
+import { Body, Controller, HttpStatus, Param } from '@nestjs/common';
 
 import {
   GetAllProjects,
@@ -10,6 +10,7 @@ import {
 import { Endpoint } from '../../decorators';
 import { handleData } from '../../features';
 
+import { ProjectDto } from './dto';
 import { ProjectsService } from './projects.service';
 
 @Controller('project')
@@ -38,5 +39,17 @@ export class ProjectsController {
   @Endpoint('GET', '/all/count')
   async getCount(): Promise<GetProjectCount> {
     return handleData(await this.projectsService.getCount());
+  }
+
+  @Endpoint('POST', '/single/create', {
+    code: HttpStatus.CREATED,
+    validate: true,
+    authRequired: true,
+    permissions: {
+      createProjects: true,
+    },
+  })
+  async createOne(@Body() dto: ProjectDto) {
+    return handleData(await this.projectsService.create(dto));
   }
 }

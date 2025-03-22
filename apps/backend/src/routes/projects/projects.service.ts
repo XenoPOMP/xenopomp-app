@@ -9,6 +9,8 @@ import {
 
 import { PrismaService } from '../../features';
 
+import { ProjectDto } from './dto';
+
 @Injectable()
 export class ProjectsService {
   constructor(private readonly prisma: PrismaService) {}
@@ -40,5 +42,11 @@ export class ProjectsService {
 
   async getAll(): Promise<AllProjects> {
     return this.prisma.project.findMany();
+  }
+
+  async create(dto: ProjectDto) {
+    return this.prisma.project.create({
+      data: dto,
+    });
   }
 }
