@@ -6,16 +6,16 @@ export class AuthDto {
   @IsEmail(
     {},
     {
-      message: issueErrorCode('VALIDATION_FAILED_IS_EMAIL'),
+      message: issueErrorCode('VALIDATION_WRONG_DATA_TYPE'),
     },
   )
   email: string;
 
   @IsString({
-    message: issueErrorCode('VALIDATION_WRONG_PASSWORD'),
+    message: issueErrorCode('VALIDATION_WRONG_DATA_TYPE'),
   })
   @MinLength(6, {
-    message: issueErrorCode('VALIDATION_FAILED_ON_PASSWORD_MIN_LENGTH'),
+    message: issueErrorCode('VALIDATION_MIN_LENGTH'),
   })
   password: string;
 }
