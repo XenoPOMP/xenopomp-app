@@ -1,7 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import type { User } from '@prisma/client';
 
-import type { CrudService } from '@repo/nest';
+// eslint-disable-next-line ts/consistent-type-imports
+import { CrudService } from '@repo/nest';
 
 // eslint-disable-next-line ts/consistent-type-imports
 import { PrismaService } from '../../features';
