@@ -1,0 +1,16 @@
+{
+  "name": "@repo/scripts",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "yarn tsup --watch",
+    "build": "yarn tsup",
+    "lint": "eslint",
+    "tsup": "tsup src/index.ts --format cjs,esm --dts --target es2022 --clean --out-dir dist"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "devDependencies": {
+    "@repo/ts-config": "*"
+  }
+}
