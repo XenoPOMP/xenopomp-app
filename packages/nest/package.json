@@ -13,8 +13,8 @@
     "tsup:build:main": "yarn tsup --out-dir dist src/index.ts",
     "tsup:watch:main": "yarn tsup:dev --out-dir dist src/index.ts"
   },
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "devDependencies": {
     "@repo/ts-config": "*"
   }
