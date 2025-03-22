@@ -2,7 +2,8 @@ import { Body, Controller } from '@nestjs/common';
 
 import { Endpoint } from '../../decorators';
 
-import type { UserDto } from './dto';
+// eslint-disable-next-line ts/consistent-type-imports
+import { UserDto } from './dto';
 // eslint-disable-next-line ts/consistent-type-imports
 import { UserService } from './user.service';
 
