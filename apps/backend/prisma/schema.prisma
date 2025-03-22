@@ -47,6 +47,7 @@ enum Permissions {
   // Projects
   createProjects
   updateProjects
+  deleteProjects
 }
 
 model Project {

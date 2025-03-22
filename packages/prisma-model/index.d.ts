@@ -46,7 +46,8 @@ export namespace $Enums {
   export const Permissions: {
   all: 'all',
   createProjects: 'createProjects',
-  updateProjects: 'updateProjects'
+  updateProjects: 'updateProjects',
+  deleteProjects: 'deleteProjects'
 };
 
 export type Permissions = (typeof Permissions)[keyof typeof Permissions]
