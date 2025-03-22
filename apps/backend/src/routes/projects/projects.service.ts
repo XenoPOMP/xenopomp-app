@@ -58,7 +58,7 @@ export class ProjectsService {
       },
     });
 
-    return this.prisma.project.delete({
+    return this.prisma.project.deleteMany({
       where: {
         id: projectId,
       },
