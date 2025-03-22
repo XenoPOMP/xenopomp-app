@@ -21,6 +21,14 @@ export class UserService implements CrudService<User, AuthDto, UserDto> {
     });
   }
 
+  async getByEmail(email: User['email']): Promise<User | null> {
+    return this.prisma.user.findUnique({
+      where: {
+        email,
+      },
+    });
+  }
+
   async getMany() {
     return this.prisma.user.findMany();
   }
