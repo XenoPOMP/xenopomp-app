@@ -15,6 +15,7 @@ import { AllMethods } from 'supertest/types';
 import { Fn } from 'xenopomp-essentials';
 
 import { Auth } from '../routes/auth/decorators';
+import { PermissionList, RequiresPermissions } from '../routes/auth/guards';
 
 type Method = keyof typeof methodsMap;
 type Path = string | string[];
@@ -40,6 +41,9 @@ interface EndpointOptions {
 
   /** If true, will pass only registered users. */
   authRequired?: boolean;
+
+  /** List of required permission for accessing the route. */
+  permissions?: PermissionList;
 }
 
 /**
@@ -60,7 +64,9 @@ interface EndpointOptions {
  * // GET http://localhost:3001/test 201
  */
 export function Endpoint(type: Method, path?: Path, options?: EndpointOptions) {
-  const Method = methodsMap[type];
+  const HttpMethod = methodsMap[type];
+
+  // Default values
   const code = options?.code ?? 200;
   const validate = options?.validate ?? false;
   const authRequired = options?.authRequired ?? false;
@@ -69,7 +75,8 @@ export function Endpoint(type: Method, path?: Path, options?: EndpointOptions) {
   const decorators = [
     validate ? UsePipes(new ValidationPipe()) : undefined,
     HttpCode(code),
-    Method(path),
+    HttpMethod(path),
+    options?.permissions ? RequiresPermissions(options.permissions) : undefined,
     authRequired ? Auth() : undefined,
   ]
     .filter(d => d !== undefined)
