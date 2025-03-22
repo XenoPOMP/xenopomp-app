@@ -3,32 +3,32 @@ export interface CrudServiceEntityContract {
 }
 
 export interface CrudService<
-  User extends CrudServiceEntityContract,
+  Entity extends CrudServiceEntityContract,
   CreationDto,
   UpdateDto,
 > {
   /**
    * Returns entity with certain id if exists.
    */
-  getById: (id: User['id']) => Partial<User> | null;
+  getById: (id: Entity['id']) => Promise<Partial<Entity> | null>;
 
   /**
    * Returns all entities based on some query conditions.
    */
-  getMany: () => Partial<User>[];
+  getMany: () => Promise<Partial<Entity>[]>;
 
   /**
    * Creates entity from DTO.
    */
-  create: (dto: CreationDto) => Partial<User>;
+  create: (dto: CreationDto) => Promise<Partial<Entity>>;
 
   /**
    * Updates entity from DTO.
    */
-  update: (dto: UpdateDto) => Partial<User>;
+  update: (dto: UpdateDto) => Promise<Partial<Entity>>;
 
   /**
    * Deletes entity by id.
    */
-  deleteById: (id: User['id']) => void;
+  deleteById: (id: Entity['id']) => Promise<void>;
 }
