@@ -6,9 +6,12 @@ import type { CrudService } from '@repo/nest';
 // eslint-disable-next-line ts/consistent-type-imports
 import { PrismaService } from '../../features';
 
+// eslint-disable-next-line ts/consistent-type-imports
+import { UserDto } from './dto';
+
 @Injectable()
 export class UserService
-  implements Pick<CrudService<User, unknown, unknown>, 'getById' | 'getMany'>
+  implements Pick<CrudService<User, UserDto, UserDto>, 'getById' | 'getMany'>
 {
   constructor(private readonly prisma: PrismaService) {}
 
@@ -22,5 +25,10 @@ export class UserService
 
   async getMany() {
     return this.prisma.user.findMany();
+  }
+
+  async create(dto: UserDto) {
+    // eslint-disable-next-line no-console
+    console.log(dto);
   }
 }
