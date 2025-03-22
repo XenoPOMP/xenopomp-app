@@ -60,6 +60,23 @@ export class ProjectsController {
     return handleData(await this.projectsService.create(dto));
   }
 
+  @Endpoint('PUT', '/single/:projectId', {
+    authRequired: true,
+    validate: true,
+    permissions: {
+      updateProjects: true,
+    },
+  })
+  async updateOneProject(
+    @Param('projectId') projectId: string,
+    @Body() dto?: ProjectDto,
+  ) {
+    if (!dto) {
+      throw new BadRequestException(issueErrorCode('PROJECT_UPDATE_FAILED'));
+    }
+    return this.projectsService.updateById(projectId, dto);
+  }
+
   @Endpoint('DELETE', '/single/:projectId', {
     code: HttpStatus.NO_CONTENT,
     authRequired: true,
