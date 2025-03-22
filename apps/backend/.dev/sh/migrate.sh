@@ -10,3 +10,4 @@ fi
 
 yarn migrate:dev --name "$MIGRATION_NAME"
 yarn pack:types
+yarn pack:env
