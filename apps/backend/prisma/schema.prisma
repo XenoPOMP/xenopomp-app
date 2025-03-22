@@ -25,7 +25,24 @@ model User {
   password String
   name     String?
 
+  role   UserRole? @relation(fields: [roleId], references: [id])
+  roleId String?   @map("role_id")
+
   @@map("user")
+}
+
+model UserRole {
+  id          String        @id @default(cuid())
+  name        String?
+  permissions Permissions[] @default([])
+  User        User[]
+
+  @@map("user_role")
+}
+
+// List of permissions that can be applied to role
+enum Permissions {
+  all
 }
 
 model Project {
