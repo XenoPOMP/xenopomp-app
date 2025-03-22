@@ -1,8 +1,6 @@
 import {
   Body,
   Controller,
-  Param,
-  Query,
   Req,
   Res,
   UnauthorizedException,
@@ -44,7 +42,7 @@ export class AuthController {
     @Req() req: Request,
     @Res({ passthrough: true }) res: Response,
   ) {
-    const refreshTokenFromCookies = req.cookies[REFRESH_TOKEN_NAME];
+    const refreshTokenFromCookies = req.cookies?.[REFRESH_TOKEN_NAME];
 
     /** Check if refreshToken is not provided through cookies. */
     if (!refreshTokenFromCookies) {
