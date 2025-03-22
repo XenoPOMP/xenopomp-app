@@ -52,4 +52,15 @@ export class ProjectsController {
   async createOne(@Body() dto: ProjectDto) {
     return handleData(await this.projectsService.create(dto));
   }
+
+  @Endpoint('DELETE', '/single/:projectId/delete', {
+    code: HttpStatus.NO_CONTENT,
+    authRequired: true,
+    permissions: {
+      deleteProjects: true,
+    },
+  })
+  async deleteOneProject(@Param('projectId') projectId: string) {
+    await this.projectsService.deleteById(projectId);
+  }
 }
