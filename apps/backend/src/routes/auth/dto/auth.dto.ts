@@ -11,7 +11,9 @@ export class AuthDto {
   )
   email: string;
 
-  @IsString()
+  @IsString({
+    message: issueErrorCode('VALIDATION_WRONG_PASSWORD'),
+  })
   @MinLength(6, {
     message: issueErrorCode('VALIDATION_FAILED_ON_PASSWORD_MIN_LENGTH'),
   })
