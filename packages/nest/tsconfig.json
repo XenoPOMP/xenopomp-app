@@ -1,0 +1,10 @@
+{
+  "extends": [
+    "@repo/ts-config/base.json",
+    "@repo/ts-config/lib.json",
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
+}

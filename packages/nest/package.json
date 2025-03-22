@@ -1,0 +1,21 @@
+{
+  "name": "@repo/nest",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "yarn tsup:watch",
+    "build": "yarn tsup:build",
+    "lint": "eslint",
+    "tsup:build": "run-p tsup:build:*",
+    "tsup:watch": "run-p tsup:watch:*",
+    "tsup": "tsup --format cjs,esm --dts --target es2022 --clean",
+    "tsup:dev": "yarn tsup --watch",
+    "tsup:build:main": "yarn tsup --out-dir dist src/index.ts",
+    "tsup:watch:main": "yarn tsup:dev --out-dir dist src/index.ts"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "devDependencies": {
+    "@repo/ts-config": "*"
+  }
+}
