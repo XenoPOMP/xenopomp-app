@@ -11,8 +11,8 @@ import {
   ValidationPipe,
   applyDecorators,
 } from '@nestjs/common';
-import type { AllMethods } from 'supertest/types';
-import type { Fn } from 'xenopomp-essentials';
+import { AllMethods } from 'supertest/types';
+import { Fn } from 'xenopomp-essentials';
 
 type Method = keyof typeof methodsMap;
 type Path = string | string[];

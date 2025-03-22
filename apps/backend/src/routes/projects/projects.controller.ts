@@ -1,6 +1,6 @@
 import { Controller, Param } from '@nestjs/common';
 
-import type {
+import {
   GetAllProjects,
   GetProjectById,
   GetProjectCount,
@@ -10,7 +10,6 @@ import type {
 import { Endpoint } from '../../decorators';
 import { handleData } from '../../features';
 
-// eslint-disable-next-line ts/consistent-type-imports
 import { ProjectsService } from './projects.service';
 
 @Controller('project')

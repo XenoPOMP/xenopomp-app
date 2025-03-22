@@ -1,11 +1,9 @@
 import { Injectable } from '@nestjs/common';
-// eslint-disable-next-line ts/consistent-type-imports
 import { ConfigService } from '@nestjs/config';
 import { PassportStrategy } from '@nestjs/passport';
-import type { User } from '@prisma/client';
+import { User } from '@prisma/client';
 import { ExtractJwt, Strategy } from 'passport-jwt';
 
-// eslint-disable-next-line ts/consistent-type-imports
 import { UserService } from '../user';
 
 @Injectable()

@@ -1,8 +1,7 @@
 import { Controller } from '@nestjs/common';
 
-import type { DataResponse } from '@repo/backend-types';
+import { DataResponse } from '@repo/backend-types';
 
-// eslint-disable-next-line ts/consistent-type-imports
 import { AppService } from './app.service';
 import { Endpoint } from './decorators';
 

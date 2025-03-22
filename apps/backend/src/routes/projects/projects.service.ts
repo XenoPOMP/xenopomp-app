@@ -1,13 +1,12 @@
 import { Injectable } from '@nestjs/common';
 
-import type {
+import {
   AllProjects,
   ProjectById,
   ProjectCount,
   SingleProjectStack,
 } from '@repo/backend-types';
 
-// eslint-disable-next-line ts/consistent-type-imports
 import { PrismaService } from '../../features';
 
 @Injectable()

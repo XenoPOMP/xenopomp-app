@@ -1,4 +1,4 @@
-import type { DataResponse } from '@repo/backend-types';
+import { DataResponse } from '@repo/backend-types';
 
 /**
  * Wraps data as proper response structure.
