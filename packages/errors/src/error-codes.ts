@@ -10,6 +10,16 @@ export enum ERROR_CODES {
   VALIDATION_FAILED_IS_EMAIL,
 }
 
-export function issueErrorCode(code: keyof typeof ERROR_CODES) {
-  return `ERR${code}`;
+export type IssuedErrorCode<
+  K extends keyof typeof ERROR_CODES = keyof typeof ERROR_CODES,
+> = `ERR${(typeof ERROR_CODES)[K]}`;
+
+/**
+ * Wrapps error code for
+ * @param code
+ */
+export function issueErrorCode<K extends keyof typeof ERROR_CODES>(
+  code: K,
+): IssuedErrorCode<K> {
+  return `ERR${ERROR_CODES[code]}`;
 }
