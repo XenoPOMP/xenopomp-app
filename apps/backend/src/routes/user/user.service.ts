@@ -10,14 +10,19 @@ import { AuthDto } from '../auth/dto';
 
 import { UserDto } from './dto';
 
+type Include = Parameters<PrismaService['user']['findUnique']>[0]['include'];
+
 @Injectable()
 export class UserService implements CrudService<User, AuthDto, UserDto> {
   constructor(private readonly prisma: PrismaService) {}
 
-  async getById(id: User['id']) {
+  async getById(id: User['id'], include?: Include) {
     return this.prisma.user.findUnique({
       where: {
         id,
+      },
+      include: {
+        ...include,
       },
     });
   }
