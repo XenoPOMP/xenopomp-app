@@ -55,16 +55,18 @@ interface EndpointOptions {
  * // GET http://localhost:3001/test 201
  */
 export function Endpoint(type: Method, path?: Path, options?: EndpointOptions) {
-  const method = methodsMap[type];
+  const Method = methodsMap[type];
   const code = options?.code ?? 200;
   const validate = options?.validate ?? false;
 
   // Allow optionally adding decorators
   const decorators = [
-    HttpCode(code),
-    method(path),
     validate ? UsePipes(new ValidationPipe()) : undefined,
-  ].filter(d => d !== undefined);
+    HttpCode(code),
+    Method(path),
+  ]
+    .filter(d => d !== undefined)
+    .reverse();
 
   return applyDecorators(...decorators);
 }
