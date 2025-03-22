@@ -1,18 +1,18 @@
 import { Injectable } from '@nestjs/common';
 import type { User } from '@prisma/client';
 
-// eslint-disable-next-line ts/consistent-type-imports
-import { CrudService } from '@repo/nest';
+import type { CrudService } from '@repo/nest';
 
 // eslint-disable-next-line ts/consistent-type-imports
 import { PrismaService } from '../../features';
+import { AuthDto } from '../auth/dto';
 
 // eslint-disable-next-line ts/consistent-type-imports
 import { UserDto } from './dto';
 
 @Injectable()
 export class UserService
-  implements Pick<CrudService<User, UserDto, UserDto>, 'getById' | 'getMany'>
+  implements Pick<CrudService<User, AuthDto, UserDto>, 'getById' | 'getMany'>
 {
   constructor(private readonly prisma: PrismaService) {}
 
