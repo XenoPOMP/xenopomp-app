@@ -31,6 +31,7 @@
     "@repo/backend-types": "*",
     "@repo/constants": "*",
     "@repo/ts-config": "*",
+    "@repo/nest": "*",
     "lodash.set": "^4.3.2",
     "prisma": "^6.4.1",
     "reflect-metadata": "^0.2.2",

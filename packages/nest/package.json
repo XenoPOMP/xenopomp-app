@@ -11,7 +11,9 @@
     "tsup": "tsup --format cjs,esm --dts --target es2022 --clean",
     "tsup:dev": "yarn tsup --watch",
     "tsup:build:main": "yarn tsup --out-dir dist src/index.ts",
-    "tsup:watch:main": "yarn tsup:dev --out-dir dist src/index.ts"
+    "tsup:watch:main": "yarn tsup:dev --out-dir dist src/index.ts",
+    "tsup:build:crud": "yarn tsup --out-dir dist/crud packages/crud/index.ts",
+    "tsup:watch:crud": "yarn tsup:dev --out-dir dist/crud packages/crud/index.ts"
   },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
