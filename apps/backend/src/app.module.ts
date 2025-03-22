@@ -5,7 +5,7 @@ import { AppService } from './app.service';
 import { PrismaService } from './features';
 import { AuthModule } from './routes/auth/auth.module';
 import { ProjectsModule } from './routes/projects';
-import { UserModule } from './routes/user/user.module';
+import { UserModule } from './routes/user';
 
 @Module({
   imports: [ProjectsModule, AuthModule, UserModule],
