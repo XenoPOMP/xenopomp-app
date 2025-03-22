@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import { Project } from '@prisma/client';
 
 import {
   AllProjects,
@@ -47,6 +48,14 @@ export class ProjectsService {
   async create(dto: ProjectDto) {
     return this.prisma.project.create({
       data: dto,
+    });
+  }
+
+  async deleteById(id: Project['id']) {
+    return this.prisma.project.delete({
+      where: {
+        id,
+      },
     });
   }
 }
