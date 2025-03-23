@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { StackType } from '@prisma/client';
+import { StackTech } from '@prisma/client';
 
 import { StackStatsRaw } from '@repo/backend-types';
 
@@ -10,6 +10,17 @@ export class StatsService {
   constructor(private readonly prisma: PrismaService) {}
 
   TAKE_STACK_ENTRIES = '5';
+
+  /** Map calculated entries to camel case. */
+  private prepareStackList(
+    list: StackStatsRaw,
+  ): Array<Pick<StackTech, 'type' | 'iconName' | 'name'>> {
+    return list.map(({ tech_type, tech_icon_name, tech_name }) => ({
+      type: tech_type,
+      iconName: tech_icon_name,
+      name: tech_name,
+    }));
+  }
 
   async calculateTopStack(options?: { take?: string }) {
     const take: number = Number(options?.take ?? this.TAKE_STACK_ENTRIES);
@@ -54,9 +65,12 @@ export class StatsService {
             LIMIT ${take}
     `;
 
-    console.log({
-      frontend,
-      backend,
-    });
+    const preparedFrontend = this.prepareStackList(frontend);
+    const preparedBackend = this.prepareStackList(backend);
+
+    return {
+      frontend: preparedFrontend,
+      backend: preparedBackend,
+    };
   }
 }

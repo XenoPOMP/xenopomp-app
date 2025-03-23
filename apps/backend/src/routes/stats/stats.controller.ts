@@ -23,8 +23,10 @@ export class StatsController {
 
   @Endpoint('GET', '/stack')
   async stack(@Query('take') take: string | undefined) {
-    await this.statsService.calculateTopStack({
-      take,
-    });
+    return handleData(
+      await this.statsService.calculateTopStack({
+        take,
+      }),
+    );
   }
 }
