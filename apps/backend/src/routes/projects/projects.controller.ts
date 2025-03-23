@@ -43,11 +43,6 @@ export class ProjectsController {
     return handleData(await this.projectsService.getAll());
   }
 
-  // @Endpoint('GET', '/all/count')
-  // async getCount(): Promise<GetProjectCount> {
-  //   return handleData(await this.projectsService.getCount());
-  // }
-
   @Endpoint('POST', '/single/create', {
     code: HttpStatus.CREATED,
     validate: true,
