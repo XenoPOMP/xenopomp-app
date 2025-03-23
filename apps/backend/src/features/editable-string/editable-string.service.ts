@@ -1,13 +1,35 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, OnModuleInit } from '@nestjs/common';
 import { EditableString } from '@prisma/client';
+
+import { STRING_NAMES } from '@repo/constants';
 
 import { PrismaService } from '../prisma.service';
 
 import { EditableStringDto } from './dto';
 
 @Injectable()
-export class EditableStringService {
+export class EditableStringService implements OnModuleInit {
   constructor(private readonly prisma: PrismaService) {}
+
+  async onModuleInit() {
+    // Create default string if are not defined
+
+    const defaultStrings: EditableStringDto[] = [
+      {
+        name: STRING_NAMES.ABOUT_ME.TITLE,
+        value: 'Александр Наумов, 20 y.o',
+      },
+      {
+        name: STRING_NAMES.ABOUT_ME.DESC,
+        value:
+          'Front-end разработчик с опытом работы с React, TypeScript, Next.js и другими. Я всегда ищу новые задачи для решения',
+      },
+    ];
+
+    for (const dto of defaultStrings) {
+      await this.createNew(dto);
+    }
+  }
 
   async getByName(name: EditableString['name']) {
     return this.prisma.editableString.findUnique({
