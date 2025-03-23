@@ -1,5 +1,4 @@
 import { Controller, Query } from '@nestjs/common';
-import { StackType } from '@prisma/client';
 
 import { GetProjectCount } from '@repo/backend-types';
 
