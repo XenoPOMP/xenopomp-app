@@ -72,7 +72,9 @@ export class ProjectsController {
     @Body() dto?: ProjectDto,
   ) {
     if (!dto) {
-      throw new BadRequestException(issueErrorCode('PROJECT_UPDATE_FAILED'));
+      throw new BadRequestException(
+        issueErrorCode('PROJECT_UPDATE_WRONG_BODY'),
+      );
     }
     return this.projectsService.updateById(projectId, dto);
   }
@@ -88,7 +90,7 @@ export class ProjectsController {
     try {
       await this.projectsService.deleteById(projectId);
     } catch (e) {
-      throw new BadRequestException(issueErrorCode('ENOENT'));
+      throw new BadRequestException(issueErrorCode('PROJECT_DOES_NOT_EXIST'));
     }
   }
 }

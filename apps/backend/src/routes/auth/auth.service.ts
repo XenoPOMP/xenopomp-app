@@ -59,12 +59,12 @@ export class AuthService {
   async getNewTokens(refreshToken: string) {
     const result = await this.jwt.verifyAsync(refreshToken);
     if (!result)
-      throw new UnauthorizedException(issueErrorCode('INVALID_REFRESH_TOKEN'));
+      throw new UnauthorizedException(issueErrorCode('UNAUTHORIZED'));
 
     const userFromDb = await this.userService.getById(result.id);
 
     if (!userFromDb) {
-      throw new NotFoundException(issueErrorCode('AUTH_USER_EXISTENCE'));
+      throw new NotFoundException(issueErrorCode('USER_DOES_NOT_EXIST'));
     }
 
     const { password: _password, ...user } = userFromDb;
@@ -141,7 +141,7 @@ export class AuthService {
     const user = await this.userService.getByEmail(dto.email);
 
     if (!user)
-      throw new NotFoundException(issueErrorCode('AUTH_USER_EXISTENCE'));
+      throw new NotFoundException(issueErrorCode('USER_DOES_NOT_EXIST'));
 
     /** True if password from dto is valid. */
     const isValid = await verify(user.password, dto.password);

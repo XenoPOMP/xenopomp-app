@@ -47,7 +47,7 @@ export class AuthController {
     /** Check if refreshToken is not provided through cookies. */
     if (!refreshTokenFromCookies) {
       this.authService.removeRefreshTokenFromResponse(res);
-      throw new UnauthorizedException(issueErrorCode('INVALID_REFRESH_TOKEN'));
+      throw new UnauthorizedException(issueErrorCode('UNAUTHORIZED'));
     }
 
     /** Issue new tokens. */
