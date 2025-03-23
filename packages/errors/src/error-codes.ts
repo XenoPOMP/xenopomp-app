@@ -23,6 +23,10 @@ export const ERROR_CODES = createEnum(
   'PROJECT_DOES_NOT_EXIST',
   'PROJECT_NAME_IS_NOT_A_STRING',
   'PROJECT_DESC_IS_NOT_A_STRING',
+
+  // Editable string
+  'EDITABLE_STRING_NAME_SHOULD_BE_STRING',
+  'EDITABLE_STRING_VALUE_SHOULD_BE_STRING',
 );
 
 export type IssuedErrorCode<
