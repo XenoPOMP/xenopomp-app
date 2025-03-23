@@ -1,4 +1,5 @@
-import { Controller } from '@nestjs/common';
+import { Controller, Query } from '@nestjs/common';
+import { StackType } from '@prisma/client';
 
 import { GetProjectCount } from '@repo/backend-types';
 
@@ -15,16 +16,15 @@ export class StatsController {
     private readonly projectsService: ProjectsService,
   ) {}
 
-  /** Amount of taking most seen stack. */
-  TAKE_STACK_ENTRIES = 3;
-
   @Endpoint('GET', '/project-count')
   async getCount(): Promise<GetProjectCount> {
     return handleData(await this.projectsService.getCount());
   }
 
   @Endpoint('GET', '/stack')
-  async stack() {
-    await this.statsService.calculateTopStack();
+  async stack(@Query('take') take: string | undefined) {
+    await this.statsService.calculateTopStack({
+      take,
+    });
   }
 }
