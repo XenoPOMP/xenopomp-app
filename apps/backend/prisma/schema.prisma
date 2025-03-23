@@ -44,8 +44,8 @@ model UserRole {
 enum Permissions {
   all
 
-  // About me section
-  editAboutMe
+  // Edit strings
+  editStrings
 
   // Projects
   createProjects

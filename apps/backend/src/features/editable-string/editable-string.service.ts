@@ -5,7 +5,7 @@ import { STRING_NAMES } from '@repo/constants';
 
 import { PrismaService } from '../prisma.service';
 
-import { EditableStringDto } from './dto';
+import { EditableStringDto, EditableStringFetchDto } from './dto';
 
 @Injectable()
 export class EditableStringService implements OnModuleInit {
@@ -31,7 +31,7 @@ export class EditableStringService implements OnModuleInit {
     }
   }
 
-  async getByName(name: EditableString['name']) {
+  async getByName({ name }: EditableStringFetchDto) {
     return this.prisma.editableString.findUnique({
       where: {
         name,
@@ -43,8 +43,8 @@ export class EditableStringService implements OnModuleInit {
     const { name } = dto;
 
     // Create new value if old does not exist
-    if (await this.exists(name)) {
-      return this.getByName(name);
+    if (await this.exists({ name })) {
+      return this.getByName({ name });
     }
 
     return this.prisma.editableString.create({
@@ -63,7 +63,7 @@ export class EditableStringService implements OnModuleInit {
     });
   }
 
-  async exists(name: EditableString['name']) {
+  async exists({ name }: EditableStringFetchDto) {
     const count = await this.prisma.editableString.count({
       where: {
         name,

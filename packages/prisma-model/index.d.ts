@@ -50,7 +50,7 @@ export type StackTech = $Result.DefaultSelection<Prisma.$StackTechPayload>
 export namespace $Enums {
   export const Permissions: {
   all: 'all',
-  editAboutMe: 'editAboutMe',
+  editStrings: 'editStrings',
   createProjects: 'createProjects',
   updateProjects: 'updateProjects',
   deleteProjects: 'deleteProjects'
