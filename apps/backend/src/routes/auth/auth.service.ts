@@ -11,6 +11,7 @@ import { verify } from 'argon2';
 import { CookieOptions, Response } from 'express';
 import { LenientAutocomplete } from 'xenopomp-essentials';
 
+import { IssueTokens, LoginResult, SanitizedUser } from '@repo/backend-types';
 import { EXPIRE_DAY_REFRESH_TOKEN, REFRESH_TOKEN_NAME } from '@repo/constants';
 import { issueErrorCode } from '@repo/errors';
 
@@ -26,7 +27,7 @@ export class AuthService {
     private readonly configService: ConfigService,
   ) {}
 
-  async login(dto: AuthDto) {
+  async login(dto: AuthDto): Promise<LoginResult> {
     // Get user and sanitize him
     const { password, ...user } = await this.validateUser(dto);
 
@@ -116,7 +117,7 @@ export class AuthService {
   }
 
   /** Generates both of access and refresh tokens. */
-  private issueToken(userId: User['id']) {
+  private issueToken(userId: User['id']): IssueTokens {
     const data = { id: userId };
 
     const accessToken = this.jwt.sign(data, {
@@ -137,7 +138,7 @@ export class AuthService {
    * Checks if user with certain email exists
    * and return him.
    */
-  private async validateUser(dto: AuthDto) {
+  private async validateUser(dto: AuthDto): Promise<User> {
     const user = await this.userService.getByEmail(dto.email);
 
     if (!user)

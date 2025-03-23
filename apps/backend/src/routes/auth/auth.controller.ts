@@ -7,6 +7,7 @@ import {
 } from '@nestjs/common';
 import { Request, Response } from 'express';
 
+import { LoginResultRes, LogoutResultRes } from '@repo/backend-types/src';
 import { REFRESH_TOKEN_NAME } from '@repo/constants';
 import { issueErrorCode } from '@repo/errors';
 
@@ -23,7 +24,10 @@ export class AuthController {
   @Endpoint('POST', '/login', {
     validate: true,
   })
-  async login(@Body() dto: AuthDto, @Res({ passthrough: true }) res: Response) {
+  async login(
+    @Body() dto: AuthDto,
+    @Res({ passthrough: true }) res: Response,
+  ): Promise<LoginResultRes> {
     const { refreshToken, ...response } = await this.authService.login(dto);
     this.authService.addRefreshTokenToResponse(res, refreshToken);
 
@@ -41,7 +45,7 @@ export class AuthController {
   async getNewTokens(
     @Req() req: Request,
     @Res({ passthrough: true }) res: Response,
-  ) {
+  ): Promise<LoginResultRes> {
     const refreshTokenFromCookies = req.cookies?.[REFRESH_TOKEN_NAME];
 
     /** Check if refreshToken is not provided through cookies. */
@@ -62,7 +66,9 @@ export class AuthController {
   }
 
   @Endpoint('POST', '/logout')
-  async logout(@Res({ passthrough: true }) res: Response) {
+  async logout(
+    @Res({ passthrough: true }) res: Response,
+  ): Promise<LogoutResultRes> {
     this.authService.removeRefreshTokenFromResponse(res);
 
     return handleData({
