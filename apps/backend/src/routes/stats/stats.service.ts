@@ -14,6 +14,7 @@ export class StatsService {
              COUNT(stack_tech_id) as tech_count
       FROM stack_of_project
       GROUP BY stack_tech_id
+      ORDER BY tech_count DESC 
     `;
 
     Logger.log(query);
