@@ -22,4 +22,9 @@ export class StatsController {
   async getCount(): Promise<GetProjectCount> {
     return handleData(await this.projectsService.getCount());
   }
+
+  @Endpoint('GET', '/stack')
+  async stack() {
+    await this.statsService.calculateTopStack();
+  }
 }
