@@ -1,6 +1,7 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { StackTech } from '@prisma/client';
 import axios from 'axios';
+import { z } from 'zod';
 
 import { StackStatsRaw } from '@repo/backend-types';
 
@@ -85,10 +86,43 @@ export class StatsService {
    */
   async stars() {
     const url =
-      'https://api.github.com/search/repositories?q=org:XenoPOMP&sort=stars&order=desc';
+      'https://api.github.com/search/repositories?q=org:XenoPOMP&sort=stars&order=desc&per_page=6';
 
     const fetchedStars = await axios.get(url);
 
-    Logger.log(fetchedStars);
+    const apiSchema = z.object({
+      items: z
+        .array(
+          z.object({
+            name: z.string().optional(),
+            html_url: z.string().optional(),
+            stargazers_count: z.number().optional(),
+            owner: z
+              .object({
+                login: z.string().optional(),
+              })
+              .optional(),
+          }),
+        )
+        .optional()
+        .transform(arr =>
+          arr
+            ?.map(({ name, stargazers_count, owner, html_url }) =>
+              stargazers_count === 0
+                ? undefined
+                : {
+                    url: html_url,
+                    repoName: name,
+                    starsCount: stargazers_count,
+                    ownerName: owner?.login,
+                  },
+            )
+            .filter(item => item !== undefined),
+        ),
+    });
+
+    const parsedApiRes = apiSchema.parse(fetchedStars.data);
+
+    return parsedApiRes;
   }
 }

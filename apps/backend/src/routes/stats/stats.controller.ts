@@ -32,6 +32,6 @@ export class StatsController {
 
   @Endpoint('GET', '/stars')
   async stars() {
-    await this.statsService.stars();
+    return handleData(await this.statsService.stars());
   }
 }
