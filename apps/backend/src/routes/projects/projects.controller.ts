@@ -9,9 +9,9 @@ import {
 import {
   GetAllProjects,
   GetProjectById,
-  GetProjectCount,
   GetSingleProjectStack,
 } from '@repo/backend-types';
+import { CreateProjectRes } from '@repo/backend-types/src';
 import { issueErrorCode } from '@repo/errors';
 
 import { Endpoint } from '../../decorators';
@@ -51,7 +51,7 @@ export class ProjectsController {
       createProjects: true,
     },
   })
-  async createOne(@Body() dto: ProjectDto) {
+  async createOne(@Body() dto: ProjectDto): Promise<CreateProjectRes> {
     return handleData(await this.projectsService.create(dto));
   }
 
@@ -65,13 +65,13 @@ export class ProjectsController {
   async updateOneProject(
     @Param('projectId') projectId: string,
     @Body() dto?: ProjectDto,
-  ) {
+  ): Promise<CreateProjectRes> {
     if (!dto) {
       throw new BadRequestException(
         issueErrorCode('PROJECT_UPDATE_WRONG_BODY'),
       );
     }
-    return this.projectsService.updateById(projectId, dto);
+    return handleData(await this.projectsService.updateById(projectId, dto));
   }
 
   @Endpoint('DELETE', '/single/:projectId', {

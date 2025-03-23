@@ -1,5 +1,6 @@
-import type { Project, StackTech } from '@prisma/client';
 import type { Nullable } from 'xenopomp-essentials';
+
+import type { Project, StackTech } from '@repo/prisma-model';
 
 import type { DataResponse } from '../responses';
 
@@ -14,3 +15,6 @@ export type GetAllProjects = DataResponse<AllProjects>;
 
 export type ProjectCount = number;
 export type GetProjectCount = DataResponse<number>;
+
+export type CreateProject = Project;
+export type CreateProjectRes = DataResponse<CreateProject>;

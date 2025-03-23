@@ -3,6 +3,7 @@ import { Project } from '@prisma/client';
 
 import {
   AllProjects,
+  CreateProject,
   ProjectById,
   ProjectCount,
   SingleProjectStack,
@@ -45,13 +46,16 @@ export class ProjectsService {
     return this.prisma.project.findMany();
   }
 
-  async create(dto: ProjectDto) {
+  async create(dto: ProjectDto): Promise<CreateProject> {
     return this.prisma.project.create({
       data: dto,
     });
   }
 
-  async updateById(projectId: Project['id'], dto: ProjectDto) {
+  async updateById(
+    projectId: Project['id'],
+    dto: ProjectDto,
+  ): Promise<CreateProject> {
     return this.prisma.project.update({
       where: {
         id: projectId,
@@ -61,12 +65,6 @@ export class ProjectsService {
   }
 
   async deleteById(projectId: Project['id']) {
-    await this.prisma.stackOfProject.deleteMany({
-      where: {
-        projectId,
-      },
-    });
-
     await this.prisma.project.deleteMany({
       where: {
         id: projectId,
