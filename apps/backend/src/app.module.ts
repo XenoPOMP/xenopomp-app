@@ -4,6 +4,7 @@ import { ConfigModule } from '@nestjs/config';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { PrismaService } from './features';
+import { EditableStringModule } from './features/editable-string';
 import { RolesModule, RolesService } from './features/roles';
 import { AuthModule } from './routes/auth';
 import { FeatureRequestModule } from './routes/feature-request';
@@ -20,6 +21,7 @@ import { UserModule, UserService } from './routes/user';
     RolesModule,
     StatsModule,
     FeatureRequestModule,
+    EditableStringModule,
   ],
   controllers: [AppController],
   providers: [AppService, PrismaService, RolesService, UserService],
