@@ -7,8 +7,8 @@ import { FeatureRequestService } from './feature-request.service';
 export class FeatureRequestController {
   constructor(private readonly featureRequestService: FeatureRequestService) {}
 
-  @FeatureRequest('/edit-about-me', {
-    editAboutMe: true,
+  @FeatureRequest('/edit-strings', {
+    editStrings: true,
   })
   async editAboutMe() {}
 }
