@@ -94,6 +94,7 @@ model StackTech {
   type     StackType
   iconName String?   @map("icon_name")
   name     String
+  color    String?
 
   // Relations
   StackOfProject StackOfProject[]

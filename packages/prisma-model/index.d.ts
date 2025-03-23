@@ -6630,6 +6630,7 @@ export namespace Prisma {
     type: $Enums.StackType | null
     iconName: string | null
     name: string | null
+    color: string | null
   }
 
   export type StackTechMaxAggregateOutputType = {
@@ -6637,6 +6638,7 @@ export namespace Prisma {
     type: $Enums.StackType | null
     iconName: string | null
     name: string | null
+    color: string | null
   }
 
   export type StackTechCountAggregateOutputType = {
@@ -6644,6 +6646,7 @@ export namespace Prisma {
     type: number
     iconName: number
     name: number
+    color: number
     _all: number
   }
 
@@ -6653,6 +6656,7 @@ export namespace Prisma {
     type?: true
     iconName?: true
     name?: true
+    color?: true
   }
 
   export type StackTechMaxAggregateInputType = {
@@ -6660,6 +6664,7 @@ export namespace Prisma {
     type?: true
     iconName?: true
     name?: true
+    color?: true
   }
 
   export type StackTechCountAggregateInputType = {
@@ -6667,6 +6672,7 @@ export namespace Prisma {
     type?: true
     iconName?: true
     name?: true
+    color?: true
     _all?: true
   }
 
@@ -6747,6 +6753,7 @@ export namespace Prisma {
     type: $Enums.StackType
     iconName: string | null
     name: string
+    color: string | null
     _count: StackTechCountAggregateOutputType | null
     _min: StackTechMinAggregateOutputType | null
     _max: StackTechMaxAggregateOutputType | null
@@ -6771,6 +6778,7 @@ export namespace Prisma {
     type?: boolean
     iconName?: boolean
     name?: boolean
+    color?: boolean
     StackOfProject?: boolean | StackTech$StackOfProjectArgs<ExtArgs>
     _count?: boolean | StackTechCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["stackTech"]>
@@ -6780,6 +6788,7 @@ export namespace Prisma {
     type?: boolean
     iconName?: boolean
     name?: boolean
+    color?: boolean
   }, ExtArgs["result"]["stackTech"]>
 
   export type StackTechSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -6787,6 +6796,7 @@ export namespace Prisma {
     type?: boolean
     iconName?: boolean
     name?: boolean
+    color?: boolean
   }, ExtArgs["result"]["stackTech"]>
 
   export type StackTechSelectScalar = {
@@ -6794,9 +6804,10 @@ export namespace Prisma {
     type?: boolean
     iconName?: boolean
     name?: boolean
+    color?: boolean
   }
 
-  export type StackTechOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "type" | "iconName" | "name", ExtArgs["result"]["stackTech"]>
+  export type StackTechOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "type" | "iconName" | "name" | "color", ExtArgs["result"]["stackTech"]>
   export type StackTechInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     StackOfProject?: boolean | StackTech$StackOfProjectArgs<ExtArgs>
     _count?: boolean | StackTechCountOutputTypeDefaultArgs<ExtArgs>
@@ -6814,6 +6825,7 @@ export namespace Prisma {
       type: $Enums.StackType
       iconName: string | null
       name: string
+      color: string | null
     }, ExtArgs["result"]["stackTech"]>
     composites: {}
   }
@@ -7242,6 +7254,7 @@ export namespace Prisma {
     readonly type: FieldRef<"StackTech", 'StackType'>
     readonly iconName: FieldRef<"StackTech", 'String'>
     readonly name: FieldRef<"StackTech", 'String'>
+    readonly color: FieldRef<"StackTech", 'String'>
   }
     
 
@@ -7737,7 +7750,8 @@ export namespace Prisma {
     id: 'id',
     type: 'type',
     iconName: 'iconName',
-    name: 'name'
+    name: 'name',
+    color: 'color'
   };
 
   export type StackTechScalarFieldEnum = (typeof StackTechScalarFieldEnum)[keyof typeof StackTechScalarFieldEnum]
@@ -8074,6 +8088,7 @@ export namespace Prisma {
     type?: EnumStackTypeFilter<"StackTech"> | $Enums.StackType
     iconName?: StringNullableFilter<"StackTech"> | string | null
     name?: StringFilter<"StackTech"> | string
+    color?: StringNullableFilter<"StackTech"> | string | null
     StackOfProject?: StackOfProjectListRelationFilter
   }
 
@@ -8082,6 +8097,7 @@ export namespace Prisma {
     type?: SortOrder
     iconName?: SortOrderInput | SortOrder
     name?: SortOrder
+    color?: SortOrderInput | SortOrder
     StackOfProject?: StackOfProjectOrderByRelationAggregateInput
   }
 
@@ -8093,6 +8109,7 @@ export namespace Prisma {
     type?: EnumStackTypeFilter<"StackTech"> | $Enums.StackType
     iconName?: StringNullableFilter<"StackTech"> | string | null
     name?: StringFilter<"StackTech"> | string
+    color?: StringNullableFilter<"StackTech"> | string | null
     StackOfProject?: StackOfProjectListRelationFilter
   }, "id">
 
@@ -8101,6 +8118,7 @@ export namespace Prisma {
     type?: SortOrder
     iconName?: SortOrderInput | SortOrder
     name?: SortOrder
+    color?: SortOrderInput | SortOrder
     _count?: StackTechCountOrderByAggregateInput
     _max?: StackTechMaxOrderByAggregateInput
     _min?: StackTechMinOrderByAggregateInput
@@ -8114,6 +8132,7 @@ export namespace Prisma {
     type?: EnumStackTypeWithAggregatesFilter<"StackTech"> | $Enums.StackType
     iconName?: StringNullableWithAggregatesFilter<"StackTech"> | string | null
     name?: StringWithAggregatesFilter<"StackTech"> | string
+    color?: StringNullableWithAggregatesFilter<"StackTech"> | string | null
   }
 
   export type UserCreateInput = {
@@ -8350,6 +8369,7 @@ export namespace Prisma {
     type: $Enums.StackType
     iconName?: string | null
     name: string
+    color?: string | null
     StackOfProject?: StackOfProjectCreateNestedManyWithoutStackTechInput
   }
 
@@ -8358,6 +8378,7 @@ export namespace Prisma {
     type: $Enums.StackType
     iconName?: string | null
     name: string
+    color?: string | null
     StackOfProject?: StackOfProjectUncheckedCreateNestedManyWithoutStackTechInput
   }
 
@@ -8366,6 +8387,7 @@ export namespace Prisma {
     type?: EnumStackTypeFieldUpdateOperationsInput | $Enums.StackType
     iconName?: NullableStringFieldUpdateOperationsInput | string | null
     name?: StringFieldUpdateOperationsInput | string
+    color?: NullableStringFieldUpdateOperationsInput | string | null
     StackOfProject?: StackOfProjectUpdateManyWithoutStackTechNestedInput
   }
 
@@ -8374,6 +8396,7 @@ export namespace Prisma {
     type?: EnumStackTypeFieldUpdateOperationsInput | $Enums.StackType
     iconName?: NullableStringFieldUpdateOperationsInput | string | null
     name?: StringFieldUpdateOperationsInput | string
+    color?: NullableStringFieldUpdateOperationsInput | string | null
     StackOfProject?: StackOfProjectUncheckedUpdateManyWithoutStackTechNestedInput
   }
 
@@ -8382,6 +8405,7 @@ export namespace Prisma {
     type: $Enums.StackType
     iconName?: string | null
     name: string
+    color?: string | null
   }
 
   export type StackTechUpdateManyMutationInput = {
@@ -8389,6 +8413,7 @@ export namespace Prisma {
     type?: EnumStackTypeFieldUpdateOperationsInput | $Enums.StackType
     iconName?: NullableStringFieldUpdateOperationsInput | string | null
     name?: StringFieldUpdateOperationsInput | string
+    color?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type StackTechUncheckedUpdateManyInput = {
@@ -8396,6 +8421,7 @@ export namespace Prisma {
     type?: EnumStackTypeFieldUpdateOperationsInput | $Enums.StackType
     iconName?: NullableStringFieldUpdateOperationsInput | string | null
     name?: StringFieldUpdateOperationsInput | string
+    color?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -8618,6 +8644,7 @@ export namespace Prisma {
     type?: SortOrder
     iconName?: SortOrder
     name?: SortOrder
+    color?: SortOrder
   }
 
   export type StackTechMaxOrderByAggregateInput = {
@@ -8625,6 +8652,7 @@ export namespace Prisma {
     type?: SortOrder
     iconName?: SortOrder
     name?: SortOrder
+    color?: SortOrder
   }
 
   export type StackTechMinOrderByAggregateInput = {
@@ -8632,6 +8660,7 @@ export namespace Prisma {
     type?: SortOrder
     iconName?: SortOrder
     name?: SortOrder
+    color?: SortOrder
   }
 
   export type EnumStackTypeWithAggregatesFilter<$PrismaModel = never> = {
@@ -9094,6 +9123,7 @@ export namespace Prisma {
     type: $Enums.StackType
     iconName?: string | null
     name: string
+    color?: string | null
   }
 
   export type StackTechUncheckedCreateWithoutStackOfProjectInput = {
@@ -9101,6 +9131,7 @@ export namespace Prisma {
     type: $Enums.StackType
     iconName?: string | null
     name: string
+    color?: string | null
   }
 
   export type StackTechCreateOrConnectWithoutStackOfProjectInput = {
@@ -9147,6 +9178,7 @@ export namespace Prisma {
     type?: EnumStackTypeFieldUpdateOperationsInput | $Enums.StackType
     iconName?: NullableStringFieldUpdateOperationsInput | string | null
     name?: StringFieldUpdateOperationsInput | string
+    color?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type StackTechUncheckedUpdateWithoutStackOfProjectInput = {
@@ -9154,6 +9186,7 @@ export namespace Prisma {
     type?: EnumStackTypeFieldUpdateOperationsInput | $Enums.StackType
     iconName?: NullableStringFieldUpdateOperationsInput | string | null
     name?: StringFieldUpdateOperationsInput | string
+    color?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type StackOfProjectCreateWithoutStackTechInput = {
