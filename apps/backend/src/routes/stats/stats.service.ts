@@ -1,5 +1,6 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import { StackTech } from '@prisma/client';
+import axios from 'axios';
 
 import { StackStatsRaw } from '@repo/backend-types';
 
@@ -22,6 +23,11 @@ export class StatsService {
     }));
   }
 
+  /**
+   * This method sorts stack techs by usage in projects and
+   * returns most-used front-end and back-end stack technologies.
+   * @param options
+   */
   async calculateTopStack(options?: { take?: string }) {
     const take: number = Number(options?.take ?? this.TAKE_STACK_ENTRIES);
 
@@ -72,5 +78,17 @@ export class StatsService {
       frontend: preparedFrontend,
       backend: preparedBackend,
     };
+  }
+
+  /**
+   * Fetches most starred repos on XenoPOMP`s page.
+   */
+  async stars() {
+    const url =
+      'https://api.github.com/search/repositories?q=org:XenoPOMP&sort=stars&order=desc';
+
+    const fetchedStars = await axios.get(url);
+
+    Logger.log(fetchedStars);
   }
 }
