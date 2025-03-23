@@ -9,6 +9,7 @@ import { RolesService } from './features/roles/roles.service';
 import { AuthModule } from './routes/auth';
 import { ProjectsModule } from './routes/projects';
 import { UserModule, UserService } from './routes/user';
+import { StatsModule } from './routes/stats/stats.module';
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import { UserModule, UserService } from './routes/user';
     AuthModule,
     UserModule,
     RolesModule,
+    StatsModule,
   ],
   controllers: [AppController],
   providers: [AppService, PrismaService, RolesService, UserService],
