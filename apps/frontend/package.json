@@ -36,6 +36,7 @@
     "@headlessui/react": "^2.2.0",
     "@heroui/kbd": "^2.2.12",
     "@heroui/theme": "^2.4.12",
+    "@icons-pack/react-simple-icons": "^12.5.0",
     "@mdx-js/loader": "^3.1.0",
     "@mdx-js/react": "^3.1.0",
     "@next/mdx": "^15",

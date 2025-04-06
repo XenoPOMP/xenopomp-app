@@ -1,5 +1,6 @@
 'use client';
 
+import { SiGithub } from '@icons-pack/react-simple-icons';
 import cn from 'classnames';
 import { ArrowRight, Atom, ChevronsDown } from 'lucide-react';
 import Image from 'next/image';
@@ -8,11 +9,13 @@ import type { FC } from 'react';
 
 import personImg from '~/public/person.png';
 
+import { For } from '@/components/layout';
 import { HStack, Spacer } from '@/components/ui';
 import { Heading, Loading, SquareButton } from '@/components/ui/kit';
 import { useProjectCount } from '@/hooks/api';
 
 import { NumberCountdown } from '@app/components';
+import { socialsLinkItems } from '@app/constants';
 
 import styles from './HeroSection.module.scss';
 
@@ -98,7 +101,18 @@ export const HeroSection: FC<unknown> = () => {
             Next.js
           </div>
 
-          <div className={cn(styles.links)}></div>
+          <div className={cn(styles.links)}>
+            <For each={socialsLinkItems}>
+              {({ href, children }, idx) => (
+                <Link
+                  href={href}
+                  key={idx}
+                >
+                  <SquareButton>{children}</SquareButton>
+                </Link>
+              )}
+            </For>
+          </div>
         </div>
       </article>
 
