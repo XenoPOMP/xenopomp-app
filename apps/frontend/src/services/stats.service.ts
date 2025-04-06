@@ -1,4 +1,4 @@
-import type { GetProjectCount } from '@repo/backend-types';
+import type { GetProjectCount, GetTopStack } from '@repo/backend-types';
 
 import { axiosClassic } from '@/api';
 import type { ServiceType } from '@/services';
@@ -11,5 +11,11 @@ export const StatsService = {
     // eslint-disable-next-line jsdoc/require-jsdoc
     queryFn: async () =>
       (await axiosClassic.get<GetProjectCount>('/stats/project-count')).data,
+  },
+  getTopStack: {
+    queryKey: [STATS_KEY, 'top tech stack'],
+    // eslint-disable-next-line jsdoc/require-jsdoc
+    queryFn: async () =>
+      (await axiosClassic.get<GetTopStack>('/stats/stack')).data,
   },
 } satisfies ServiceType;

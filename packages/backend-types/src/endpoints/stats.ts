@@ -18,13 +18,13 @@ export type GetTopStack = DataResponse<
   Record<'frontend' | 'backend', PreparedStackList>
 >;
 
-export type FetchedGHStars = {
+export interface FetchedGHStars {
   items?: {
     url?: string;
     repoName?: string;
     starsCount?: number;
     ownerName?: string;
   }[];
-};
+}
 
 export type GetGHStars = DataResponse<FetchedGHStars>;
