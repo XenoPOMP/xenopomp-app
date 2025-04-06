@@ -13,3 +13,4 @@ export * from './Glass/Glass';
 export * from './ShortcutHint/ShortcutHint';
 export * from './SplitView/SplitView';
 export * from './List/List';
+export * from './SquareButton/SquareButton';
