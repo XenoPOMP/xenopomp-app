@@ -1,7 +1,7 @@
 'use client';
 
 import cn from 'classnames';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, ChevronsDown } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import type { FC } from 'react';
@@ -86,6 +86,13 @@ export const HeroSection: FC<unknown> = () => {
       </article>
 
       <article className={cn(styles.links)}></article>
+
+      <article className={cn(styles.slideDown)}>
+        <ChevronsDown
+          size='1.5rem'
+          className={cn('text-primary-font-darker')}
+        />
+      </article>
     </HStack>
   );
 };
