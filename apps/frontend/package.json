@@ -26,6 +26,7 @@
     "lint-staged": "lint-staged",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
+    "prep": "yarn fullpack",
     "fullpack": "run-s pack:*",
     "pack:env": "tsx .config/.dev/scripts/pack-env.ts"
   },
