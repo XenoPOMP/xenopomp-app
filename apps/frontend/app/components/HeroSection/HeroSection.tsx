@@ -105,18 +105,6 @@ export const HeroSection: FC<unknown> = () => {
       </article>
 
       <article className={cn(styles.links)}>
-        <svg
-          className={cn(styles.blockTop)}
-          viewBox='0 0 216 36'
-          fill='none'
-          xmlns='http://www.w3.org/2000/svg'
-        >
-          <path
-            d='M0 0H205.5L216 36H0V0Z'
-            fill='#6626BC'
-          />
-        </svg>
-
         <div className={cn(styles.grid)}>
           <Atom size='100%' />
 

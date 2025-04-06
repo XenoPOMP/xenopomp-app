@@ -74,8 +74,12 @@ section.hero {
     grid-column: 3 / span 7;
     grid-row: 8 / span 4;
 
-    .blockTop {
-      @apply absolute bottom-full left-0 w-[26%] h-[1.8rem];
+    &:after {
+      @apply absolute bottom-full left-0 w-[26%] h-[1.8rem] bg-block-primary content-[""];
+
+      $topRightPoint: calc(100% - .5rem) 0;
+
+      clip-path: polygon(0 0, $topRightPoint, 100% 100%, 0% 100%);
     }
 
     .grid {
