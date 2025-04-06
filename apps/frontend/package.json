@@ -11,7 +11,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "yarn build && next start",
     "lint": "next lint",
     "deploy": "yarn build && yarn start",
     "unit:test": "vitest -c .config/vitest.config.ts",
