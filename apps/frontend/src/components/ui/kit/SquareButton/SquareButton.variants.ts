@@ -17,6 +17,16 @@ export const squareButtonVariants = cva('', {
         // Hovered
         'hover:bg-card-bg hover:border-transparent hover:text-card-font',
       ),
+
+      action: cn(
+        // Not hovered
+        'rounded-full [&>svg]:size-[1.2rem] px-[1rem] py-[.5rem]',
+        'bg-btn-action-bg text-btn-action-font',
+        'transition-colors',
+
+        // Hovered
+        'hover:bg-btn-action-hover-bg',
+      ),
     },
   },
   defaultVariants: {

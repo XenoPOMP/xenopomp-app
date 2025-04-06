@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Cog } from 'lucide-react';
+import { ArrowRight, Cog } from 'lucide-react';
 
 import { SquareButton } from './SquareButton';
 
@@ -24,5 +24,13 @@ export const Primary: Story = {
   args: {
     ...sharedProps,
     children: <Cog />,
+  },
+};
+
+export const Action: Story = {
+  args: {
+    ...sharedProps,
+    variant: 'action',
+    children: <ArrowRight />,
   },
 };
