@@ -3,7 +3,11 @@ import { StackTech } from '@prisma/client';
 import axios from 'axios';
 import { z } from 'zod';
 
-import { StackStatsRaw } from '@repo/backend-types';
+import {
+  FetchedGHStars,
+  PreparedStackList,
+  StackStatsRaw,
+} from '@repo/backend-types';
 
 import { PrismaService } from '../../features';
 
@@ -14,9 +18,7 @@ export class StatsService {
   TAKE_STACK_ENTRIES = '5';
 
   /** Map calculated entries to camel case. */
-  private prepareStackList(
-    list: StackStatsRaw,
-  ): Array<Pick<StackTech, 'type' | 'iconName' | 'name'>> {
+  private prepareStackList(list: StackStatsRaw): PreparedStackList {
     return list.map(({ tech_type, tech_icon_name, tech_name }) => ({
       type: tech_type,
       iconName: tech_icon_name,
@@ -84,7 +86,7 @@ export class StatsService {
   /**
    * Fetches most starred repos on XenoPOMP`s page.
    */
-  async stars() {
+  async stars(): Promise<FetchedGHStars> {
     const url =
       'https://api.github.com/search/repositories?q=org:XenoPOMP&sort=stars&order=desc&per_page=6';
 

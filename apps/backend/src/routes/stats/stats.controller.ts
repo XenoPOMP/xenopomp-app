@@ -1,6 +1,7 @@
 import { Controller, Query } from '@nestjs/common';
 
-import { GetProjectCount } from '@repo/backend-types';
+import { GetProjectCount, GetTopStack } from '@repo/backend-types';
+import { GetGHStars } from '@repo/backend-types/src';
 
 import { Endpoint } from '../../decorators';
 import { handleData } from '../../features';
@@ -21,7 +22,7 @@ export class StatsController {
   }
 
   @Endpoint('GET', '/stack')
-  async stack(@Query('take') take: string | undefined) {
+  async stack(@Query('take') take: string | undefined): Promise<GetTopStack> {
     return handleData(
       await this.statsService.calculateTopStack({
         take,
@@ -30,7 +31,7 @@ export class StatsController {
   }
 
   @Endpoint('GET', '/stars')
-  async stars() {
+  async stars(): Promise<GetGHStars> {
     return handleData(await this.statsService.stars());
   }
 }
