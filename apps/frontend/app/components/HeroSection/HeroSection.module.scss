@@ -74,9 +74,8 @@ section.hero {
     grid-column: 3 / span 7;
     grid-row: 8 / span 4;
 
-    &:after {
-      @apply absolute bottom-full left-0 w-[26%] h-[1.8rem]
-             bg-block-primary content-[""];
+    .blockTop {
+      @apply absolute bottom-full left-0 w-[26%] h-[1.8rem];
     }
 
     .grid {
