@@ -2,12 +2,13 @@
 
 import cn from 'classnames';
 import Image from 'next/image';
+import Link from 'next/link';
 import type { FC } from 'react';
 
 import personImg from '~/public/person.png';
 
-import { HStack } from '@/components/ui';
-import { Heading } from '@/components/ui/kit';
+import { HStack, Spacer } from '@/components/ui';
+import { Heading, Loading } from '@/components/ui/kit';
 
 import styles from './HeroSection.module.scss';
 
@@ -39,7 +40,24 @@ export const HeroSection: FC<unknown> = () => {
         className={cn(styles.personCardBg)}
       ></div>
 
-      <article className={cn(styles.numbers)}>Number</article>
+      <article className={cn(styles.numbers)}>
+        <Link
+          href='/projects'
+          className={cn('flex items-center')}
+        >
+          <div>
+            <p className={cn('text-20 font-bold !leading-[100%]')}>Проекты</p>
+
+            <Loading
+              aria-hidden
+              variant='skeleton'
+              className={cn(styles.loader, 'bg-card-font/25')}
+            />
+          </div>
+
+          <Spacer />
+        </Link>
+      </article>
 
       <article className={cn(styles.links)}></article>
     </HStack>

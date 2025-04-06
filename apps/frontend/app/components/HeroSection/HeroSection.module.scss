@@ -44,6 +44,16 @@ section.hero {
     // Place card bg in grid
     grid-column: 9 / span 4;
     grid-row: 7 / span 3;
+
+    $numberFontHeight: calc(
+      var(--p20) * 2.25
+    );
+
+    .loader {
+      font-size: $numberFontHeight;
+      height: 1em;
+      width: 2ch;
+    }
   }
 
   article.links {

@@ -24,3 +24,10 @@ export const Circle: Story = {
     ...sharedProps,
   },
 };
+
+export const Skeleton: Story = {
+  args: {
+    ...sharedProps,
+    variant: 'skeleton',
+  },
+};

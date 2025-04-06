@@ -8,6 +8,7 @@ export const loadingVariants = cva('', {
   variants: {
     variant: {
       circle: '',
+      skeleton: 'animate-pulse rounded-[.125em]',
     },
   },
 
