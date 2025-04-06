@@ -60,8 +60,52 @@ const uiKitTheme = {
  */
 const darkThemeBase = {
   colors: {
+    star: '#FFBC08',
     primary: {
       bg: '#202020',
+      font: '#FFFFFF',
+      'font-darker': '#969696',
+    },
+    secondary: {
+      bg: '#161515',
+      font: '#FFFFFF',
+      icon: {
+        mono: '#FFFFFF',
+      },
+      card: {
+        hover: {
+          bg: '#2C2B2B',
+        },
+      },
+    },
+    project: {
+      overlay: 'rgba(0 0 0 / 0.8500000238418579)',
+      font: '#FFFFFF',
+    },
+    block: {
+      primary: '#6626BC',
+      secondary: '#F0966F',
+      accent: '#FFBC08',
+    },
+    static: {
+      border: 'rgba(255 255 255 / 0.10000000149011612)',
+    },
+    card: {
+      bg: '#FFFFFF',
+      font: '#000000',
+    },
+    btn: {
+      action: {
+        bg: '#D1D1D1',
+        font: '#1C1C1C',
+        hover: {
+          bg: '#F9F8F8',
+          font: '#1C1B1B',
+        },
+      },
+    },
+    footer: {
+      bg: '#000000',
       font: '#FFFFFF',
     },
   },
