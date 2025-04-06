@@ -30,10 +30,11 @@ export const HeroSection: FC<unknown> = () => {
         level={1}
         className={cn(styles.heading, 'uppercase')}
       >
-        <span>
-          You`re welcome to{' '}
-          <span className={cn('text-block-accent')}>XenoPOMP`s</span> website
-        </span>
+        <p>
+          Привет, я <span className={cn('text-block-accent')}>XenoPOMP</span>.
+        </p>
+
+        <p>Добро пожаловать!</p>
       </Heading>
 
       <Image
