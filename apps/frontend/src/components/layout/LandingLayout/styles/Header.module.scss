@@ -1,3 +1,6 @@
+@use "../../../../styles/utils/media";
+@use "../../../../styles/config";
+
 header.landingHeader {
   @apply flex items-center;
 
@@ -5,6 +8,10 @@ header.landingHeader {
     display: grid;
     grid-template-columns: 1fr max-content 1fr;
     align-items: center;
+
+    @include media.endAtFixed(config.$mobileBreakpoint) {
+      @apply flex justify-between;
+    }
 
     .list {
       @apply flex gap-3;
