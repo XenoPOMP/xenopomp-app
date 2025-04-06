@@ -12,6 +12,8 @@ import { HStack, Spacer } from '@/components/ui';
 import { Heading, Loading, SquareButton } from '@/components/ui/kit';
 import { useProjectCount } from '@/hooks/api';
 
+import { NumberCountdown } from '@app/components';
+
 import styles from './HeroSection.module.scss';
 
 // eslint-disable-next-line jsdoc/require-jsdoc
@@ -48,7 +50,7 @@ export const HeroSection: FC<unknown> = () => {
       <article className={cn(styles.numbers)}>
         <Link
           href='/projects'
-          className={cn('flex items-center')}
+          className={cn('flex w-full items-center')}
         >
           <div>
             <p className={cn('text-20 font-bold !leading-[100%]')}>Проекты</p>
@@ -58,6 +60,13 @@ export const HeroSection: FC<unknown> = () => {
                 aria-hidden
                 variant='skeleton'
                 className={cn(styles.loader, 'bg-card-font/25')}
+              />
+            )}
+
+            {!isProjectCountLoading && (
+              <NumberCountdown
+                number={projectDataCount?.data ?? 0}
+                duration={1000}
               />
             )}
           </div>
@@ -71,6 +80,8 @@ export const HeroSection: FC<unknown> = () => {
             <ArrowRight />
           </SquareButton>
         </Link>
+
+        <i>Взгляните на мои проекты!</i>
       </article>
 
       <article className={cn(styles.links)}></article>

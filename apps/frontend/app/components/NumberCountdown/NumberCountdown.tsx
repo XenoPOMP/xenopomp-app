@@ -1,7 +1,10 @@
+'use client';
+
 import cn from 'classnames';
 import type { FC } from 'react';
 import useAnimateNumber from 'use-animate-number';
-import { Defined, minmax } from 'xenopomp-essentials';
+import type { Defined } from 'xenopomp-essentials';
+import { minmax } from 'xenopomp-essentials';
 
 import { usePadStart } from '@/hooks';
 
@@ -35,8 +38,8 @@ export const NumberCountdown: FC<
 
   return (
     <div className={cn(numberCountdownVariants({ variant }), 'tabular-nums')}>
-      <span>
-        <span className={cn('opacity-[38%]')}>{pad}</span>
+      <span className={cn('!leading-[100%]')}>
+        <span className={cn('!leading-[100%] opacity-[38%]')}>{pad}</span>
         {input}
       </span>
     </div>

@@ -39,7 +39,9 @@ section.hero {
   }
 
   article.numbers {
-    @apply bg-card-bg text-card-font p-2;
+    @apply bg-card-bg text-card-font p-2 flex flex-col items-start;
+
+    gap: min(100dvh, 1.5rem);
 
     // Place card bg in grid
     grid-column: 9 / span 4;
