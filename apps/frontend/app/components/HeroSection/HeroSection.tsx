@@ -1,3 +1,5 @@
+'use client';
+
 import cn from 'classnames';
 import Image from 'next/image';
 import type { FC } from 'react';
@@ -37,7 +39,7 @@ export const HeroSection: FC<unknown> = () => {
         className={cn(styles.personCardBg)}
       ></div>
 
-      <article className={cn(styles.numbers)}></article>
+      <article className={cn(styles.numbers)}>Number</article>
 
       <article className={cn(styles.links)}></article>
     </HStack>
