@@ -59,10 +59,26 @@ section.hero {
   }
 
   article.links {
-    @apply bg-block-primary -z-[2];
+    @apply bg-block-primary -z-[2] p-2;
 
     grid-column: 3 / span 7;
     grid-row: 8 / span 4;
+
+    .grid {
+      @apply gap-3;
+      display: grid;
+      width: 100%;
+      grid-template-columns: 4rem 1fr;
+      grid-template-rows: repeat(2, 4rem);
+      grid-template-areas:
+        "atom slogan"
+        "none links"
+      ;
+
+      .links {
+        grid-area: links;
+      }
+    }
   }
 
   article.slideDown {

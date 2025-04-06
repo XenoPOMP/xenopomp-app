@@ -1,7 +1,7 @@
 'use client';
 
 import cn from 'classnames';
-import { ArrowRight, ChevronsDown } from 'lucide-react';
+import { ArrowRight, Atom, ChevronsDown } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import type { FC } from 'react';
@@ -85,7 +85,22 @@ export const HeroSection: FC<unknown> = () => {
         <i>Взгляните на мои проекты!</i>
       </article>
 
-      <article className={cn(styles.links)}></article>
+      <article className={cn(styles.links)}>
+        <div className={cn(styles.grid)}>
+          <Atom size='100%' />
+
+          <div
+            className={cn(
+              'flex items-center justify-start pr-[12%] text-[1.4em]',
+            )}
+          >
+            Front-end разработчик, специализируюшийся на React, TypeScript и
+            Next.js
+          </div>
+
+          <div className={cn(styles.links)}></div>
+        </div>
+      </article>
 
       <article className={cn(styles.slideDown)}>
         <ChevronsDown
