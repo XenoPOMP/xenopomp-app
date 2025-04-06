@@ -9,7 +9,7 @@
   // Paddings
   @include cascade-down.cascadeDown(
     config.$mobileBreakpoint,
-    design.createPaddingGrade(8px)
+    design.createPaddingGrade(10px)
   );
 
   // Headings

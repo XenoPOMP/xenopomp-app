@@ -5,5 +5,17 @@ header.landingHeader {
     display: grid;
     grid-template-columns: 1fr max-content 1fr;
     align-items: center;
+
+    .list {
+      @apply flex gap-3;
+
+      .navbarItem {
+        // Not active item
+        &:not(&[data-is-active~=true]) {
+          opacity: .5;
+          pointer-events: none;
+        }
+      }
+    }
   }
 }

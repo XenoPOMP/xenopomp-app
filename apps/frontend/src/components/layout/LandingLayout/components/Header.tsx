@@ -1,8 +1,12 @@
 import cn from 'classnames';
+import Link from 'next/link';
 import type { VariableFC } from 'xenopomp-essentials';
 
+import { For } from '@/components/layout';
 import { HStack } from '@/components/ui';
-import { Logo } from '@/components/ui/kit';
+import { Logo, NavbarItem } from '@/components/ui/kit';
+
+import { landingNavbarItems } from '@app/constants';
 
 import styles from '../styles/Header.module.scss';
 
@@ -28,6 +32,26 @@ export const Internal_LandingHeader: VariableFC<
           <article>
             <Logo />
           </article>
+
+          <nav>
+            <ul className={cn(styles.list)}>
+              <For each={landingNavbarItems}>
+                {({ children, href }, idx) => (
+                  <li
+                    className={cn('text-14')}
+                    key={idx}
+                  >
+                    <NavbarItem
+                      href={href}
+                      className={cn(styles.navbarItem)}
+                    >
+                      {children}
+                    </NavbarItem>
+                  </li>
+                )}
+              </For>
+            </ul>
+          </nav>
         </div>
       </HStack>
     </header>
