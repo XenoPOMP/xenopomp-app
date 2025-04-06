@@ -1,5 +1,4 @@
 section.hero {
-  @apply relative;
   height: calc(100dvh - var(--landing-header-height) * 1);
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -7,6 +6,10 @@ section.hero {
   gap: var(--p-level-4);
   padding-bottom: 2rem;
   max-height: calc(1080px - var(--landing-header-height));
+
+  & > *:not(.links) {
+    @apply z-[20];
+  }
 
   h1.heading {
     // Grid cell settings
@@ -21,7 +24,7 @@ section.hero {
   }
 
   img.person {
-    @apply z-20 mx-[1rem];
+    @apply z-[22] mx-[1rem];
     grid-column: 9 / span 4;
     grid-row: 3 / span 4;
     object-fit: scale-down;
@@ -60,7 +63,7 @@ section.hero {
   }
 
   article.links {
-    @apply bg-block-primary -z-[2] p-2;
+    @apply bg-block-primary p-2;
 
     grid-column: 3 / span 7;
     grid-row: 8 / span 4;
