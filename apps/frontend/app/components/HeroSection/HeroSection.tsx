@@ -1,6 +1,7 @@
 'use client';
 
 import cn from 'classnames';
+import { ArrowRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import type { FC } from 'react';
@@ -8,12 +9,16 @@ import type { FC } from 'react';
 import personImg from '~/public/person.png';
 
 import { HStack, Spacer } from '@/components/ui';
-import { Heading, Loading } from '@/components/ui/kit';
+import { Heading, Loading, SquareButton } from '@/components/ui/kit';
+import { useProjectCount } from '@/hooks/api';
 
 import styles from './HeroSection.module.scss';
 
 // eslint-disable-next-line jsdoc/require-jsdoc
 export const HeroSection: FC<unknown> = () => {
+  const { data: projectDataCount, isLoading: isProjectCountLoading } =
+    useProjectCount();
+
   return (
     <HStack
       maxSize='1400px'
@@ -48,14 +53,23 @@ export const HeroSection: FC<unknown> = () => {
           <div>
             <p className={cn('text-20 font-bold !leading-[100%]')}>Проекты</p>
 
-            <Loading
-              aria-hidden
-              variant='skeleton'
-              className={cn(styles.loader, 'bg-card-font/25')}
-            />
+            {isProjectCountLoading && (
+              <Loading
+                aria-hidden
+                variant='skeleton'
+                className={cn(styles.loader, 'bg-card-font/25')}
+              />
+            )}
           </div>
 
           <Spacer />
+
+          <SquareButton
+            variant='action'
+            className={cn('!bg-btn-action-bg')}
+          >
+            <ArrowRight />
+          </SquareButton>
         </Link>
       </article>
 
