@@ -34,7 +34,7 @@ export const HeroSection: FC<unknown> = () => {
           Привет, я <span className={cn('text-block-accent')}>XenoPOMP</span>.
         </p>
 
-        <p>Добро пожаловать!</p>
+        <p>Добро пожаловать на мой сайт!</p>
       </Heading>
 
       <Image
