@@ -1,19 +1,13 @@
+import { deepmerge } from 'deepmerge-ts';
 import type { Config } from 'tailwindcss';
 import type { Defined } from 'xenopomp-essentials';
 
 type Theme = Defined<Defined<Config['theme']>['extend']>;
 
-/**
- * This theme is **default**.
- */
-export const darkTheme = {
+const uiKitTheme = {
   colors: {
     accent: '#1C759F',
     'accent-darker': '#104964',
-    primary: {
-      bg: '#202020',
-      font: '#FFFFFF',
-    },
     ui: {
       fill: '#2D2C2C',
       border:
@@ -60,3 +54,17 @@ export const darkTheme = {
     },
   },
 } satisfies Theme;
+
+/**
+ * This theme is **default**.
+ */
+const darkThemeBase = {
+  colors: {
+    primary: {
+      bg: '#202020',
+      font: '#FFFFFF',
+    },
+  },
+} satisfies Theme;
+
+export const darkTheme = deepmerge(uiKitTheme, darkThemeBase);
