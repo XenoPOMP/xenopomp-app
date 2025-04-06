@@ -18,7 +18,7 @@ export const Heading: VariableFC<'h1', HeadingProps> = ({
 
   return (
     <Comp
-      className={cn('font-bold leading-[normal]', className)}
+      className={cn('font-bold font-extrabold leading-[normal]', className)}
       style={{
         fontSize: `var(--heading-${level})`,
         ...style,

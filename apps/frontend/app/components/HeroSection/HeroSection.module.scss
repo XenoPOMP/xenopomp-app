@@ -1,0 +1,19 @@
+section.hero {
+  height: calc(100dvh - var(--landing-header-height) * 1);
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(12, 1fr);
+  gap: var(--p-level-4);
+  padding-bottom: 2rem;
+
+  h1.heading {
+    grid-column-start: 3;
+    grid-column-end: 9;
+    grid-row-start: 2;
+    grid-row-end: 7;
+    align-self: center;
+    justify-self: start;
+
+    font-size: calc(var(--heading-1) * 1.84375) !important;
+  }
+}

@@ -1,10 +1,9 @@
-import cn from 'classnames';
 import type { Metadata } from 'next';
 
 import { LandingLayout } from '@/components/layout';
 import { Stack } from '@/components/ui';
 
-import styles from './main-page.module.scss';
+import { HeroSection } from '@app/components';
 
 export const metadata: Metadata = {
   title: 'Main',
@@ -21,6 +20,8 @@ export default function Home() {
         <LandingLayout.Header />
 
         <LandingLayout.Body>
+          <HeroSection />
+
           <Stack>index page</Stack>
         </LandingLayout.Body>
       </LandingLayout>
