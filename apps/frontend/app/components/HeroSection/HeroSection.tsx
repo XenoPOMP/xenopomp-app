@@ -1,6 +1,5 @@
 'use client';
 
-import { SiGithub } from '@icons-pack/react-simple-icons';
 import cn from 'classnames';
 import { ArrowRight, Atom, ChevronsDown } from 'lucide-react';
 import Image from 'next/image';
