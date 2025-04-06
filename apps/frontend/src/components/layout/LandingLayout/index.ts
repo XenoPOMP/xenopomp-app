@@ -6,7 +6,7 @@ import {
   Internal_LandingLayout,
 } from './components';
 
-const LandingLayout = jsxDotNotation(Internal_LandingLayout, {
+export const LandingLayout = jsxDotNotation(Internal_LandingLayout, {
   Body: Internal_LandingBody,
   Header: Internal_LandingHeader,
 });

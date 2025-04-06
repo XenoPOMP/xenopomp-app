@@ -1,18 +1,35 @@
 import cn from 'classnames';
 import type { VariableFC } from 'xenopomp-essentials';
 
-// eslint-disable-next-line jsdoc/require-jsdoc
-export const Internal_LandingHeader: VariableFC<'header'> = ({
-  className,
-  children,
-  ...props
-}) => {
+import { HStack } from '@/components/ui';
+import { Logo } from '@/components/ui/kit';
+
+import styles from '../styles/Header.module.scss';
+
+/** */
+export const Internal_LandingHeader: VariableFC<
+  'header',
+  unknown,
+  'children'
+> = ({ className, ...props }) => {
   return (
     <header
-      className={cn(className)}
+      className={cn(
+        styles.landingHeader,
+        'h-[--landing-header-height]',
+        // eslint-disable-next-line prettier/prettier
+        'border-b-static-border border-b',
+        className,
+      )}
       {...props}
     >
-      {children}
+      <HStack asChild>
+        <div className={cn(styles.grid)}>
+          <article>
+            <Logo />
+          </article>
+        </div>
+      </HStack>
     </header>
   );
 };

@@ -1,6 +1,7 @@
 import cn from 'classnames';
 import type { Metadata } from 'next';
 
+import { LandingLayout } from '@/components/layout';
 import { Stack } from '@/components/ui';
 
 import styles from './main-page.module.scss';
@@ -15,8 +16,14 @@ export const metadata: Metadata = {
  */
 export default function Home() {
   return (
-    <main className={cn(styles.mainPage)}>
-      <Stack>index page</Stack>
-    </main>
+    <>
+      <LandingLayout>
+        <LandingLayout.Header />
+
+        <LandingLayout.Body>
+          <Stack>index page</Stack>
+        </LandingLayout.Body>
+      </LandingLayout>
+    </>
   );
 }
