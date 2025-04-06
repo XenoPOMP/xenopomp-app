@@ -14,7 +14,7 @@ import { Heading, Loading, SquareButton } from '@/components/ui/kit';
 import { useProjectCount } from '@/hooks/api';
 
 import { NumberCountdown } from '@app/components';
-import { socialsLinkItems } from '@app/constants';
+import { PageRoutes, socialsLinkItems } from '@app/constants';
 
 import styles from './HeroSection.module.scss';
 
@@ -52,7 +52,7 @@ export const HeroSection: FC<unknown> = () => {
 
       <article className={cn(styles.numbers)}>
         <Link
-          href='/projects'
+          href={PageRoutes.projects}
           className={cn('flex w-full items-center')}
         >
           <div>

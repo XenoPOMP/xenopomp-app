@@ -4,14 +4,19 @@ import type { ComponentProps, PropsWithChildren } from 'react';
 
 type LinksObject = PropsWithChildren<Pick<ComponentProps<typeof Link>, 'href'>>;
 
+export const PageRoutes = {
+  landingHome: '/',
+  projects: '/projects',
+};
+
 export const landingNavbarItems: LinksObject[] = [
   {
     children: 'Главная',
-    href: '/',
+    href: PageRoutes.landingHome,
   },
   {
     children: 'Проекты',
-    href: '/projects',
+    href: PageRoutes.projects,
   },
 ];
 
