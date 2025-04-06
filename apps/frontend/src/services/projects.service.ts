@@ -1,3 +1,5 @@
+'use client';
+
 import type { GetAllProjects } from '@repo/backend-types';
 
 import { axiosClassic } from '@/api';
