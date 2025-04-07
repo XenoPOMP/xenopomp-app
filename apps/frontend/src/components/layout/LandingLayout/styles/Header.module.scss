@@ -20,7 +20,7 @@ header.landingHeader {
         // Not active item
         &:not(&[data-is-active~=true]) {
           opacity: .5;
-          pointer-events: none;
+          // pointer-events: none;
         }
       }
     }
