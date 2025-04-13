@@ -22,7 +22,9 @@
     "pack:all": "yarn migrate:dev --name auto_build && yarn pack:types && yarn pack:env",
     "pack:types": "esno .dev/scripts/pack-types.ts",
     "pack:env": "esno .dev/scripts/pack-env.ts",
-    "migrate:dev": "npx prisma migrate dev"
+    "migrate:dev": "npx prisma migrate dev",
+    "ci:lint": "yarn lint",
+    "ci:test": "yarn test"
   },
   "dependencies": {
     "@nestjs/common": "^11.0.1",
