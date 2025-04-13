@@ -28,7 +28,9 @@
     "build-storybook": "storybook build",
     "prep": "yarn fullpack",
     "fullpack": "run-s pack:*",
-    "pack:env": "tsx .config/.dev/scripts/pack-env.ts"
+    "pack:env": "tsx .config/.dev/scripts/pack-env.ts",
+    "ci:lint": "yarn lint:ci",
+    "ci:test": "yarn coverage && yarn e2e:ci"
   },
   "dependencies": {
     "@dicebear/collection": "^9.2.2",
