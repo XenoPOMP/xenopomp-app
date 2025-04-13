@@ -2,8 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { User } from '@prisma/client';
 import { hash } from 'argon2';
 
-// eslint-disable-next-line ts/consistent-type-imports
-import type { CrudService } from '@repo/nest';
+import { CrudService } from '@repo/nest';
 
 import { PrismaService } from '../../features';
 import { AuthDto } from '../auth/dto';
