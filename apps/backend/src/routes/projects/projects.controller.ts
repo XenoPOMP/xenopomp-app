@@ -84,7 +84,7 @@ export class ProjectsController {
   async deleteOneProject(@Param('projectId') projectId: string) {
     try {
       await this.projectsService.deleteById(projectId);
-    } catch (e) {
+    } catch {
       throw new BadRequestException(issueErrorCode('PROJECT_DOES_NOT_EXIST'));
     }
   }

@@ -23,7 +23,7 @@
     "pack:types": "esno .dev/scripts/pack-types.ts",
     "pack:env": "esno .dev/scripts/pack-env.ts",
     "migrate:dev": "npx prisma migrate dev",
-    "ci:lint": "yarn lint",
+    "ci:lint": "yarn lint --max-warnings=0",
     "ci:test": "yarn test"
   },
   "dependencies": {

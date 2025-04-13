@@ -11,7 +11,7 @@ import { verify } from 'argon2';
 import { CookieOptions, Response } from 'express';
 import { LenientAutocomplete } from 'xenopomp-essentials';
 
-import { IssueTokens, LoginResult, SanitizedUser } from '@repo/backend-types';
+import { IssueTokens, LoginResult } from '@repo/backend-types';
 import { EXPIRE_DAY_REFRESH_TOKEN, REFRESH_TOKEN_NAME } from '@repo/constants';
 import { issueErrorCode } from '@repo/errors';
 
@@ -29,6 +29,7 @@ export class AuthService {
 
   async login(dto: AuthDto): Promise<LoginResult> {
     // Get user and sanitize him
+    // eslint-disable-next-line unused-imports/no-unused-vars
     const { password, ...user } = await this.validateUser(dto);
 
     /** Access and refresh tokens */
@@ -47,6 +48,7 @@ export class AuthService {
     if (oldUser)
       throw new BadRequestException(issueErrorCode('USER_ALREADY_EXISTS'));
 
+    // eslint-disable-next-line unused-imports/no-unused-vars
     const { password, ...user } = await this.userService.create(dto);
 
     return {};

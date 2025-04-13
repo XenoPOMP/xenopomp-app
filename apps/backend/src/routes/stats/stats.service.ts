@@ -1,5 +1,4 @@
-import { Injectable, Logger } from '@nestjs/common';
-import { StackTech } from '@prisma/client';
+import { Injectable } from '@nestjs/common';
 import axios from 'axios';
 import { z } from 'zod';
 
@@ -29,7 +28,6 @@ export class StatsService {
   /**
    * This method sorts stack techs by usage in projects and
    * returns most-used front-end and back-end stack technologies.
-   * @param options
    */
   async calculateTopStack(options?: { take?: string }) {
     const take: number = Number(options?.take ?? this.TAKE_STACK_ENTRIES);
@@ -123,8 +121,6 @@ export class StatsService {
         ),
     });
 
-    const parsedApiRes = apiSchema.parse(fetchedStars.data);
-
-    return parsedApiRes;
+    return apiSchema.parse(fetchedStars.data);
   }
 }
