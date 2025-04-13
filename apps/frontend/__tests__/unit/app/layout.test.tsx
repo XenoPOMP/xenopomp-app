@@ -12,6 +12,8 @@ describe('Root layout test', () => {
   injectMocks(() => {
     vi.mock('next/font/google', () => ({
       Inter: FONT_MOCK,
+      Playwrite_DE_LA: FONT_MOCK,
+      Sofia_Sans: FONT_MOCK,
     }));
   });
 
