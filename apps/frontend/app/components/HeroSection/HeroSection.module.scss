@@ -1,3 +1,43 @@
+@use "../../../src/styles/config";
+@use "../../../src/styles/mixins/assign-variable";
+@use "sass:map";
+
+$COLUMN_START_NAME: "--col-start";
+$COLUMN_SPAN_NAME: "--col-span";
+$ROW_START_NAME: "--row-start";
+$ROW_SPAN_NAME: "--row-span";
+
+@mixin setColStart($colStart) {
+  @include assign-variable.assignVariable($COLUMN_START_NAME, $colStart)
+}
+
+@mixin setColSpan($colSpan) {
+  @include assign-variable.assignVariable($COLUMN_SPAN_NAME, $colSpan)
+}
+
+@mixin setRowStart($rowStart) {
+  @include assign-variable.assignVariable($ROW_START_NAME, $rowStart)
+}
+
+@mixin setRowSpan($rowSpan) {
+  @include assign-variable.assignVariable($ROW_SPAN_NAME, $rowSpan)
+}
+
+@mixin declareCellParams(
+  $columnStart,
+  $columnSpan,
+  $rowStart,
+  $rowSpan
+) {
+  @include setColStart($columnStart);
+  @include setColSpan($columnSpan);
+  @include setRowStart($rowStart);
+  @include setRowSpan($rowSpan);
+
+   grid-column: var(#{$COLUMN_START_NAME}) / var(#{$COLUMN_SPAN_NAME});
+   grid-row: var(#{$ROW_START_NAME}) / var(#{$ROW_SPAN_NAME});
+}
+
 section.hero {
   height: calc(100dvh - var(--landing-header-height) * 1);
   display: grid;
@@ -7,20 +47,29 @@ section.hero {
   padding-bottom: 2rem;
   max-height: calc(1080px - var(--landing-header-height));
 
+  // Move all parts to top layer, expect purple links block
   & > *:not(.links) {
     @apply z-[20];
   }
 
   .arrowContainer {
     @apply flex-center;
-    grid-column: 1 / span 2;
-    grid-row: 2 / span 5;
+
+    @include declareCellParams(
+      // Column
+      1, span 2,
+      // Row
+      2, span 5,
+    );
   }
 
   h1.heading {
-    // Grid cell settings
-    grid-column: 3 / span 6;
-    grid-row: 2 / span 5;
+    @include declareCellParams(
+      // Column
+      3, span 6,
+      // Row
+      2, span 5,
+    );
 
     // Center that heading!
     align-self: center;
@@ -31,8 +80,14 @@ section.hero {
 
   img.person {
     @apply z-[22] mx-[1rem];
-    grid-column: 9 / span 4;
-    grid-row: 3 / span 4;
+
+    @include declareCellParams(
+      // Column
+      9, span 4,
+      // Row
+      3, span 4,
+    );
+
     object-fit: scale-down;
     align-self: end;
     justify-self: center;
@@ -44,8 +99,12 @@ section.hero {
     @apply bg-block-secondary;
 
     // Place card bg in grid
-    grid-column: 9 / span 4;
-    grid-row: 4 / span 3;
+    @include declareCellParams(
+      // Column
+      9, span 4,
+      // Row
+      4, span 3,
+    );
   }
 
   article.numbers {
@@ -54,8 +113,13 @@ section.hero {
     gap: min(100dvh, 1.5rem);
 
     // Place card bg in grid
-    grid-column: 9 / span 4;
-    grid-row: 7 / span 3;
+
+    @include declareCellParams(
+      // Column
+      9, span 4,
+      // Row
+      7, span 3,
+    );
 
     $numberFontHeight: calc(
       var(--p20) * 2.25
@@ -71,8 +135,12 @@ section.hero {
   article.links {
     @apply bg-block-primary p-2 relative;
 
-    grid-column: 3 / span 7;
-    grid-row: 8 / span 4;
+    @include declareCellParams(
+      // Column
+      3, span 7,
+      // Row
+      8, span 4,
+    );
 
     &:after {
       @apply absolute bottom-full left-0 w-[26%] h-[1.8rem] bg-block-primary content-[""];
@@ -102,7 +170,100 @@ section.hero {
 
   article.slideDown {
     @apply flex justify-center items-end;
-    grid-column: 1 / span 12;
-    grid-row: 12 / span 1;
+
+    @include declareCellParams(
+      // Column
+      1, span 12,
+      // Row
+      12, span 1,
+    );
+  }
+
+  // Adaptation
+  // Y-Axis
+  @media (max-height: 930px) {
+    grid-template-rows: repeat(10, 1fr);
+
+    h1.heading, .arrowContainer {
+      @include setRowStart(3);
+      @include setRowSpan(span 3);
+    }
+
+    img.person {
+      @include setRowStart(2);
+      @include setRowSpan(span 4);
+    }
+
+    .personCardBg {
+      @include setRowStart(3);
+      @include setRowSpan(span 3);
+    }
+
+    article.numbers {
+      @include setRowStart(6);
+      @include setRowSpan(span 3);
+    }
+
+    article.links {
+      @include setRowStart(7);
+      @include setRowSpan(span 4);
+    }
+
+    article.slideDown {
+      @include setRowStart(11);
+      @include setRowSpan(span 1);
+    }
+  }
+
+  @media
+    (max-width: map.get(config.$gridBreakpoints, "xl2")) or
+    (max-height: 780px) {
+    h1.heading {
+      font-size: calc(var(--heading-1) * 1.7) !important;
+    }
+  }
+
+  @media (max-height: 780px) {
+    .arrowContainer, h1.heading {
+      @include setRowStart(2);
+      @include setRowSpan(span 3);
+    }
+
+    .arrowContainer {
+      @include setColSpan(span 1);
+    }
+
+    h1.heading {
+      @include setColStart(2);
+    }
+
+    article.links {
+      @include setColStart(2);
+      @include setColSpan(span 7);
+      @include setRowStart(6);
+      @include setRowSpan(span 5);
+    }
+
+    .personCardBg, article.numbers {
+      @include setColStart(8);
+      @include setColSpan(span 5);
+    }
+
+    article.numbers {
+      @include setRowSpan(span 4);
+    }
+
+    img.person {
+      @include setColStart(9);
+      @include setColSpan(span 3);
+    }
+  }
+
+  // Mobile device
+  @media (max-height: 780px) and (max-width: 900px) {
+    background: red;
+  }
+
+  @media (max-width: map.get(config.$gridBreakpoints, "xl")) {
   }
 }
