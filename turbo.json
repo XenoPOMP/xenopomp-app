@@ -15,6 +15,12 @@
     "lint": {
       "dependsOn": ["^lint"]
     },
+    "ci:lint": {
+      "dependsOn": ["^ci:lint"]
+    },
+    "ci:test": {
+      "dependsOn": ["^ci:test"]
+    },
     "prep": {
       "dependsOn": ["^prep"]
     },
