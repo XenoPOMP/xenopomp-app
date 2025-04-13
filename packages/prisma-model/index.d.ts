@@ -48,7 +48,16 @@ export type StackTech = $Result.DefaultSelection<Prisma.$StackTechPayload>
  * Enums
  */
 export namespace $Enums {
-  export const Permissions: {
+  export const UserType: {
+  default: 'default',
+  superuser: 'superuser',
+  admin: 'admin'
+};
+
+export type UserType = (typeof UserType)[keyof typeof UserType]
+
+
+export const Permissions: {
   all: 'all',
   editStrings: 'editStrings',
   createProjects: 'createProjects',
@@ -67,6 +76,10 @@ export const StackType: {
 export type StackType = (typeof StackType)[keyof typeof StackType]
 
 }
+
+export type UserType = $Enums.UserType
+
+export const UserType: typeof $Enums.UserType
 
 export type Permissions = $Enums.Permissions
 
