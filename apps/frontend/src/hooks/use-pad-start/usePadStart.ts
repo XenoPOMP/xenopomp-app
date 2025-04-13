@@ -10,10 +10,6 @@ export interface IApplyPadStartOptions {
  * Applies .padStart to input string and returns
  * added fill string and input separately.
  *
- * @param inp
- * @param maxLength
- * @param fillString
- *
  * @example
  * const { pad, input } = usePadStart(num.toString(), {
  *   maxLength: ogNum.toString().length,

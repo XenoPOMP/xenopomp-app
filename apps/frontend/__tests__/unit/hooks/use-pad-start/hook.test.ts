@@ -3,10 +3,7 @@ import { afterEach, describe, expect, test } from 'vitest';
 
 import { usePadStart } from '@/hooks';
 
-import {
-  assertHookRendering,
-  createUsePadStartTest
-} from '@test/assets';
+import { assertHookRendering, createUsePadStartTest } from '@test/assets';
 
 describe('usePadStart', () => {
   afterEach(() => {

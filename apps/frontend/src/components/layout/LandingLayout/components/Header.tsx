@@ -1,5 +1,4 @@
 import cn from 'classnames';
-import Link from 'next/link';
 import type { VariableFC } from 'xenopomp-essentials';
 
 import { For } from '@/components/layout';
@@ -21,8 +20,7 @@ export const Internal_LandingHeader: VariableFC<
       className={cn(
         styles.landingHeader,
         'h-[--landing-header-height]',
-        // eslint-disable-next-line prettier/prettier
-        'border-b-static-border border-b',
+        'border-b border-b-static-border',
         className,
       )}
       {...props}
