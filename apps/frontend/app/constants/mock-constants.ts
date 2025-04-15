@@ -1,15 +1,16 @@
-import type { NextFontWithVariable } from 'next/dist/compiled/@next/font';
+import { NextFontWithVariable } from 'next/dist/compiled/@next/font';
 import type * as GOOGLE_FONTS from 'next/font/google';
+import { vi } from 'vitest';
 import type { Fn } from 'xenopomp-essentials';
 
-/** Default mock for any font export. */
-export const FONT_MOCK: Fn<[], NextFontWithVariable> = () => ({
-  className: 'mocked',
+const FONT_MOCK_RETURN: NextFontWithVariable = {
+  className: 'mock',
   style: {
-    fontFamily: 'mocked',
+    fontFamily: 'mock',
   },
-  variable: '--mocked-font-name',
-});
+  variable: 'mock',
+};
+const FONT_MOCK = vi.fn().mockReturnValue(FONT_MOCK_RETURN);
 
 /**
  * This object contains mocked google fonts from 'next/font/google'.
@@ -22,4 +23,6 @@ export const FONT_MOCKS_OBJECT = {
   Inter: FONT_MOCK,
   Sofia_Sans: FONT_MOCK,
   Playwrite_DE_LA: FONT_MOCK,
-} satisfies Partial<Record<keyof typeof GOOGLE_FONTS, typeof FONT_MOCK>>;
+} satisfies Partial<
+  Record<keyof typeof GOOGLE_FONTS, Fn<[...args: any[]], any>>
+>;
