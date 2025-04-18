@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Module, forwardRef } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 
 import { AppController } from './app.controller';
@@ -17,7 +17,7 @@ import { UserModule, UserService } from './routes/user';
     ProjectsModule,
     AuthModule,
     UserModule,
-    RolesModule,
+    forwardRef(() => RolesModule),
     StatsModule,
     FeatureRequestModule,
   ],
