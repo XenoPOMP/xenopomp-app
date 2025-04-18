@@ -1,6 +1,5 @@
 import type { NextFontWithVariable } from 'next/dist/compiled/@next/font';
 import type * as GOOGLE_FONTS from 'next/font/google';
-import { vi } from 'vitest';
 import type { Fn } from 'xenopomp-essentials';
 
 const FONT_MOCK_RETURN: NextFontWithVariable = {
@@ -10,7 +9,9 @@ const FONT_MOCK_RETURN: NextFontWithVariable = {
   },
   variable: 'mock',
 };
-const FONT_MOCK = vi.fn().mockReturnValue(FONT_MOCK_RETURN);
+
+// eslint-disable-next-line jsdoc/require-jsdoc
+const FONT_MOCK = (...args: any[]) => FONT_MOCK_RETURN;
 
 /**
  * This object contains mocked google fonts from 'next/font/google'.
