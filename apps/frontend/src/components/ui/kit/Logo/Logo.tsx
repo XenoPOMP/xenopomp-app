@@ -5,6 +5,8 @@ import type { VariableFC } from 'xenopomp-essentials';
 
 import type { LogoProps } from './Logo.props';
 
+const font = Playwrite_DE_LA();
+
 /**
  * App`s logo component. Contains link to root
  * page (can be overwritten).
@@ -21,7 +23,7 @@ export const Logo: VariableFC<typeof Link, LogoProps, 'children' | 'href'> = ({
       className={cn(
         'lowercase',
         'text-16 leading-[100%]',
-        Playwrite_DE_LA().className,
+        font.className,
         className,
       )}
       {...props}
