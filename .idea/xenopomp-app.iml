@@ -5,6 +5,15 @@
       <excludeFolder url="file://$MODULE_DIR$/.tmp" />
       <excludeFolder url="file://$MODULE_DIR$/temp" />
       <excludeFolder url="file://$MODULE_DIR$/tmp" />
+      <excludeFolder url="file://$MODULE_DIR$/.turbo" />
+      <excludeFolder url="file://$MODULE_DIR$/apps/backend/.turbo" />
+      <excludeFolder url="file://$MODULE_DIR$/apps/frontend/.turbo" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/app-constants/.turbo" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/backend-types/.turbo" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/errors/.turbo" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/nest/.turbo" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/scripts/.turbo" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/ts-config/.turbo" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
