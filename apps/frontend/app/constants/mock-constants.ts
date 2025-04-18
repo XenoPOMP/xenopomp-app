@@ -1,4 +1,4 @@
-import { NextFontWithVariable } from 'next/dist/compiled/@next/font';
+import type { NextFontWithVariable } from 'next/dist/compiled/@next/font';
 import type * as GOOGLE_FONTS from 'next/font/google';
 import { vi } from 'vitest';
 import type { Fn } from 'xenopomp-essentials';
