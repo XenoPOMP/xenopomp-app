@@ -1,4 +1,4 @@
-import { afterAll, afterEach, beforeAll } from 'vitest';
+import { afterAll, afterEach, beforeAll, beforeEach } from 'vitest';
 import type { Undefinable } from 'xenopomp-essentials';
 
 import { clearMocks } from '@test/assets';
@@ -15,6 +15,7 @@ type AfterAllCallback = Undefinable<Fn> | void;
 const strategies = {
   beforeAll,
   afterEach,
+  beforeEach,
 };
 
 /**

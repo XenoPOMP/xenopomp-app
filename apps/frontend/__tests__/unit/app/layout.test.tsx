@@ -1,7 +1,7 @@
 import { describe, vi } from 'vitest';
 
-import { FONT_MOCK } from '@app/constants';
-import RootLayout, { generateMetadata } from '@app/layout.tsx';
+import { FONT_MOCKS_OBJECT } from '@app/constants';
+import RootLayout, { generateMetadata } from '@app/layout';
 
 import { injectMatchMediaMock, injectMocks, testNextPage } from '@test/assets';
 
@@ -10,11 +10,7 @@ describe('Root layout test', () => {
   injectMatchMediaMock();
 
   injectMocks(() => {
-    vi.mock('next/font/google', () => ({
-      Inter: FONT_MOCK,
-      Playwrite_DE_LA: FONT_MOCK,
-      Sofia_Sans: FONT_MOCK,
-    }));
+    vi.mock('next/font/google', () => FONT_MOCKS_OBJECT);
   });
 
   testNextPage(<RootLayout children={undefined} />, {

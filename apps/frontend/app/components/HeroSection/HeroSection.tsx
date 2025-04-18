@@ -43,6 +43,8 @@ export const HeroSection: FC<unknown> = () => {
         src={personImg}
         alt='Фотография автора сайта'
         className={cn(styles.person)}
+        width={213}
+        height={310}
       />
 
       <div
