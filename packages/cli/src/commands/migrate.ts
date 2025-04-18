@@ -19,7 +19,11 @@ export default class Migrate extends Command {
   ];
   static override flags = {
     // flag with a value (-n, --name=VALUE)
-    name: Flags.string({ char: 'n', description: 'name of migration' }),
+    name: Flags.string({
+      char: 'n',
+      description: 'name of migration',
+      required: true,
+    }),
   };
 
   public async run(): Promise<void> {
