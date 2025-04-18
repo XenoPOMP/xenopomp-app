@@ -10,6 +10,7 @@ import { FeatureRequestModule } from './routes/feature-request';
 import { ProjectsModule } from './routes/projects';
 import { StatsModule } from './routes/stats/stats.module';
 import { UserModule, UserService } from './routes/user';
+import { RoleModule } from './routes/role/role.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { UserModule, UserService } from './routes/user';
     RolesModule,
     StatsModule,
     FeatureRequestModule,
+    RoleModule,
   ],
   controllers: [AppController],
   providers: [AppService, PrismaService, RolesService, UserService],
