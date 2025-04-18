@@ -41,6 +41,7 @@
     "@repo/nest": "*",
     "@repo/scripts": "*",
     "@repo/ts-config": "*",
+    "@repo/cli": "*",
     "argon2": "^0.41.1",
     "axios": "^1.8.4",
     "class-transformer": "^0.5.1",
