@@ -89,12 +89,6 @@ enum StackType {
   backend
 }
 
-model EditableString {
-  id    String  @id @default(cuid())
-  name  String  @unique
-  value String?
-}
-
 model StackTech {
   id       String    @id @default(cuid())
   type     StackType
