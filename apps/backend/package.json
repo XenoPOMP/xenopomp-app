@@ -19,9 +19,10 @@
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "studio": "prisma studio",
-    "pack:all": "yarn migrate:dev --name auto_build && yarn pack:types && yarn pack:env",
+    "pack:all": "yarn migrate:dev --name auto_build && yarn pack:either",
     "pack:types": "esno .dev/scripts/pack-types.ts",
     "pack:env": "esno .dev/scripts/pack-env.ts",
+    "pack:either": "yarn pack:types && yarn pack:env",
     "migrate:dev": "npx prisma migrate dev",
     "ci:lint": "yarn lint --max-warnings=0",
     "ci:test": "yarn test --passWithNoTests"
