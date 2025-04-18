@@ -1,5 +1,5 @@
 import { Args, Command, Flags } from '@oclif/core';
-import { exec } from 'node:child_process';
+import shx from 'shelljs';
 
 interface DefaultOptions {
   name: string | undefined;
@@ -13,7 +13,7 @@ export default class Migrate extends Command {
       required: true,
     }),
   };
-  static override description = 'run any type of migrations inside app';
+  static override description = 'Runs any type of migrations inside app';
   static override examples = [
     '<%= config.bin %> <%= command.id %> prisma - run Prisma migration process with types generation',
   ];
@@ -34,6 +34,6 @@ export default class Migrate extends Command {
   }
 
   private async migratePrisma({ name }: DefaultOptions) {
-    exec(`yarn migrate:dev --name ${name} && yarn pack:either`);
+    shx.exec(`yarn migrate:dev --name ${name} && yarn pack:either`);
   }
 }
