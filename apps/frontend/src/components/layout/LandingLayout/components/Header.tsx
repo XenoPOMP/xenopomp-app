@@ -7,6 +7,7 @@ import { Logo, NavbarItem } from '@/components/ui/kit';
 
 import { landingNavbarItems } from '@app/constants';
 
+import { BurgerNavbar } from '../components';
 import styles from '../styles/Header.module.scss';
 
 /** */
@@ -28,10 +29,10 @@ export const Internal_LandingHeader: VariableFC<
       <HStack asChild>
         <div className={cn(styles.grid)}>
           <article>
-            <Logo />
+            <Logo className={cn('relative z-[32]')} />
           </article>
 
-          <nav>
+          <nav className={cn(styles.desktop)}>
             <ul className={cn(styles.list)}>
               <For each={landingNavbarItems}>
                 {({ children, href }, idx) => (
@@ -50,6 +51,8 @@ export const Internal_LandingHeader: VariableFC<
               </For>
             </ul>
           </nav>
+
+          <BurgerNavbar />
         </div>
       </HStack>
     </header>

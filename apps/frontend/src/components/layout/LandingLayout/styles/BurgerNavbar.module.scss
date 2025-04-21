@@ -1,0 +1,28 @@
+.overflow, aside.popup {
+  @apply fixed right-[100dvw] w-dvw z-30
+         transition-all;
+
+  transition-duration: 200ms;
+
+  // Colors
+  @apply bg-secondary-bg;
+
+  // State when popup is shown
+  &[data-opened="true"] {
+    @apply right-0;
+  }
+}
+
+.overflow {
+  @apply h-[--landing-header-height] top-0;
+}
+
+aside.popup {
+  @apply top-[--landing-header-height];
+
+  // Layout styles
+  @apply px-[2rem] py-[2rem];
+
+  height: calc(100dvh - var(--landing-header-height));
+  overflow-y: auto;
+}

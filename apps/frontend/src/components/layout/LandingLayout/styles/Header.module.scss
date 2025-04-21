@@ -11,6 +11,16 @@ header.landingHeader {
 
     @include media.endAtFixed(config.$mobileBreakpoint) {
       @apply flex justify-between;
+
+      nav.desktop {
+        display: none;
+      }
+    }
+
+    @include media.startAtFixed(config.$mobileBreakpoint) {
+      .burgerMenu {
+        display: none;
+      }
     }
 
     .list {
