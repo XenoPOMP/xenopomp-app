@@ -5,6 +5,8 @@ interface DefaultOptions {
   name: string | undefined;
 }
 
+type MigrationEffect = (options: DefaultOptions) => Promise<void>;
+
 export default class Migrate extends Command {
   static override args = {
     type: Args.string({
@@ -25,19 +27,19 @@ export default class Migrate extends Command {
       required: true,
     }),
   };
+  private migratePrisma: MigrationEffect = async ({ name }) => {
+    shx.exec(`yarn migrate:dev --name ${name} && yarn pack:either`);
+  };
 
   public async run(): Promise<void> {
     const { args, flags } = await this.parse(Migrate);
     const { type } = args;
 
-    switch (type) {
-      case 'prisma': {
-        await this.migratePrisma(flags);
-      }
-    }
-  }
+    const actionMap: Map<string, MigrationEffect> = new Map([
+      ['prisma', this.migratePrisma],
+    ]);
 
-  private async migratePrisma({ name }: DefaultOptions) {
-    shx.exec(`yarn migrate:dev --name ${name} && yarn pack:either`);
+    // Run selected effect
+    actionMap.get(type)?.(flags);
   }
 }
