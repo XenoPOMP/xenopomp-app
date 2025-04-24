@@ -50,6 +50,7 @@ model UserRole {
 enum Permissions {
   all
 
+  deleteRoles
   // Edit strings
   editStrings
 

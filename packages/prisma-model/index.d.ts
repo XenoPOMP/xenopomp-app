@@ -54,6 +54,9 @@ export type UserType = (typeof UserType)[keyof typeof UserType]
 
 export const Permissions: {
   all: 'all',
+  createRoles: 'createRoles',
+  updateRoles: 'updateRoles',
+  deleteRoles: 'deleteRoles',
   editStrings: 'editStrings',
   createProjects: 'createProjects',
   updateProjects: 'updateProjects',
