@@ -38,4 +38,6 @@ export class RoleService {
 
     return UserType.default;
   }
+
+  async create() {}
 }
