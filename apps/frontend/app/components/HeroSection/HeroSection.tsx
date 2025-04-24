@@ -103,16 +103,20 @@ export const HeroSection: FC<unknown> = () => {
           </SquareButton>
         </Link>
 
-        <i>Взгляните на мои проекты!</i>
+        <i className={cn(styles.disablable)}>Взгляните на мои проекты!</i>
       </article>
 
       <article className={cn(styles.links)}>
         <div className={cn(styles.grid)}>
-          <Atom size='100%' />
+          <Atom
+            size='100%'
+            className={cn(styles.disablable)}
+          />
 
           <div
             className={cn(
               'flex items-center justify-start pr-[12%] text-[1.4em]',
+              styles.disablable,
             )}
           >
             Front-end разработчик, специализируюшийся на React, TypeScript и
@@ -126,7 +130,9 @@ export const HeroSection: FC<unknown> = () => {
                   href={href}
                   key={idx}
                 >
-                  <SquareButton>{children}</SquareButton>
+                  <SquareButton className={cn(styles.link)}>
+                    {children}
+                  </SquareButton>
                 </Link>
               )}
             </For>

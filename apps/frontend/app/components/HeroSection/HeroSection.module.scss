@@ -223,7 +223,8 @@ section.hero {
     }
   }
 
-  @media (max-height: 780px) {
+  // Change layout a bit
+  @media (max-height: 780px) or (max-width: 1300px) {
     .arrowContainer, h1.heading {
       @include setRowStart(2);
       @include setRowSpan(span 3);
@@ -259,9 +260,132 @@ section.hero {
     }
   }
 
+  // Adjust heading font-size
+  @media (max-width: 1300px) {
+    h1.heading {
+      font-size: calc(var(--heading-1) * 1.2) !important;
+    }
+  }
+
+  // Adjust font-size on width
+  @media (max-width: 1050px) {
+    font-size: .8rem;
+  }
+
+  // Mobile grid variant
+  @media (max-height: 740px) or (max-width: 940px) {
+    padding-top: 2rem;
+
+    .arrowContainer {
+      display: none;
+    }
+
+    h1.heading, article.links {
+      @include setColStart(1);
+      @include setColSpan(7);
+    }
+
+    h1.heading {
+      font-size: calc(var(--heading-1) * 1.2) !important;
+
+      @include setRowStart(1);
+      @include setRowSpan(5);
+    }
+
+    img.person {
+      @include setColStart(8);
+      @include setRowStart(1);
+      grid-column-end: 12;
+      grid-row-end: 6;
+    }
+
+    article.numbers, .personCardBg {
+      @include setColStart(7);
+      @include setColSpan(-1);
+    }
+
+    .personCardBg {
+      @include setRowStart(2);
+      @include setRowSpan(6);
+    }
+
+    article.numbers {
+      @include setRowSpan(11);
+    }
+
+    article.links {
+      .disablable {
+        display: none;
+      }
+
+      .grid {
+        @apply flex-center h-full;
+      }
+    }
+  }
+
+  // Adjust font-size on width
+  @media (max-width: 940px) {
+    h1.heading {
+      font-size: calc(var(--heading-1) * 1) !important;
+    }
+  }
+
+  // Hide person image
+  @media (max-height: 590px) or (max-width: 940px) {
+    img.person, .personCardBg {
+      display: none;
+    }
+
+    article.links, article.numbers {
+      @include setRowStart(5);
+      @include setRowSpan(-1);
+    }
+
+    article.links {
+      @include setColStart(10);
+      @include setColSpan(-1);
+
+      .links {
+        flex-wrap: wrap;
+        gap: var(--p-level-3) !important;
+      }
+
+      &:after {
+        display: none;
+      }
+
+      .link {
+        @apply flex-center size-[unset];
+        padding: .5rem;
+
+        svg {
+          @apply size-[1rem];
+        }
+      }
+    }
+
+    article.numbers {
+      @apply flex items-start justify-center;
+
+      @include setColStart(1);
+      @include setColSpan(10);
+
+      .disablable {
+        display: none;
+      }
+    }
+
+    h1.heading {
+      @include setColSpan(-1);
+      text-align: center;
+      justify-self: unset;
+    }
+  }
+
   // Mobile device
   @media (max-height: 780px) and (max-width: 900px) {
-    background: red;
+    // background: red;
   }
 
   @media (max-width: map.get(config.$gridBreakpoints, "xl")) {
