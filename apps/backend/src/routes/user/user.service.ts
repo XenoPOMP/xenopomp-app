@@ -2,17 +2,13 @@ import { Injectable } from '@nestjs/common';
 import { User } from '@prisma/client';
 import { hash } from 'argon2';
 
-import { CrudService } from '@repo/nest';
-
 import { PrismaService } from '../../features';
 import { AuthDto } from '../auth/dto';
-
-import { UserDto } from './dto';
 
 type Include = Parameters<PrismaService['user']['findUnique']>[0]['include'];
 
 @Injectable()
-export class UserService implements CrudService<User, AuthDto, UserDto> {
+export class UserService {
   constructor(private readonly prisma: PrismaService) {}
 
   async getById(id: User['id'], include?: Include) {
@@ -26,10 +22,10 @@ export class UserService implements CrudService<User, AuthDto, UserDto> {
     });
   }
 
-  async getByEmail(email: User['email']): Promise<User | null> {
+  async getByLogin(login: User['login']): Promise<User | null> {
     return this.prisma.user.findUnique({
       where: {
-        email,
+        login,
       },
     });
   }
@@ -39,8 +35,8 @@ export class UserService implements CrudService<User, AuthDto, UserDto> {
   }
 
   async create(dto: AuthDto) {
-    const newUser: Pick<User, 'email' | 'password'> = {
-      email: dto.email,
+    const newUser: Pick<User, 'login' | 'password'> = {
+      login: dto.login,
       password: await hash(dto.password),
     };
 
@@ -49,7 +45,7 @@ export class UserService implements CrudService<User, AuthDto, UserDto> {
     });
   }
 
-  async updateById(id: User['id'], dto: UserDto) {
+  async updateById(id: User['id'], dto: AuthDto) {
     let data = dto;
 
     if (dto.password) {
@@ -63,7 +59,7 @@ export class UserService implements CrudService<User, AuthDto, UserDto> {
       data,
       select: {
         name: true,
-        email: true,
+        login: true,
       },
     });
   }

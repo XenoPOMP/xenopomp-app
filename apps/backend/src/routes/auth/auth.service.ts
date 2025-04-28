@@ -42,7 +42,7 @@ export class AuthService {
   }
 
   async register(dto: AuthDto) {
-    const oldUser = await this.userService.getByEmail(dto.email);
+    const oldUser = await this.userService.getByLogin(dto.login);
 
     /** Check if user with certain email exists. */
     if (oldUser)
@@ -141,7 +141,7 @@ export class AuthService {
    * and return him.
    */
   private async validateUser(dto: AuthDto): Promise<User> {
-    const user = await this.userService.getByEmail(dto.email);
+    const user = await this.userService.getByLogin(dto.login);
 
     if (!user)
       throw new NotFoundException(issueErrorCode('USER_DOES_NOT_EXIST'));
