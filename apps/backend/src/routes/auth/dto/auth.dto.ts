@@ -1,15 +1,18 @@
-import { IsEmail, IsString, MaxLength, MinLength } from 'class-validator';
+import { IsString, MaxLength, MinLength } from 'class-validator';
 
 import { issueErrorCode } from '@repo/errors';
 
 export class AuthDto {
-  @IsEmail(
-    {},
-    {
-      message: issueErrorCode('EMAIL_IS_INVALID'),
-    },
-  )
-  email: string;
+  @IsString({
+    message: issueErrorCode('LOGIN_IS_NOT_A_STRING'),
+  })
+  @MinLength(4, {
+    message: issueErrorCode('LOGIN_MIN_LENGTH'),
+  })
+  @MaxLength(12, {
+    message: issueErrorCode('LOGIN_MAX_LENGTH'),
+  })
+  login: string;
 
   @IsString({
     message: issueErrorCode('PASSWORD_IS_NOT_A_STRING'),

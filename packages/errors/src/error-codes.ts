@@ -5,8 +5,14 @@ import { createEnum } from './enum';
  * be passed through application.
  */
 export const ERROR_CODES = createEnum(
-  // Email validation
+  // Email validation - DEPRECATED
   'EMAIL_IS_INVALID',
+
+  // Login validation
+  'LOGIN_IS_NOT_A_STRING',
+  'LOGIN_IS_TAKEN',
+  'LOGIN_MIN_LENGTH',
+  'LOGIN_MAX_LENGTH',
 
   // Password validation
   'PASSWORD_IS_NOT_A_STRING',

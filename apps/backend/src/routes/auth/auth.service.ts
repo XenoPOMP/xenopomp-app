@@ -15,6 +15,7 @@ import { IssueTokens, LoginResult } from '@repo/backend-types';
 import { EXPIRE_DAY_REFRESH_TOKEN, REFRESH_TOKEN_NAME } from '@repo/constants';
 import { issueErrorCode } from '@repo/errors';
 
+import { handleData } from '../../features';
 import { UserService } from '../user';
 
 import { AuthDto } from './dto';
@@ -27,11 +28,10 @@ export class AuthService {
     private readonly configService: ConfigService,
   ) {}
 
-  async login(dto: AuthDto): Promise<LoginResult> {
-    // Get user and sanitize him
-    // eslint-disable-next-line unused-imports/no-unused-vars
-    const { password, ...user } = await this.validateUser(dto);
-
+  private async issueUserWithTokens({
+    password,
+    ...user
+  }: User): Promise<LoginResult> {
     /** Access and refresh tokens */
     const tokens = this.issueToken(user.id);
 
@@ -41,17 +41,29 @@ export class AuthService {
     };
   }
 
-  async register(dto: AuthDto) {
-    const oldUser = await this.userService.getByEmail(dto.email);
+  async login(dto: AuthDto): Promise<LoginResult> {
+    // Get user and sanitize him
+    const { password, ...user } = await this.validateUser(dto);
+    return this.issueUserWithTokens({ password, ...user });
+  }
 
-    /** Check if user with certain email exists. */
-    if (oldUser)
-      throw new BadRequestException(issueErrorCode('USER_ALREADY_EXISTS'));
+  async register(dto: AuthDto): Promise<LoginResult> {
+    const { type } = await this.userService.isExact(dto);
 
-    // eslint-disable-next-line unused-imports/no-unused-vars
-    const { password, ...user } = await this.userService.create(dto);
+    switch (type) {
+      // We can login user here
+      case 'exact': {
+        return this.login(dto);
+      }
 
-    return {};
+      // Login is taken
+      case 'loginOnly': {
+        throw new BadRequestException(issueErrorCode('LOGIN_IS_TAKEN'));
+      }
+    }
+
+    const user = await this.userService.create(dto);
+    return this.issueUserWithTokens(user);
   }
 
   /**
@@ -70,14 +82,7 @@ export class AuthService {
       throw new NotFoundException(issueErrorCode('USER_DOES_NOT_EXIST'));
     }
 
-    const { password: _password, ...user } = userFromDb;
-
-    const tokens = this.issueToken(user.id);
-
-    return {
-      user,
-      ...tokens,
-    };
+    return this.issueUserWithTokens(userFromDb);
   }
 
   /** Returns config for cookie response. */
@@ -141,7 +146,7 @@ export class AuthService {
    * and return him.
    */
   private async validateUser(dto: AuthDto): Promise<User> {
-    const user = await this.userService.getByEmail(dto.email);
+    const user = await this.userService.getByLogin(dto.login);
 
     if (!user)
       throw new NotFoundException(issueErrorCode('USER_DOES_NOT_EXIST'));
