@@ -28,7 +28,10 @@ export class AuthService {
     private readonly configService: ConfigService,
   ) {}
 
-  private async issueUserWithTokens({ password, ...user }: User) {
+  private async issueUserWithTokens({
+    password,
+    ...user
+  }: User): Promise<LoginResult> {
     /** Access and refresh tokens */
     const tokens = this.issueToken(user.id);
 
@@ -41,11 +44,10 @@ export class AuthService {
   async login(dto: AuthDto): Promise<LoginResult> {
     // Get user and sanitize him
     const { password, ...user } = await this.validateUser(dto);
-
     return this.issueUserWithTokens({ password, ...user });
   }
 
-  async register(dto: AuthDto) {
+  async register(dto: AuthDto): Promise<LoginResult> {
     const { type } = await this.userService.isExact(dto);
 
     switch (type) {
@@ -60,9 +62,8 @@ export class AuthService {
       }
     }
 
-    // eslint-disable-next-line unused-imports/no-unused-vars
-    const { password, ...user } = await this.userService.create(dto);
-    return user;
+    const user = await this.userService.create(dto);
+    return this.issueUserWithTokens(user);
   }
 
   /**
