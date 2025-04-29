@@ -40,16 +40,9 @@ export class AuthService {
 
   async login(dto: AuthDto): Promise<LoginResult> {
     // Get user and sanitize him
-    // eslint-disable-next-line unused-imports/no-unused-vars
     const { password, ...user } = await this.validateUser(dto);
 
-    /** Access and refresh tokens */
-    const tokens = this.issueToken(user.id);
-
-    return {
-      user,
-      ...tokens,
-    };
+    return this.issueUserWithTokens({ password, ...user });
   }
 
   async register(dto: AuthDto) {
@@ -88,14 +81,7 @@ export class AuthService {
       throw new NotFoundException(issueErrorCode('USER_DOES_NOT_EXIST'));
     }
 
-    const { password: _password, ...user } = userFromDb;
-
-    const tokens = this.issueToken(user.id);
-
-    return {
-      user,
-      ...tokens,
-    };
+    return this.issueUserWithTokens(userFromDb);
   }
 
   /** Returns config for cookie response. */
