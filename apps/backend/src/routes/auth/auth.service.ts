@@ -15,6 +15,7 @@ import { IssueTokens, LoginResult } from '@repo/backend-types';
 import { EXPIRE_DAY_REFRESH_TOKEN, REFRESH_TOKEN_NAME } from '@repo/constants';
 import { issueErrorCode } from '@repo/errors';
 
+import { handleData } from '../../features';
 import { UserService } from '../user';
 
 import { AuthDto } from './dto';
@@ -42,16 +43,23 @@ export class AuthService {
   }
 
   async register(dto: AuthDto) {
-    const oldUser = await this.userService.getByLogin(dto.login);
+    const { type } = await this.userService.isExact(dto);
 
-    /** Check if user with certain email exists. */
-    if (oldUser)
-      throw new BadRequestException(issueErrorCode('USER_ALREADY_EXISTS'));
+    switch (type) {
+      // We can login user here
+      case 'exact': {
+        return this.login(dto);
+      }
+
+      // Login is taken
+      case 'loginOnly': {
+        throw new BadRequestException(issueErrorCode('LOGIN_IS_TAKEN'));
+      }
+    }
 
     // eslint-disable-next-line unused-imports/no-unused-vars
     const { password, ...user } = await this.userService.create(dto);
-
-    return {};
+    return user;
   }
 
   /**

@@ -10,6 +10,7 @@ export const ERROR_CODES = createEnum(
 
   // Login validation
   'LOGIN_IS_NOT_A_STRING',
+  'LOGIN_IS_TAKEN',
   'LOGIN_MIN_LENGTH',
   'LOGIN_MAX_LENGTH',
 

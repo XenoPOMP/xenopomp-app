@@ -1,11 +1,25 @@
 import { Injectable } from '@nestjs/common';
 import { User } from '@prisma/client';
-import { hash } from 'argon2';
+import { hash, verify } from 'argon2';
 
 import { PrismaService } from '../../features';
 import { AuthDto } from '../auth/dto';
 
 type Include = Parameters<PrismaService['user']['findUnique']>[0]['include'];
+
+export type ExactUserType =
+  | {
+      // Login and password are registered to some user
+      type: 'exact';
+    }
+  | {
+      // User with provided login exists, but password is different
+      type: 'loginOnly';
+    }
+  | {
+      // User has nothing same with provided data
+      type: 'different';
+    };
 
 @Injectable()
 export class UserService {
@@ -28,6 +42,28 @@ export class UserService {
         login,
       },
     });
+  }
+
+  async isExact({ login, password }: AuthDto): Promise<ExactUserType> {
+    const oldUser = await this.getByLogin(login);
+
+    // User is not of given kind
+    if (oldUser === null) {
+      return {
+        type: 'different',
+      };
+    }
+
+    // User is exact one
+    if (await verify(oldUser.password, password)) {
+      return {
+        type: 'exact',
+      };
+    }
+
+    return {
+      type: 'loginOnly',
+    };
   }
 
   async getMany() {
