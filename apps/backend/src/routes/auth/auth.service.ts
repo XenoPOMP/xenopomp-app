@@ -28,6 +28,16 @@ export class AuthService {
     private readonly configService: ConfigService,
   ) {}
 
+  private async issueUserWithTokens({ password, ...user }: User) {
+    /** Access and refresh tokens */
+    const tokens = this.issueToken(user.id);
+
+    return {
+      user,
+      ...tokens,
+    };
+  }
+
   async login(dto: AuthDto): Promise<LoginResult> {
     // Get user and sanitize him
     // eslint-disable-next-line unused-imports/no-unused-vars
