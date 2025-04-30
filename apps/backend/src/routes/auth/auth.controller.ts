@@ -22,6 +22,19 @@ import { AuthDto } from './dto';
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
+  /**
+   * This method removes refreshToken from ready-to-return
+   * auth data. Also applies refresh token to user, if it deserves it.
+   * @param result   result of successful auth proceed
+   * @param res      pass-through response
+   * @private
+   * @example
+   * // Use service to login user. This method returns user with
+   * // both tokens set. this.createAuthMethod applies refreshToken to
+   * // response and removes it from endpoint return data.
+   * const loginResult = await this.authService.login(dto);
+   * return this.createAuthMethod(loginResult, res);
+   */
   private async createAuthMethod(
     result: LoginResult,
     res: Response,
