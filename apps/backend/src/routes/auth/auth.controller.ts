@@ -7,6 +7,7 @@ import {
 } from '@nestjs/common';
 import { Request, Response } from 'express';
 
+import { LoginResult } from '@repo/backend-types';
 import { LoginResultRes, LogoutResultRes } from '@repo/backend-types/src';
 import { REFRESH_TOKEN_NAME } from '@repo/constants';
 import { issueErrorCode } from '@repo/errors';
@@ -21,6 +22,15 @@ import { AuthDto } from './dto';
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
+  private async createAuthMethod(
+    result: LoginResult,
+    res: Response,
+  ): Promise<LoginResultRes> {
+    const { refreshToken, ...response } = result;
+    this.authService.addRefreshTokenToResponse(res, refreshToken);
+    return handleData(response);
+  }
+
   @Endpoint('POST', '/login', {
     validate: true,
   })
@@ -28,17 +38,19 @@ export class AuthController {
     @Body() dto: AuthDto,
     @Res({ passthrough: true }) res: Response,
   ): Promise<LoginResultRes> {
-    const { refreshToken, ...response } = await this.authService.login(dto);
-    this.authService.addRefreshTokenToResponse(res, refreshToken);
-
-    return handleData(response);
+    const loginResult = await this.authService.login(dto);
+    return this.createAuthMethod(loginResult, res);
   }
 
   @Endpoint('POST', '/register', {
     validate: true,
   })
-  async register(@Body() dto: AuthDto) {
-    return handleData(await this.authService.register(dto));
+  async register(
+    @Body() dto: AuthDto,
+    @Res({ passthrough: true }) res: Response,
+  ): Promise<LoginResultRes> {
+    const registerResult = await this.authService.register(dto);
+    return this.createAuthMethod(registerResult, res);
   }
 
   @Endpoint('POST', 'login/access-token')
