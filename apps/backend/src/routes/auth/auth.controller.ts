@@ -67,14 +67,10 @@ export class AuthController {
     }
 
     /** Issue new tokens. */
-    const { refreshToken, ...response } = await this.authService.getNewTokens(
+    const tokensResult = await this.authService.getNewTokens(
       refreshTokenFromCookies,
     );
-
-    /** Assign refreshToken to response. */
-    this.authService.addRefreshTokenToResponse(res, refreshToken);
-
-    return handleData(response);
+    return this.createAuthMethod(tokensResult, res);
   }
 
   @Endpoint('POST', '/logout')
