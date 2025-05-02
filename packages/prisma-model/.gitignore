@@ -1,0 +1,3 @@
+*.node
+*.js
+schema.prisma

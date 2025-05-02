@@ -1,3 +1,0 @@
-prisma-model/**/*.node
-prisma-model/**/*.js
-prisma-model/schema.prisma
