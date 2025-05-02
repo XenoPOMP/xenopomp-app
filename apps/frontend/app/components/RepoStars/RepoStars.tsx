@@ -1,16 +1,16 @@
 import cn from 'classnames';
 import { Star } from 'lucide-react';
 import Link from 'next/link';
-import { useCallback } from 'react';
+import { ComponentProps, useCallback } from 'react';
 import type { VariableFC } from 'xenopomp-essentials';
 
 import type { RepoStarsProps } from './RepoStars.props';
 
 export const RepoStars: VariableFC<
   typeof Link,
-  RepoStarsProps,
+  RepoStarsProps & Partial<Pick<ComponentProps<typeof Link>, 'href'>>,
   'children' | 'href'
-> = ({ className, starsCount, repoAuthor, repoName, ...props }) => {
+> = ({ className, starsCount, repoAuthor, repoName, href, ...props }) => {
   const formatCount = useCallback(() => {
     const formatter = new Intl.NumberFormat('ru-RU', {
       notation: 'compact',
@@ -30,7 +30,7 @@ export const RepoStars: VariableFC<
         'transition-colors',
         className,
       )}
-      href={`https://github.com/${repoAuthor}/${repoName}`}
+      href={href ?? `https://github.com/${repoAuthor}/${repoName}`}
       {...props}
     >
       <div className={cn('text-14', 'flex items-center gap-[.25em]')}>

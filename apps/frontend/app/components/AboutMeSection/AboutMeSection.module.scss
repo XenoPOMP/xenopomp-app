@@ -1,0 +1,18 @@
+section.aboutMe {
+  article.grid {
+    @apply gap-4;
+
+    height: 50dvh;
+    max-height: calc(var(--p-level-1) * 9.08);
+    min-height: 380px;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    grid-template-areas:
+      "a a a a b b c c c d d d"
+      "a a a a b b c c c d d d"
+      "e e e e e e c c c d d d"
+      "e e e e e e c c c d d d"
+      ;
+  }
+}

@@ -1,9 +1,8 @@
 import type { Metadata } from 'next';
 
 import { LandingLayout } from '@/components/layout';
-import { Stack } from '@/components/ui';
 
-import { HeroSection } from '@app/components';
+import { AboutMeSection, HeroSection } from '@app/components';
 
 export const metadata: Metadata = {
   title: 'Main',
@@ -21,8 +20,7 @@ export default function Home() {
 
         <LandingLayout.Body>
           <HeroSection />
-
-          <Stack>index page</Stack>
+          <AboutMeSection />
         </LandingLayout.Body>
       </LandingLayout>
     </>
