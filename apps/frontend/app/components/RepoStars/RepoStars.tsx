@@ -1,6 +1,7 @@
 import cn from 'classnames';
 import { Star } from 'lucide-react';
 import Link from 'next/link';
+import { useCallback } from 'react';
 import type { VariableFC } from 'xenopomp-essentials';
 
 import type { RepoStarsProps } from './RepoStars.props';
@@ -10,6 +11,15 @@ export const RepoStars: VariableFC<
   RepoStarsProps,
   'children' | 'href'
 > = ({ className, starsCount, repoAuthor, repoName, ...props }) => {
+  const formatCount = useCallback(() => {
+    const formatter = new Intl.NumberFormat('ru-RU', {
+      notation: 'compact',
+      compactDisplay: 'short',
+    });
+
+    return formatter.format(starsCount);
+  }, [starsCount]);
+
   return (
     <Link
       className={cn(
@@ -29,7 +39,7 @@ export const RepoStars: VariableFC<
           className={cn('fill-current text-star')}
         />
 
-        {starsCount}
+        {formatCount()}
       </div>
 
       <b className={cn('text-16 font-extrabold')}>
