@@ -348,6 +348,7 @@ section.hero {
 
       .links {
         flex-wrap: wrap;
+        justify-content: center;
         gap: var(--p-level-3) !important;
       }
 
